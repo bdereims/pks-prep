@@ -1,0 +1,8 @@
+#!/bin/sh
+
+export PKS_FQDN="pks.cpod-gv.shwrfr.mooo.com"
+export UAA_FQDN="uaa.${PKS_FQDN}"
+export UAA_ADMIN_SECRET=""
+export ADMIN="admin"
+export ADMIN_PASSWORD="VMware1!"
+export CLUSTER_NAME="k8s-1"
