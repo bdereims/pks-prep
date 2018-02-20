@@ -1,8 +1,9 @@
 #!/bin/sh
 
-export PKS_FQDN="pks.cpod-gv.shwrfr.mooo.com"
+export PKS_FQDN="goodvibes.pks"
 export UAA_FQDN="uaa.${PKS_FQDN}"
-export UAA_ADMIN_SECRET=""
-export ADMIN="admin"
+export UAA_ADMIN_SECRET="FbHSvCiKnqfRTU86g_EM3rzdXTqb2ws0"
+export ADMIN="vmware"
 export ADMIN_PASSWORD="VMware1!"
 export CLUSTER_NAME="k8s-1"
+export DIRECTOR="192.168.29.2"
