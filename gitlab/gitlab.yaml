@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: gitlab 
+spec:
+  replicas: 1
+  selector:
+    app: gitlab 
+  template:
+    metadata:
+      name: gitlab
+      labels:
+        app: gitlab 
+    spec:
+      containers:
+      - name: gitlab
+        image: gitlab/gitlab-ce
+        ports:
+        - containerPort: 80
+        - containerPort: 443 
+        - containerPort: 22
