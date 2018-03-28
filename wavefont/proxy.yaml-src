@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  labels:
+    app: wavefront-proxy
+    name: wavefront-proxy
+  name: wavefront-proxy
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    app: wavefront-proxy
+  template:
+    metadata:
+      labels:
+        app: wavefront-proxy
+    spec:
+      containers:
+      - name: wavefront-proxy
+        image: wavefronthq/proxy:latest
+        imagePullPolicy: Always
+        env:
+        - name: WAVEFRONT_URL
+          value: https://vmware.wavefront.com/api/
+        - name: WAVEFRONT_TOKEN
+          value: ###TOKEN### 
+        ports:
+        - containerPort: 2878
+          protocol: TCP
+        - containerPort: 4242
+          protocol: TCP
+        securityContext:
+          privileged: false

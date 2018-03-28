@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wavefront-proxy
+  labels:
+    app: wavefront-proxy
+spec:
+  ports:
+  - name: wavefront
+    port: 2878
+    protocol: TCP
+  - name: opentsdb
+    port: 4242
+    protocol: TCP
+  selector:
+    app: wavefront-proxy

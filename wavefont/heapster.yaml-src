@@ -1,0 +1,60 @@
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: heapster-wf
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:heapster-wf
+subjects:
+- kind: ServiceAccount
+  name: heapster-wf
+  namespace: kube-system
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: heapster-wf
+  namespace: kube-system
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  labels:
+    k8s-app: heapster-wf
+    name: heapster-wf
+    version: v6
+  name: heapster-wf
+  namespace: kube-system
+spec:
+  replicas: 1
+  selector:
+    k8s-app: heapster-wf
+    version: v6
+  template:
+    metadata:
+      labels:
+        k8s-app: heapster-wf
+        version: v6
+    spec:
+      serviceAccount: "heapster"
+      containers:
+      - name: heapster-wf
+        image: wavefronthq/heapster-amd64:latest
+        imagePullPolicy: Always
+        command:
+        - /heapster
+        - --source=kubernetes.summary_api:''
+        - --sink=wavefront:wavefront-proxy.default.svc.cluster.local:2878?clusterName=###CLUSTER_NAME###&includeLabels=true
+        - --metric_resolution=5s
+        volumeMounts:
+        - name: ssl-certs
+          mountPath: /etc/ssl/certs
+          readOnly: true
+        ports:
+        - containerPort: 8082
+          protocol: TCP
+      volumes:
+      - name: ssl-certs
+        hostPath:
+          path: /etc/ssl/certs
