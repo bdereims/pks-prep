@@ -1,9 +1,13 @@
 #!/bin/sh
 
-export PKS_FQDN="tfa.net"
+export PKS_FQDN="pks-sys.gv"
+export REG_FQDN="harbor.pks-reg.gv"
 export UAA_FQDN="uaa.${PKS_FQDN}"
-export UAA_ADMIN_SECRET="RKSxi8H1pXp5gCeGY3-D0NFSchSF3Poj"
+export UAA_ADMIN_SECRET="I8-A96_ECfWjzSBxpq6Zwtd-xXWTl5sY"
 export ADMIN="vmware"
 export ADMIN_PASSWORD="VMware1!"
 export CLUSTER_NAME="k8s-1"
-export DIRECTOR="192.168.34.2"
+export DIRECTOR="192.168.31.2"
+
+export DOCKER_CONTENT_TRUST=1
+export DOCKER_CONTENT_TRUST_SERVER=https://${REG_FQDN}:4443
