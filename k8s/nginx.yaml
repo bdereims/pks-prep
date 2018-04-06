@@ -1,0 +1,22 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: nginx
+  labels:
+    app: nginx 
+spec:
+  replicas: 3 
+  selector:
+    matchLabels:
+      app: nginx 
+  template:
+    metadata:
+      labels:
+        app: nginx 
+        version: v0.0.1
+    spec:
+      containers:
+      - name: nginx 
+        image: nginx 
+        ports:
+        - containerPort: 80
