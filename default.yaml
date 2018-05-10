@@ -1,0 +1,94 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
+  name: thin-disk
+parameters:
+  diskformat: thin
+provisioner: kubernetes.io/vsphere-volume
+reclaimPolicy: Delete
+---
+apiVersion: apps/v1beta2
+kind: DaemonSet
+metadata:
+ name: vrops-cadvisor
+ namespace: kube-system
+ labels:
+   app: vrops-cadvisor
+spec:
+ selector:
+   matchLabels:
+     name: vrops-cadvisor
+ template:
+   metadata:
+     labels:
+       name: vrops-cadvisor
+       version: v0.29.0
+   spec:
+     containers:
+     - name: vrops-cadvisor
+       image: google/cadvisor:v0.29.0
+       #imagePullPolicy: Never
+       volumeMounts:
+       - name: rootfs
+         mountPath: /rootfs
+         readOnly: true
+       - name: var-run
+         mountPath: /var/run
+         readOnly: false
+       - name: sys
+         mountPath: /sys
+         readOnly: true
+       - name: docker
+         mountPath: /var/lib/docker
+         readOnly: true
+       - name: containerd-sock
+         mountPath: /var/run/containerd/containerd.sock
+         readOnly: true
+       - name: docker-sock
+         mountPath: /var/run/docker.sock
+         readOnly: true
+       ports:
+       - name: http
+         containerPort: 8080
+         protocol: TCP
+       args:
+         - --profiling
+         - --housekeeping_interval=1s
+     terminationGracePeriodSeconds: 30
+     volumes:
+     - name: rootfs
+       hostPath:
+         path: /
+     - name: var-run
+       hostPath:
+         path: /var/run
+     - name: sys
+       hostPath:
+         path: /sys
+     - name: docker
+       hostPath:
+         path: /var/vcap/store/docker/docker
+     - name: containerd-sock
+       hostPath:
+         path: /var/run/docker/libcontainerd/docker-containerd.sock
+     - name: docker-sock
+       hostPath:
+         path: /var/vcap/sys/run/docker/docker.sock
+---
+kind: Service
+apiVersion: v1
+metadata:
+ name: vrops-cadvisor
+ namespace: kube-system
+spec:
+ type: NodePort
+ selector:
+   name: vrops-cadvisor
+ ports:
+ - name: http
+   protocol: TCP
+   port: 4194
+   targetPort: 8080
+   nodePort: 31194
