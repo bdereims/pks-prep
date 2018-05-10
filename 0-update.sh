@@ -5,6 +5,7 @@
 BINDIR=/usr/local/bin
 BOSHRELEASE=2.0.48
 HELMRELEASE=2.8.1
+OMRELEASE=0.36.0
 
 sudo apt-get update ; apt-get upgrade
 sudo apt-get install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt-dev libxml2-dev libssl-dev libreadline6 libreadline6-dev libyaml-dev libsqlite3-dev sqlite3
@@ -23,6 +24,12 @@ curl -LO https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${BOSHRELEASE}-lin
 sudo cp bosh-cli-${BOSHRELEASE}-linux-amd64 ${BINDIR}/bosh
 sudo chmod ugo+x ${BINDIR}/bosh 
 rm bosh-cli-${BOSHRELEASE}-linux-amd64
+
+# om
+curl -LO https://github.com/pivotal-cf/om/releases/download/${OMRELEASE}/om-linux
+sudo chown root om-linux
+sudo chmod ugo+x om-linux
+sudo mv om-linux ${BINDIR}/om
 
 # helm
 curl -LO https://kubernetes-helm.storage.googleapis.com/helm-v${HELMRELEASE}-linux-amd64.tar.gz
