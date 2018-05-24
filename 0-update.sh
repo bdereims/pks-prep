@@ -1,14 +1,14 @@
 #!/bin/sh
 #bdereims@vmware.com
-#Only tested on Ubuntu 16.04 LTS
+#Only tested on Ubuntu 16.04/18.04 LTS
 
 BINDIR=/usr/local/bin
-BOSHRELEASE=2.0.48
-HELMRELEASE=2.8.1
+BOSHRELEASE=3.0.1
+HELMRELEASE=2.9.0
 OMRELEASE=0.36.0
 
-sudo apt-get update ; apt-get upgrade
-sudo apt-get install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt-dev libxml2-dev libssl-dev libreadline6 libreadline6-dev libyaml-dev libsqlite3-dev sqlite3
+sudo apt-get update ; sudo apt-get upgrade
+sudo apt-get install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 sshpass jq
 
 # uuac
 sudo gem install cf-uaac
