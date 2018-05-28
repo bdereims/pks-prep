@@ -1,0 +1,17 @@
+nginx:latest
+gitlab/gitlab-ce:latest
+nextcloud:latest
+functions/queue-worker:0.4.3
+functions/faas-netesd:0.4.6
+functions/gateway:0.7.8
+jenkins:latest
+wavefronthq/heapster-amd64:latest
+wavefronthq/proxy:latest
+prom/prometheus:v2.2.0
+prom/alertmanager:v0.15.0-rc.0
+google/cadvisor:v0.29.0
+gcr.io/kubernetes-helm/tiller:v2.8.1
+alpine:latest
+vmeoc/tito-fe:latest
+nats-streaming:0.6.0
+vmeoc/tito-sql:V1.5
