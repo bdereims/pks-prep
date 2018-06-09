@@ -2,8 +2,8 @@
 
 export BITS=/data/BITS
 
-export PKS_FQDN="pks-sys.goodvibes"
-export REG_FQDN="harbor.pks-reg.goodvibes"
+export PKS_FQDN="pks-sys.gv"
+export REG_FQDN="harbor.pks-reg.gv"
 
 export UAA_FQDN="uaa.${PKS_FQDN}"
 # UAA Admin Secret from PKS VM / Service
@@ -16,7 +16,7 @@ export CLUSTER_NAME="k8s-1"
 # OpsManager VM IP = DIRECTOR
 export DIRECTOR="192.168.29.2"
 # OpsManager VM IP
-export OPSMANAGER="opsmanager.cpod-goodvibes.shwrfr.mooo.com"
+export OPSMANAGER="opsmanager.cpod-gv.shwrfr.mooo.com"
 
 export DOCKER_CONTENT_TRUST=1
 export DOCKER_CONTENT_TRUST_SERVER=https://${REG_FQDN}:4443

@@ -4,16 +4,15 @@
 ### Local vars ####
 
 PASSWORD="VMware1!"
-IP="172.18.9.11"
 NETMASK="255.255.255.0"
-GATEWAY="172.18.9.1"
+GATEWAY="172.18.5.1"
 DNS=${GATEWAY}
 NTP=${GATEWAY}
 DATASTORE="Datastore"
 PORTGROUP="VM Network"
-ADMIN="administrator%40cpod-goodvibes.shwrfr.mooo.com"
+ADMIN="administrator%40cpod-gv.shwrfr.mooo.com"
 VC_PASSWORD="VMware1!"
-TARGET="vcsa.cpod-goodvibes.shwrfr.mooo.com/cPod-GOODVIBES/host/Cluster"
+TARGET="vcsa.cpod-gv.shwrfr.mooo.com/cPod-GV/host/Cluster"
 
 ###################
 
@@ -22,7 +21,7 @@ upload_opsmanager() {
 	NAME=OPSMANAGER
 	HOSTNAME="opsmanager"
 	OVA=/data/BITS/PKS/pcf-vsphere-2.1-build.214.ova
-	IP="172.18.9.11"	
+	IP="172.18.5.11"	
 
 	export MYSCRIPT=/tmp/$$
 
@@ -51,7 +50,7 @@ upload_vrli() {
         NAME=VRLI
         HOSTNAME="vrli"
         OVA=/data/BITS/vREALIZE/VMware-vRealize-Log-Insight-4.5.1-6858700.ova
-        IP="172.18.9.9"
+        IP="172.18.5.9"
 
         export MYSCRIPT=/tmp/$$
 
@@ -81,7 +80,7 @@ upload_vrops() {
         NAME=VROPS
         HOSTNAME="vrops"
         OVA=/data/BITS/vREALIZE/vRealize-Operations-Manager-Appliance-6.7.0.8183617_OVF10.ova
-        IP="172.18.9.10"
+        IP="172.18.5.10"
 
         export MYSCRIPT=/tmp/$$
 
@@ -103,6 +102,6 @@ EOF
 
 ###################
 
-#upload_opsmanager
-#upload_vrli
+upload_opsmanager
+upload_vrli
 upload_vrops
