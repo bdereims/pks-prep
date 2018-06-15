@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: nginx 
-        image: nginxdemos/hello 
+        image: harbor.pks-reg.gv/gv/nginxdemos:latest 
         ports:
         - containerPort: 80

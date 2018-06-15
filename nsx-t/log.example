@@ -1,0 +1,1 @@
+set logging-server vrli.cpod-gv.shwrfr.mooo.com:514 proto tcp level info facility syslog messageid -

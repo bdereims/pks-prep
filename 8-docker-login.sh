@@ -5,6 +5,7 @@
 ### Copy from Harbor VM those files /data/cert/server.*
 ### Rename server.crt to server.cert
 
+cp server.crt server.cert
 CERTS=/etc/docker/certs.d/${REG_FQDN}
 sudo mkdir -p ${CERTS} 
 sudo cp ca.crt server.* ${CERTS}/.

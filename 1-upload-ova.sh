@@ -20,7 +20,7 @@ upload_opsmanager() {
 
 	NAME=OPSMANAGER
 	HOSTNAME="opsmanager"
-	OVA=/data/BITS/PKS/pcf-vsphere-2.1-build.214.ova
+	OVA=/data/BITS/PKS/pcf-vsphere-2.1-build.318.ova
 	IP="172.18.5.11"	
 
 	export MYSCRIPT=/tmp/$$
@@ -103,5 +103,5 @@ EOF
 ###################
 
 upload_opsmanager
-upload_vrli
-upload_vrops
+#upload_vrli
+#upload_vrops
