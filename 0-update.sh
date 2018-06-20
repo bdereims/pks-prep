@@ -8,7 +8,7 @@ HELMRELEASE=2.9.0
 OMRELEASE=0.36.0
 
 sudo apt-get update ; sudo apt-get upgrade
-sudo apt-get install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 sshpass jq
+sudo apt-get install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 sshpass jq dnsmasq
 
 # uuac
 sudo gem install cf-uaac
