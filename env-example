@@ -1,6 +1,17 @@
 #!/bin/sh
 
+# Where are the bits?
 export BITS=/data/BITS
+export PASSWORD="VMware1!"
+export DOMAIN="cpod-gv.shwrfr.mooo.com"
+
+# vCenter attributes
+export VCENTER_IP=vcsa.cpod-gv.shwrfr.mooo.com
+export VCENTER_USERNAME="administrator@${DOMAIN}"
+export VCENTER_PASSWORD=${PASSWORD}
+
+### PKS Conf ###
+################
 
 export PKS_FQDN="pks-sys.gv"
 export REG_FQDN="harbor.pks-reg.gv"
@@ -10,15 +21,71 @@ export UAA_FQDN="uaa.${PKS_FQDN}"
 export UAA_ADMIN_SECRET="BjIGocMEcVxOJ8YDi4_R-cXL0qzdck4I"
 
 export ADMIN="vmware"
-export ADMIN_PASSWORD="VMware1!"
+export ADMIN_PASSWORD=${PASSWORD}
 export CLUSTER_NAME="gv-1"
 
 # OpsManager VM IP = DIRECTOR
 export DIRECTOR="192.168.40.2"
 # OpsManager VM IP
-export OPSMANAGER="opsmanager.cpod-gv.shwrfr.mooo.com"
+export OPSMANAGER="opsmanager.${DOMAIN}"
 
 export DOCKER_CONTENT_TRUST=1
 export DOCKER_CONTENT_TRUST_SERVER=https://${REG_FQDN}:4443
 
+# @IP:PORT of the OpenFAAS Gateway Service
 export OPENFAAS_URL=192.168.42.10:8080
+
+### NSX Conf ###
+################
+
+# Location of OVA files
+export BITS_NSX=NSX
+export NSX_MANAGER_OVA_FILE=${BITS}/${BITS_NSX}/nsx-unified-appliance-2.2.0.0.0.8680778.ova
+export NSX_CONTROLLER_OVA_FILE=${BITS}/${BITS_NSX}/nsx-controller-2.2.0.0.0.8680774.ova
+export NSX_EDGE_OVA_FILE=${BITS}/${BITS_NSX}/nsx-edge-2.2.0.0.0.8680783.ova
+
+# VM names on vCenter
+export NSX_MANAGER_NAME=NSX-T_manager
+export NSX_CONTROLLER_NAME=NSX-T_controller_1
+export NSX_EDGE_NAME=NSX-T_edge_1
+
+# vCenter DC name
+export NSX_HOST_COMMON_DATACENTER=cPod-GV
+
+# Management Cluster (for NSX Manager and NSX Controller)
+export NSX_HOST_MGMT_CLUSTER=Cluster
+export NSX_HOST_MGMT_DATASTORE=Datastore
+
+# Compute Cluster (for NSX Edge VM)
+export NSX_HOST_COMPUTE_CLUSTER=${NSX_HOST_MGMT_CLUSTER}
+export NSX_HOST_COMPUTE_DATASTORE=${NSX_HOST_MGMT_DATASTORE}
+
+# Network0: MGMT port-group
+# Network1: Edge VTEP port-group
+# Network2: Edge Uplink port-group
+# Network3: Free to future use 
+export NSX_HOST_COMMON_NETWORK0="VM Network"
+export NSX_HOST_COMMON_NETWORK1="VM Network"
+export NSX_HOST_COMMON_NETWORK2="VM Network"
+export NSX_HOST_COMMON_NETWORK3="VM Network"
+
+# NSX Manager, Controller, Edge Network Attributes
+export NSX_MANAGER_IP=172.18.5.4
+export NSX_CONTROLLER_IP=172.18.5.5
+export NSX_EDGE_IP=172.18.5.8
+export NSX_COMMON_PASSWORD=${PASSWORD}
+export NSX_COMMON_DOMAIN="nsx.${DOMAIN}"
+export NSX_COMMON_NETMASK=255.255.255.0
+export NSX_COMMON_GATEWAY=172.18.5.1
+export NSX_COMMON_DNS=${NSX_COMMON_GATEWAY}
+export NSX_COMMON_NTP=${NSX_COMMON_GATEWAY}
+
+# Option to overwrite NSX install
+export NSX_OVERWRITE=false
+export NETWORK_TUNNEL_IP_POOL_CIDR="10.255.254.0/24"
+export NETWORK_TUNNEL_IP_POOL_ALLOCATION_START="10.255.254.1"
+export NETWORK_TUNNEL_IP_POOL_ALLOCATION_END="10.255.254.253"
+export NETWORK_T0_SUBNET_IP_ADDRESS="172.18.5.8"
+export NETWORK_T0_SUBNET_PREFIX_LENGTH=24
+export NETWORK_T0_GATEWAY="172.18.5.1"
+export NETWORK_HOST_UPLINK_PNIC="vmnic1"

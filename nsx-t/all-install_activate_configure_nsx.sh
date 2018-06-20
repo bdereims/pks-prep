@@ -1,4 +1,5 @@
-source ./install_nsx.env
+#source ./install_nsx.env
+source ../env
 ./1-install_nsx.sh
 sleep 180
 ./2-activate_nsx_cluster.sh

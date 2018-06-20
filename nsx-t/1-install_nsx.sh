@@ -1,6 +1,8 @@
 #!/bin/bash -e
 
-source ./install_nsx.env 
+#source ./install_nsx.env 
+
+source ../env
 
 function print_help()
 {
