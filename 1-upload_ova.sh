@@ -5,14 +5,14 @@
 
 PASSWORD="VMware1!"
 NETMASK="255.255.255.0"
-GATEWAY="172.18.5.1"
+GATEWAY="172.18.13.1"
 DNS=${GATEWAY}
 NTP=${GATEWAY}
 DATASTORE="Datastore"
 PORTGROUP="VM Network"
-ADMIN="administrator%40cpod-gv.shwrfr.mooo.com"
+ADMIN="administrator%40cpod-lab.shwrfr.mooo.com"
 VC_PASSWORD="VMware1!"
-TARGET="vcsa.cpod-gv.shwrfr.mooo.com/cPod-GV/host/Cluster"
+TARGET="vcsa.cpod-lab.shwrfr.mooo.com/cPod-LAB/host/Cluster"
 
 ###################
 
@@ -21,7 +21,7 @@ upload_opsmanager() {
 	NAME=OPSMANAGER
 	HOSTNAME="opsmanager"
 	OVA=/data/BITS/PKS/pcf-vsphere-2.1-build.318.ova
-	IP="172.18.5.11"	
+	IP="172.18.13.12"	
 
 	export MYSCRIPT=/tmp/$$
 
@@ -34,6 +34,8 @@ ovftool --acceptAllEulas --skipManifestCheck --X:injectOvfEnv --allowExtraConfig
 --prop:gateway=${GATEWAY} \
 --prop:DNS=${DNS} \
 --prop:ntp_servers=${NTP} \
+--powerOn \
+--noSSLVerify \
 -ds=${DATASTORE} -n=${NAME} --network='${PORTGROUP}' \
 ${OVA} \
 vi://${ADMIN}:'${VC_PASSWORD}'@${TARGET}

@@ -3,11 +3,11 @@
 . ./env
 
 function upload_product {
-	om -t https://${OPSMANAGER} -k -u "${ADMIN}" -p "${ADMIN_PASSWORD}" upload-product --product ${1} 
+	om -t https://${OPSMANAGER} -k -u "${ADMIN}" -p "${PASSWORD}" upload-product --product ${1} 
 }
 
 function upload_stemcell {
-	om -t https://${OPSMANAGER} -k -u "${ADMIN}" -p "${ADMIN_PASSWORD}" upload-stemcell --stemcell ${1} 
+	om -t https://${OPSMANAGER} -k -u "${ADMIN}" -p "${PASSWORD}" upload-stemcell --stemcell ${1} 
 }
 
 #for FILE in $( ls ${BITS}/PKS/*.pivotal ); do

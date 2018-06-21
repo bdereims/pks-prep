@@ -14,4 +14,4 @@ cp ${CERTS}/* ~/.docker/tls/${REG_FQDN}\:4443/.
 
 sudo systemctl restart docker
 #docker login ${REG_FQDN} -u ${ADMIN} -p ${ADMIN_PASSWORD}
-docker login ${REG_FQDN} -u admin -p ${ADMIN_PASSWORD}
+docker login ${REG_FQDN} -u admin -p ${PASSWORD}
