@@ -73,7 +73,7 @@ ovftool --acceptAllEulas --X:injectOvfEnv --allowExtraConfig \
 --prop:vami.gateway.vRealize_Operations_Manager_Appliance=${GATEWAY} \
 --prop:vami.ip0.vRealize_Operations_Manager_Appliance=${OVA_VROPS_IP} \
 --prop:vami.netmask0.vRealize_Operations_Manager_Appliance=${NETMASK} \
--ds=${VCENTER_DATASTORE} -n=${OVA_VRLI_NAME} "--network=${VCENTER_PORTGROUP}" \
+-ds=${VCENTER_DATASTORE} -n=${OVA_VROPS_NAME} "--network=${VCENTER_PORTGROUP}" \
 ${OVA_VROPS} \
 vi://${VCENTER_USERNAME}:'${VCENTER_PASSWORD}'@${VCENTER_TARGET}
 EOF
