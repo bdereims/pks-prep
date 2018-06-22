@@ -2,31 +2,51 @@
 
 # Where are the bits?
 export BITS=/data/BITS
-# Generic password
+# Generic credentials 
 export PASSWORD="VMware1!"
+export ADMIN="admin"
 # DNS Zone
-export DOMAIN="cpod-gv.shwrfr.mooo.com"
+export DOMAIN="cpod-lab.shwrfr.mooo.com"
 
 # vCenter attributes
-export VCENTER_IP=vcsa.cpod-gv.shwrfr.mooo.com
+export VCENTER_IP="vcsa.${DOMAIN}"
 export VCENTER_USERNAME="administrator@${DOMAIN}"
 export VCENTER_PASSWORD=${PASSWORD}
+export VCENTER_DATACENTER="cPod-LAB"
+export VCENTER_CLUSTER="Cluster"
+export VCENTER_TARGET="${VCENTER_IP}/${VCENTER_DATACENTER}/host/${VCENTER_CLUSTER}"
+export VCENTER_DATASTORE="Datastore"
+export VCENTER_PORTGROUP="VM Network"
+
+# Some network stuffs
+export NETMASK="255.255.255.0"
+export GATEWAY="172.18.13.1"
+export DNS=${GATEWAY}
+export NTP=${GATEWAY}
+
+###########
+### OVA ###
+###########
+
+export OVA_OPSMANAGER_NAME="OPSMANAGER"
+export OVA_OPSMANAGER_IP="172.18.13.12"
+export OVA_OPSMANAGER="${BITS}/PKS/pcf-vsphere-2.1-build.318.ova
 
 ################
 ### PKS Conf ###
 ################
 
-export PKS_FQDN="pks-sys.gv"
-export REG_FQDN="harbor.pks-reg.gv"
+export PKS_FQDN="pks-sys.lab"
+export REG_FQDN="harbor.pks-reg.lab"
 
 export UAA_FQDN="uaa.${PKS_FQDN}"
 # UAA Admin Secret from PKS VM / Service
 export UAA_ADMIN_SECRET="BjIGocMEcVxOJ8YDi4_R-cXL0qzdck4I"
 
-export ADMIN="vmware"
-export ADMIN_PASSWORD=${PASSWORD}
+#export ADMIN="vmware"
+#export ADMIN_PASSWORD=${PASSWORD}
 # K8s Cluster name, add this in your hosts or dns, ex: "k8s-1"
-export CLUSTER_NAME="gv-1"
+export CLUSTER_NAME="lab-1"
 
 # OpsManager VM IP = DIRECTOR VM deployed by OpsManager, fill-in after deployment
 export DIRECTOR="192.168.40.2"
@@ -40,6 +60,7 @@ export DOCKER_CONTENT_TRUST_SERVER=https://${REG_FQDN}:4443
 # @IP:PORT of the OpenFAAS Gateway Service
 export OPENFAAS_URL=192.168.42.10:8080
 
+################
 ### NSX Conf ###
 ################
 
@@ -55,11 +76,11 @@ export NSX_CONTROLLER_NAME=NSX-T_controller_1
 export NSX_EDGE_NAME=NSX-T_edge_1
 
 # vCenter DC name
-export NSX_HOST_COMMON_DATACENTER=cPod-GV
+export NSX_HOST_COMMON_DATACENTER=${VCENTER_DATACENTER}
 
 # Management Cluster (for NSX Manager and NSX Controller)
-export NSX_HOST_MGMT_CLUSTER=Cluster
-export NSX_HOST_MGMT_DATASTORE=Datastore
+export NSX_HOST_MGMT_CLUSTER=${VCENTER_CLUSTER}
+export NSX_HOST_MGMT_DATASTORE=${VCENTER_DATASTORE}
 
 # Compute Cluster (for NSX Edge VM)
 export NSX_HOST_COMPUTE_CLUSTER="${NSX_HOST_MGMT_CLUSTER}"
@@ -69,14 +90,14 @@ export NSX_HOST_COMPUTE_DATASTORE="${NSX_HOST_MGMT_DATASTORE}"
 # Network1: Edge VTEP port-group
 # Network2: Edge Uplink port-group
 # Network3: Free to future use 
-export NSX_HOST_COMMON_NETWORK0="VM Network"
-export NSX_HOST_COMMON_NETWORK1="VM Network"
-export NSX_HOST_COMMON_NETWORK2="VM Network"
-export NSX_HOST_COMMON_NETWORK3="VM Network"
+export NSX_HOST_COMMON_NETWORK0="${VCENTER_PORTGROUP}"
+export NSX_HOST_COMMON_NETWORK1="${VCENTER_PORTGROUP}"
+export NSX_HOST_COMMON_NETWORK2="${VCENTER_PORTGROUP}"
+export NSX_HOST_COMMON_NETWORK3="${VCENTER_PORTGROUP}"
 
 # NSX Manager, Controller, Edge Network Attributes
 # IP BASE like 172.18.5
-export NSX_IP_BASE="172.18.5"
+export NSX_IP_BASE="172.18.13"
 export NSX_MANAGER_IP="${NSX_IP_BASE}.4"
 export NSX_CONTROLLER_IP="${NSX_IP_BASE}.5"
 export NSX_EDGE_IP="${NSX_IP_BASE}.8"
@@ -94,7 +115,7 @@ export NETWORK_TUNNEL_IP_BASE="10.255.254"
 export NETWORK_TUNNEL_IP_POOL_CIDR="${NETWORK_TUNNEL_IP_BASE}.0/24"
 export NETWORK_TUNNEL_IP_POOL_ALLOCATION_START="${NETWORK_TUNNEL_IP_BASE}.2"
 export NETWORK_TUNNEL_IP_POOL_ALLOCATION_END="${NETWORK_TUNNEL_IP_BASE}.254"
-export NETWORK_T0_SUBNET_IP_ADDRESS="${NSX_IP_BASE}.8"
+export NETWORK_T0_SUBNET_IP_ADDRESS="${NSX_IP_BASE}.11"
 export NETWORK_T0_SUBNET_PREFIX_LENGTH=24
 export NETWORK_T0_GATEWAY="${NSX_IP_BASE}.1"
 export NETWORK_HOST_UPLINK_PNIC="vmnic1"
