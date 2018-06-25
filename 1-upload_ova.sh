@@ -10,7 +10,7 @@ upload_opsmanager() {
 	export MYSCRIPT=/tmp/$$
 
 	cat << EOF > ${MYSCRIPT}
-ovftool --acceptAllEulas --skipManifestCheck --X:injectOvfEnv --allowExtraConfig \
+ovftool --acceptAllEulas --skipManifestCheck --X:injectOvfEnv --allowExtraConfig --X:waitForIp \
 --prop:admin_password=${PASSWORD} \
 --prop:custom_hostname=${HOSTNAME} \
 --prop:ip0=${OVA_OPSMANAGER_IP} \
