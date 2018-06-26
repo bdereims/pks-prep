@@ -1,3 +1,5 @@
 env
 *.cert
 *.crt
+*.key
+nsx-t/ovftool.log
