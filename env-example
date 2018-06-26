@@ -33,12 +33,12 @@ export OVA_OPSMANAGER_NAME="OPSMANAGER"
 export OVA_OPSMANAGER_IP="172.18.13.12"
 export OVA_OPSMANAGER="${BITS}/PKS/pcf-vsphere-2.1-build.318.ova"
 
-export OVA_VRLI_DEPLOY="YES"
+export OVA_VRLI_DEPLOY="NO"
 export OVA_VRLI_NAME="VRLI"
 export OVA_VRLI_IP="172.18.13.9"
 export OVA_VRLI="${BITS}/vREALIZE/VMware-vRealize-Log-Insight-4.5.1-6858700.ova"
 
-export OVA_VROPS_DEPLOY="YES"
+export OVA_VROPS_DEPLOY="NO"
 export OVA_VROPS_NAME="VROPS"
 export OVA_VROPS_IP="172.18.13.10"
 export OVA_VROPS="${BITS}/vREALIZE/vRealize-Operations-Manager-Appliance-6.7.0.8183617_OVF10.ova"
@@ -52,13 +52,13 @@ export REG_FQDN="harbor.pks-reg.lab"
 
 export UAA_FQDN="uaa.${PKS_FQDN}"
 # UAA Admin Secret from PKS VM / Service
-export UAA_ADMIN_SECRET="BjIGocMEcVxOJ8YDi4_R-cXL0qzdck4I"
+export UAA_ADMIN_SECRET="h5aMgdqJb4IgpvtFxqFP_Gt8xZQx33uL"
 
 # K8s Cluster name, add this in your hosts or dns, ex: "k8s-1"
 export CLUSTER_NAME="lab-1"
 
 # OpsManager VM IP = DIRECTOR VM deployed by OpsManager, fill-in after deployment
-export DIRECTOR="192.168.40.2"
+export DIRECTOR="192.168.44.2"
 # OpsManager VM IP or FQDN
 export OPSMANAGER="opsmanager.${DOMAIN}"
 
