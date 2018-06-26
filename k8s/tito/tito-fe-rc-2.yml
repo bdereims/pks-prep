@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: titofe-2
+  labels:
+    name: tito-fe-2
+    version: "latest"
+    app: tito
+    tiers: tito-fe-2
+    stage: prod
+spec:
+  replicas: 1
+  selector:
+    type: tito-fe-2
+    version: v1
+  template:
+    metadata:
+      labels:
+        app: tito
+        type: tito-fe-2
+        version: v1
+        tiers: tito-fe-2
+    spec:
+      containers:
+        - name: tito
+          image: harbor/tito-fe:latest 
+          ports:
+          - containerPort: 80
+          env:
+          - name: TITO_SQL_SERVICE_SERVICE_HOST
+            value: tito-sql-service
+          - name: TITO_VERSION
+            value: V1.9.2
+          - name: PROXY_NAME
+            value: 158.156.164.40 
+          - name: PROXY_PORT
+            value: "8080"
