@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#https://shwrfr.com/nextcloud/index.php/s/bo3WKfNuO3H7uKE
 #export PIVNET_TOKEN=...
 
 function download {
