@@ -3,3 +3,4 @@ env
 *.crt
 *.key
 nsx-t/ovftool.log
+nsx-t/pks-nsx-t-superuser.*
