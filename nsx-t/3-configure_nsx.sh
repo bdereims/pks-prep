@@ -1,8 +1,5 @@
 #!/bin/bash -e
 
-#source ./install_nsx.env
-#source ./configure_nsx.env
-
 source ../env
 
 # Default values
@@ -86,12 +83,35 @@ function create_transport_zone() {
 }
 
 
-# This function creates an uplink profile in NSX Manager
-function create_uplink_profile() {
+# This function creates an uplink profile for overlay in NSX Manager
+function create_uplink_profile_overlay() {
   local uplink_profile_json="{ \
     \"resource_type\": \"UplinkHostSwitchProfile\", \
-    \"display_name\": \"tz-uplink-profile\", \
+    \"display_name\": \"tz-uplink-profile-overlay\", \
     \"mtu\": 1600, \
+    \"teaming\": { \
+        \"standby_list\": [], \
+        \"active_list\": [ \
+            { \
+              \"uplink_name\": \"uplink-1\",
+              \"uplink_type\": \"PNIC\"
+            } \
+          ], \
+          \"policy\": \"FAILOVER_ORDER\" \
+      }, \
+      \"transport_vlan\": 0 \
+  }"
+
+  get_rest_response "api/v1/host-switch-profiles" "$uplink_profile_json"
+}
+
+
+# This function creates an uplink profile for vlan in NSX Manager
+function create_uplink_profile_vlan() {
+  local uplink_profile_json="{ \
+    \"resource_type\": \"UplinkHostSwitchProfile\", \
+    \"display_name\": \"tz-uplink-profile-vlan\", \
+    \"mtu\": 1500, \
     \"teaming\": { \
         \"standby_list\": [], \
         \"active_list\": [ \
@@ -132,6 +152,49 @@ function create_ip_pool() {
 }
 
 
+# This function creates an IP address pool for PKS VIPS in NSX Manager
+function create_ip_pool_pks() {
+  local ip_pool_json="{ \
+    \"display_name\": \"${1}\", \
+    \"description\": \"VIPS pool\", \
+    \"subnets\": [ \
+      { \
+          \"dns_nameservers\": [], \
+          \"allocation_ranges\": [ \
+              { \
+                  \"start\": \"$NETWORK_VIPS_ALLOCATION_START\", \
+                  \"end\": \"$NETWORK_VIPS_ALLOCATION_END\"
+              } \
+          ], \
+          \"cidr\": \"$NETWORK_VIPS_CIDR\"
+      }
+    ]
+  }"
+
+  get_rest_response "api/v1/pools/ip-pools" "$ip_pool_json"
+}
+
+
+# Create IPAM entries for PKS
+function create_ipam_entries() {
+  local ipam_json="{ \
+    \"display_name\": \"pks-ip-block\", \
+    \"description\": \"pks-ip-block\", \
+    \"cidr\": \"$NETWORK_PKS_IP_BLOCK\"
+  }"
+
+  get_rest_response "api/v1/pools/ip-blocks" "$ipam_json"
+
+  local ipam_json="{ \
+    \"display_name\": \"pks-nodes-ip-block\", \
+    \"description\": \"pks-nodes-ip-block\", \
+    \"cidr\": \"$NETWORK_PKS_NODES_IP_BLOCK\"
+  }"
+
+  get_rest_response "api/v1/pools/ip-blocks" "$ipam_json"
+}
+
+
 # This function configures a transport node from the edge node
 function configure_edge_transport_node() {
   get_edge_node_response=$(get_rest_response "api/v1/fabric/nodes")
@@ -144,7 +207,7 @@ function configure_edge_transport_node() {
     \"host_switches\": [ \
       { \
         \"host_switch_name\": \"overlay-host-switch\", \
-        \"static_ip_pool_id\": \"${4}\", \
+        \"static_ip_pool_id\": \"${5}\", \
         \"host_switch_profile_ids\": [ \
           { \
             \"key\":\"UplinkHostSwitchProfile\", \
@@ -163,7 +226,7 @@ function configure_edge_transport_node() {
         \"host_switch_profile_ids\": [ \
           { \
             \"key\":\"UplinkHostSwitchProfile\", \
-            \"value\":\"${3}\" \
+            \"value\":\"${4}\" \
           } \
         ], \
         \"pnics\": [ \
@@ -421,21 +484,29 @@ response=$(create_transport_zone "tz-overlay" "overlay-host-switch" "Overlay Tra
 check_for_error "$response"
 overlay_transport_id=$(get_response_id "$response")
 
-# Step 3: Creating uplink profile
-echo "Step 3: Creating uplink profile"
-response=$(create_uplink_profile)
+# Step 3: Creating uplink profiles
+echo "Step 3: Creating uplink profiles"
+response=$(create_uplink_profile_overlay)
 check_for_error "$response"
-uplink_profile_id=$(get_response_id "$response")
+uplink_profile_overlay_id=$(get_response_id "$response")
+response=$(create_uplink_profile_vlan)
+check_for_error "$response"
+uplink_profile_vlan_id=$(get_response_id "$response")
 
 # Step 4: Create IP address pool
-echo "Step 4: Creating IP address pool"
+echo "Step 4: Creating IP address pools"
+response=$(create_ip_pool_pks "pks-vips")
+check_for_error "$response"
+pks_vips=$(get_response_id "$response")
 response=$(create_ip_pool "tunnel-ip-pool")
 check_for_error "$response"
 ip_pool_id=$(get_response_id "$response")
+ipam_entry=$(create_ipam_entries "$response")
+#check_for_error "$response"
 
 # Step 5: Configure Edge Trasnsport node
 echo "Step 5: Configuring Edge transport node"
-response=$(configure_edge_transport_node $vlan_transport_id $overlay_transport_id $uplink_profile_id $ip_pool_id)
+response=$(configure_edge_transport_node $vlan_transport_id $overlay_transport_id $uplink_profile_overlay_id $uplink_profile_vlan_id $ip_pool_id)
 check_for_error "$response"
 transport_node_id=$(get_response_id "$response")
 

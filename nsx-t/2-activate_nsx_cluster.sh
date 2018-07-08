@@ -41,6 +41,7 @@ echo ""
 echo "Activate NSX cluster"
 echo ""
 
+rm ~/.ssh/known_hosts  
 configure_nsx_cluster
 
 

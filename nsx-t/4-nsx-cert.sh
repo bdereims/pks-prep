@@ -1,10 +1,13 @@
 #!/bin/bash
+#bdereims@vmware.com
 
 . ../env
 
-cat nsx-cert.cnf | sed -e "s/###NSX_MGR###/${NSX_MANAGER_IP}/" > /tmp/nsx-cert.cnf
+NODE_ID=$(cat /proc/sys/kernel/random/uuid)
 
-#openssl req -newkey rsa:2048 -x509 -nodes \
+cat nsx-cert.cnf | sed -e "s/###NSX_CN###/${NSX_MANAGER_IP}/" > /tmp/nsx-cert.cnf
+
+openssl req -newkey rsa:2048 -x509 -nodes \
 -keyout nsx.key -new -out nsx.crt -subj /CN=${NSX_MANAGER_IP} \
 -reqexts SAN -extensions SAN -config <(cat /tmp/nsx-cert.cnf \
  <(printf "[SAN]\nsubjectAltName=IP:${NSX_MANAGER_IP}")) -sha256 -days 3650
@@ -37,10 +40,31 @@ cert_request=$(cat <<END
 END
 )
 
-curl -k -X POST \
+CERTIFICAT_ID=$( curl -k -X POST \
 "https://${NSX_MANAGER_IP}/api/v1/trust-management/certificates?action=import" \
 -u "${ADMIN}:${PASSWORD}" \
 -H 'content-type: application/json' \
--d "$cert_request"
+-d "$cert_request" | jq '.results[] | .id' | sed -e "s/\"//g" )
 
-echo "Look At CERTIFICAT_ID..."
+pi_request=$(cat <<END
+  {
+    "display_name": "$PI_NAME",
+    "name": "$PI_NAME",
+    "permission_group": "superusers",
+    "certificate_id": "$CERTIFICAT_ID",
+    "node_id": "$NODE_ID"
+  }
+END
+)
+
+curl -k -X POST \
+"https://${NSX_MANAGER_IP}/api/v1/trust-management/principal-identities" \
+-u "${ADMIN}:${PASSWORD}" \
+-H 'content-type: application/json' \
+-d "$pi_request"
+
+printf "\n\nTest:\n"
+curl -k -X GET \
+"https://${NSX_MANAGER_IP}/api/v1/trust-management/principal-identities" \
+--cert "$NSX_SUPERUSER_CERT_FILE" \
+--key "$NSX_SUPERUSER_KEY_FILE"

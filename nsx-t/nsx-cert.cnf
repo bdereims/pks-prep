@@ -8,8 +8,8 @@ countryName = US
 stateOrProvinceName = California
 localityName = CA
 organizationName = NSX
-commonName = ###NSX_MGR### 
+commonName = ###NSX_CN### 
 [ req_ext ]
 subjectAltName = @alt_names
 [alt_names]
-DNS.1 = ###NSX_MGR### 
+DNS.1 = ###NSX_CN### 

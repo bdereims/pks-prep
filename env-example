@@ -50,15 +50,15 @@ export OVA_VROPS="${BITS}/vREALIZE/vRealize-Operations-Manager-Appliance-6.7.0.8
 export PKS_FQDN="pks-sys.lab"
 export REG_FQDN="harbor.pks-reg.lab"
 
-export UAA_FQDN="uaa.${PKS_FQDN}"
+export UAA_FQDN="api.${PKS_FQDN}"
 # UAA Admin Secret from PKS VM / Service
-export UAA_ADMIN_SECRET="h5aMgdqJb4IgpvtFxqFP_Gt8xZQx33uL"
+export UAA_ADMIN_SECRET="nOV-auWwV5JDApD4JrSDMPiL2H9PBZHn"
 
 # K8s Cluster name, add this in your hosts or dns, ex: "k8s-1"
 export CLUSTER_NAME="lab-1"
 
 # OpsManager VM IP = DIRECTOR VM deployed by OpsManager, fill-in after deployment
-export DIRECTOR="192.168.44.2"
+export DIRECTOR="192.168.43.2"
 # OpsManager VM IP or FQDN
 export OPSMANAGER="opsmanager.${DOMAIN}"
 
@@ -128,8 +128,15 @@ export NETWORK_T0_SUBNET_IP_ADDRESS="${NSX_IP_BASE}.11"
 export NETWORK_T0_SUBNET_PREFIX_LENGTH=24
 export NETWORK_T0_GATEWAY="${NSX_IP_BASE}.1"
 export NETWORK_HOST_UPLINK_PNIC="vmnic1"
+export NETWORK_PKS_IP_BLOCK="172.16.0.0/16"
+export NETWORK_PKS_NODES_IP_BLOCK="10.253.0.0/16"
+export NETWORK_VIPS_BASE="192.168.45"
+export NETWORK_VIPS_CIDR="${NETWORK_VIPS_BASE}.0/24"
+export NETWORK_VIPS_ALLOCATION_START="${NETWORK_VIPS_BASE}.2"
+export NETWORK_VIPS_ALLOCATION_END="${NETWORK_VIPS_BASE}.254"
 
 # NSX Cert and Creds
 export PI_NAME="pks-nsx-t-superuser"
 export NSX_SUPERUSER_CERT_FILE="pks-nsx-t-superuser.crt"
 export NSX_SUPERUSER_KEY_FILE="pks-nsx-t-superuser.key"
+export NSX_CN="nsx.${DOMAIN}"
