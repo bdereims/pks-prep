@@ -1,16 +1,27 @@
 #!/bin/bash
 #bdereims@vmware.com
 
+###
+### Import the certificate by copying nsx.crt and nsx.key
+###
+
 . ../env
 
 NODE_ID=$(cat /proc/sys/kernel/random/uuid)
 
-cat nsx-cert.cnf | sed -e "s/###NSX_CN###/${NSX_MANAGER_IP}/" > /tmp/nsx-cert.cnf
+cat nsx-cert.cnf | sed -e "s/###NSX_CN###/${NSX_COMMON_DOMAIN}/" > /tmp/nsx-cert.cnf
+
+#openssl req -newkey rsa:2048 -x509 -nodes \
+#-keyout nsx.key -new -out nsx.crt -subj /CN=${NSX_COMMON_DOMAIN} \
+#-reqexts SAN -extensions SAN -config <(cat /tmp/nsx-cert.cnf \
+# <(printf "[SAN]\nsubjectAltName=IP:${NSX_MANAGER_IP}")) -sha256 -days 3650
 
 openssl req -newkey rsa:2048 -x509 -nodes \
--keyout nsx.key -new -out nsx.crt -subj /CN=${NSX_MANAGER_IP} \
+-keyout nsx.key -new -out nsx.crt -subj /CN=${NSX_COMMON_DOMAIN} \
 -reqexts SAN -extensions SAN -config <(cat /tmp/nsx-cert.cnf \
- <(printf "[SAN]\nsubjectAltName=IP:${NSX_MANAGER_IP}")) -sha256 -days 3650
+ <(printf "[SAN]\nsubjectAltName=DNS:${NSX_COMMON_DOMAIN}")) -sha256 -days 3650
+
+exit 0
 
 # curl --insecure -u admin:'VMware1!' -X GET https://172.18.13.4/api/v1/trust-management/certificates | jq '.results[] | select(.display_name=="NSX-T Certificat") | .id'
 # curl --insecure -u admin:'VMware1!' -X POST 'https://172.18.13.4/api/v1/node/services/http?action=apply_certificate&certificate_id=63123c9d-8d61-4807-b803-4667adc10425'

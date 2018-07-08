@@ -4,3 +4,5 @@
 
 __How to install and configure:__
 [In French](https://shwrfr.com/nextcloud/index.php/s/gpsJK697rKv11of)
+
+Validated for PKS 1.1
