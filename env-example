@@ -52,6 +52,7 @@ export REG_FQDN="harbor.pks-reg.lab"
 
 export UAA_FQDN="api.${PKS_FQDN}"
 # UAA Admin Secret from PKS VM / Service
+### No more used, automaticly retrieved 
 export UAA_ADMIN_SECRET="MzmKPJeZXBddhx1wyhBO_b-5McWZdpHb"
 
 # K8s Cluster name, add this in your hosts or dns, ex: "k8s-1"
