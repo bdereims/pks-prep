@@ -1,13 +1,9 @@
 #!/bin/bash
 #bdereims@vmware.com
 
-###
-### Import the certificate by copying nsx.crt and nsx.key
-###
-
 . ../env
 
-NETWORK_MANAGER_USERNAME="admin"
+NETWORK_MANAGER_USERNAME=${ADMIN}
 NETWORK_MANAGER_PASSWORD=$NSX_COMMON_PASSWORD
 
 NODE_ID=$(cat /proc/sys/kernel/random/uuid)
