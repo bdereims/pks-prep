@@ -59,7 +59,7 @@ export UAA_ADMIN_SECRET="MzmKPJeZXBddhx1wyhBO_b-5McWZdpHb"
 export CLUSTER_NAME="lab-1"
 
 # OpsManager VM IP = DIRECTOR VM deployed by OpsManager, fill-in after deployment
-export DIRECTOR="172.18.13.50"
+export DIRECTOR="192.168.43.2"
 # OpsManager VM IP or FQDN
 export OPSMANAGER="opsmanager.${DOMAIN}"
 
