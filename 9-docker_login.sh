@@ -14,4 +14,7 @@ cp ${CERTS}/* ~/.docker/tls/${REG_FQDN}\:4443/.
 
 sudo systemctl restart docker
 #docker login ${REG_FQDN} -u ${ADMIN} -p ${ADMIN_PASSWORD}
-docker login ${REG_FQDN} -u admin -p ${PASSWORD}
+docker login ${REG_FQDN} -u ${ADMIN} -p ${PASSWORD}
+
+# Create secret for pivate registry
+kubectl create secret docker-registry regsecret --docker-server=https://${REG_FQDN} --docker-username=${ADMIN} --docker-password=${PASSWORD} --docker-email=${ADMIN}@${REG_FQDN}
