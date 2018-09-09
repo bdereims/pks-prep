@@ -8,5 +8,8 @@ ADMIN_SECRET=$(om -t https://${OPSMANAGER} -u "${ADMIN}" -p "${PASSWORD}" -k cur
 uaac target https://${UAA_FQDN}:8443 --skip-ssl-validation
 uaac token client get admin -s "${ADMIN_SECRET}"
 uaac user delete ${ADMIN}
+uaac user delete demo 
 uaac user add ${ADMIN} --emails ${ADMIN}@${PKS_FQDN} -p ${PASSWORD} 
+uaac user add demo --emails demo@${PKS_FQDN} -p PKS1! 
 uaac member add pks.clusters.admin ${ADMIN} 
+uaac member add pks.clusters.manage demo 
