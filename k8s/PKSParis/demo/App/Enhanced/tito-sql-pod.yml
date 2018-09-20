@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tito-sql
+  labels:
+    name: tito-sql
+    version: "1.5"
+    app: tito
+    stage: prod
+    tiers: tito-sql
+spec:
+  containers:
+    - name: tito-sql
+      image: harbor.pks-reg.gv/pksparis/tito-sql:latest
+      ports:
+      - containerPort: 3306
+      env:
+      - name: MYSQL_ROOT_PASSWORD
+        value: Tito2016
+      - name: POD_NAME
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.name
+      - name: POD_NAMESPACE
+        valueFrom:
+          fieldRef:
+            fieldPath: metadata.namespace
+  imagePullSecrets:
+    - name: regsecret

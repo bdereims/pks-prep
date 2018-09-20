@@ -1,0 +1,13 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: backend-tito
+spec:
+  podSelector: 
+    matchLabels:
+      tiers: tito-sql
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          tiers: tito-fe
