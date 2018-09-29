@@ -11,7 +11,9 @@ function upload_stemcell {
 }
 
 rm -fr /tmp/*
-upload_product ${BITS}/PKS/pivotal-container-service-1.1.4-build.5.pivotal
-upload_product ${BITS}/PKS/harbor-container-registry-1.5.2-build.8.pivotal
-upload_stemcell ${BITS}/PKS/bosh-stemcell-3586.27-vsphere-esxi-ubuntu-trusty-go_agent.tgz
-upload_stemcell ${BITS}/PKS/bosh-stemcell-3468.42-vsphere-esxi-ubuntu-trusty-go_agent.tgz
+#upload_product ${BITS}/PKS/pivotal-container-service-1.1.4-build.5.pivotal
+#upload_product ${BITS}/PKS/harbor-container-registry-1.5.2-build.8.pivotal
+#upload_stemcell ${BITS}/PKS/bosh-stemcell-3586.27-vsphere-esxi-ubuntu-trusty-go_agent.tgz
+#upload_stemcell ${BITS}/PKS/bosh-stemcell-3468.42-vsphere-esxi-ubuntu-trusty-go_agent.tgz
+upload_product ${BITS}/PKS/pivotal-container-service-1.2.0-build.47.pivotal
+upload_product ${BITS}/PKS/harbor-container-registry-1.6.0-build.35.pivotal

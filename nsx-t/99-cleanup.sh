@@ -1,9 +1,9 @@
 #!/bin/bash
 #bdereims@vmware.com
 
-NSX_MANAGER=nsx.cpod-lab.shwrfr.mooo.com
+NSX_MANAGER=nsx.cpod-vbc-sddc.rax.lab
 NSX_USER=admin
-NSX_USER_PASSWD=VMware1!
+NSX_USER_PASSWD=fbj0qS3AQtxa6BC!
 
 nsx_call() {
 	# $1 : [GET, POST, DELETE] 
@@ -61,7 +61,7 @@ clean_ip_pool() {
 main() {
 	echo "Cleaning Up NSX-T"
 
-	clean_ip_pool "5705cc83-d391-480e-9c08-d61b26d80010"
+	clean_ip_pool "3c8788d6-314c-4011-87fc-c57269721685"
 }
 
 main

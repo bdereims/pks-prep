@@ -1,0 +1,10 @@
+apiVersion: apps.pivotal.io/v1beta1
+kind: Sink
+metadata:
+  name: YOUR-SINK
+  namespace: YOUR-NAMESPACE
+spec:
+  type: syslog
+  host: YOUR-LOG-DESTINATION
+  port: YOUR-LOG-DESTINATION-PORT
+  enable_tls: true

@@ -1,0 +1,7 @@
+{
+ "name": "lb-profile-medium",
+ "description": "Network profile for MEDIUM size NSX-T load balancer",
+ "parameters": { 
+    "lb_size": "medium" 
+    }
+}
