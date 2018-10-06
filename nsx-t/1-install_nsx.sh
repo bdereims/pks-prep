@@ -237,7 +237,7 @@ for EDGE_IP in ${NSX_EDGE_IP[@]}; do
 --allowExtraConfig $overwrite --datastore=\"$host_datastore\" --net:\"Network 0=$host_network0\" \
 --net:\"Network 1=$host_network1\" --net:\"Network 2=$host_network2\" \
 --net:\"Network 3=$host_network3\" --acceptAllEulas --noSSLVerify --diskMode=thin \
---deploymentOption=large \
+--deploymentOption=large --powerOn \
 --prop:\"nsx_ip_0=$ip\" --prop:\"nsx_netmask_0=$netmask\" --prop:\"nsx_gateway_0=$gateway\" \
 --prop:\"nsx_dns1_0=$dns\" --prop:\"nsx_domain_0=$domain\" \
 --prop:\"nsx_ntp_0=$ntp\" --prop:nsx_isSSHEnabled=True --prop:nsx_allowSSHRootLogin=True \
@@ -305,8 +305,8 @@ if [ "$SMALL_MEMORY_OVA" == "1" ]; then
 fi
 
 install_nsx_manager
-#install_nsx_controller
-#install_nsx_edge
+install_nsx_controller
+install_nsx_edge
 
 
 echo ""

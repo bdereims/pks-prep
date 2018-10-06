@@ -464,6 +464,23 @@ function edit_router_advertisement() {
   curl -sS -H "Content-Type: application/json" -k -u $NETWORK_MANAGER_USERNAME:$NETWORK_MANAGER_PASSWORD -X PUT -d "$edit_router_advertisement_json" https://$NSX_MANAGER_IP/api/v1/logical-routers/${1}/routing/advertisement
 }
 
+# Register VCSA in NSX Manager
+function register_vcsa() {
+  local VCSA_THUMBPRINT=$( openssl s_client -connect ${1}:443 < /dev/null 2>/dev/null | openssl x509 -fingerprint -sha256 -noout -in /dev/stdin | sed -e 's/^.*=//' )
+  local register_vcsa_json="{ \
+    \"server\": \"${1}\", \
+    \"origin_type\": \"vCenter\", \
+    \"display_name\": \"VCSA\", \
+    \"credential\" : { \
+    \"credential_type\" : \"UsernamePasswordLoginCredential\", \
+    \"username\": \"${2}\", \
+    \"password\": \"${3}\", \
+    \"thumbprint\": \"${VCSA_THUMBPRINT}\" \
+    } }"
+
+  get_rest_response "api/v1/fabric/compute-managers" "${register_vcsa_json}"
+}
+
 
 # This function enables install upgrade.
 function enable_install_upgrade() {
@@ -583,6 +600,12 @@ t0_rourter_port_id=$(get_response_id "$response")
 # Step 11: Add static route
 echo "Step 11: Adding static route"
 response=$(add_static_route $t0_router_id $NETWORK_T0_GATEWAY)
+check_for_error "$response"
+t0_static_route_id=$(get_response_id "$response")
+
+# Step 12: Register vCenter
+echo "Step 12: Register VCSA"
+response=$(register_vcsa ${VCENTER_IP} ${VCENTER_USERNAME} ${PASSWORD})
 check_for_error "$response"
 t0_static_route_id=$(get_response_id "$response")
 
