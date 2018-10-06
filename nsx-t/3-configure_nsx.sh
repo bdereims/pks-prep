@@ -466,6 +466,7 @@ function edit_router_advertisement() {
 
 # Register VCSA in NSX Manager
 function register_vcsa() {
+  local admin=$( echo ${2} | sed "s/%40/@/" )
   local VCSA_THUMBPRINT=$( openssl s_client -connect ${1}:443 < /dev/null 2>/dev/null | openssl x509 -fingerprint -sha256 -noout -in /dev/stdin | sed -e 's/^.*=//' )
   local register_vcsa_json="{ \
     \"server\": \"${1}\", \
@@ -473,7 +474,7 @@ function register_vcsa() {
     \"display_name\": \"VCSA\", \
     \"credential\" : { \
     \"credential_type\" : \"UsernamePasswordLoginCredential\", \
-    \"username\": \"${2}\", \
+    \"username\": \"${admin}\", \
     \"password\": \"${3}\", \
     \"thumbprint\": \"${VCSA_THUMBPRINT}\" \
     } }"
@@ -559,8 +560,8 @@ ip_pool_id=$(get_response_id "$response")
 ipam_entry=$(create_ipam_entries "$response")
 #check_for_error "$response"
 
-# Step 5: Configure Edge Trasnsport node
-echo "Step 5: Configuring Edge(s) transport node"
+# Step 5: Configure Edge Trasnsport node(s)
+echo "Step 5: Configuring Edge transport node(s)"
 response=$(configure_edge_transport_node $vlan_transport_id $overlay_transport_id $uplink_profile_overlay_edgevm_id $uplink_profile_vlan_id $ip_pool_id)
 #check_for_error "$response"
 #transport_node_id=$(get_response_id "$response")
