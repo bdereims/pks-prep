@@ -69,13 +69,16 @@ sudo cp pks ${BINDIR}/pks
 
 # ops manager for vsphere
 OpsmanFileId=`pivnet pfs -p ops-manager -r $OPSMANRELEASE | grep 'pcf-vsphere' | awk '{ print $2 }'`
-pivnet download-product-files -p pivotal-container-service -r $OPSMANRELEASE -i $OpsmanFileId
+pivnet accept-eula -p ops-manager -r $OPSMANRELEASE
+pivnet download-product-files -p ops-manager -r $OPSMANRELEASE -i $OpsmanFileId
 
 # pks tile
 PKSFileID=`pivnet pfs -p pivotal-container-service -r $PKSRELEASE | grep 'pivotal-container-service' | awk '{ print $2 }'`
+pivnet accept-eula -p pivotal-container-service -r $PKSRELEASE
 pivnet download-product-files -p pivotal-container-service -r $PKSRELEASE -i $PKSFileID
 
 #pks stemcell
 StemcellFileId=`pivnet pfs -p stemcells -r $STEMCELLRELEASE | grep 'vsphere' | awk '{ print $2 }'`
+pivnet accept-eula -p stemcells -r $STEMCELLRELEASE
 pivnet download-product-files -p stemcells -r $STEMCELLRELEASE -i $StemcellFileId
 
