@@ -21,15 +21,20 @@ function configure_nsx_cluster() {
   eval sshpass -p $manager_password ssh -o StrictHostKeyChecking=no root@$manager_ip "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"set logging-server ${OVA_VRLI_IP} proto udp level info\""
   local manager_thumbprint=`eval sshpass -p $manager_password ssh -o StrictHostKeyChecking=no root@$manager_ip "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"get certificate api thumbprint\""`
 
-  echo "Join NSX controller to management plane"
-  eval sshpass -p $manager_password ssh -o StrictHostKeyChecking=no root@$controller_ip "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"set logging-server ${OVA_VRLI_IP} proto udp level info\""
-  eval sshpass -p $controller_password ssh root@$controller_ip -o StrictHostKeyChecking=no "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"join management-plane $manager_ip username admin thumbprint $manager_thumbprint password $manager_password\""
-  eval sshpass -p $controller_password ssh root@$controller_ip -o StrictHostKeyChecking=no "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"set control-cluster security-model shared-secret secret $controller_password\""
-  eval sshpass -p $controller_password ssh root@$controller_ip -o StrictHostKeyChecking=no "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"initialize control-cluster\""
 
-  echo "Join NSX edge to management plane"
-  eval sshpass -p $manager_password ssh -o StrictHostKeyChecking=no root@$edge_ip "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"set logging-server ${OVA_VRLI_IP} proto udp level info\""
-  eval sshpass -p $edge_password ssh root@$edge_ip -o StrictHostKeyChecking=no "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"join management-plane $manager_ip username admin thumbprint $manager_thumbprint password $manager_password\""
+#for CTRL_IP in ${NSX_CONTROLLER_IP[@]}; do
+#  echo "Join NSX controller to management plane"
+#  eval sshpass -p $manager_password ssh -o StrictHostKeyChecking=no root@${CTRL_IP} "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"set logging-server ${OVA_VRLI_IP} proto udp level info\""
+#  eval sshpass -p $controller_password ssh root@${CTRL_IP} -o StrictHostKeyChecking=no "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"join management-plane $manager_ip username admin thumbprint $manager_thumbprint password $manager_password\""
+#  eval sshpass -p $controller_password ssh root@${CTRL_IP} -o StrictHostKeyChecking=no "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"set control-cluster security-model shared-secret secret $controller_password\""
+#  eval sshpass -p $controller_password ssh root@${CTRL_IP} -o StrictHostKeyChecking=no "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"initialize control-cluster\""
+#done
+
+for EDGE_IP in ${NSX_EDGE_IP[@]}; do
+  echo "Join NSX edge(s) to management plane"
+  eval sshpass -p $manager_password ssh -o StrictHostKeyChecking=no root@${EDGE_IP} "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"set logging-server ${OVA_VRLI_IP} proto udp level info\""
+  eval sshpass -p $edge_password ssh root@${EDGE_IP} -o StrictHostKeyChecking=no "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"join management-plane $manager_ip username admin thumbprint $manager_thumbprint password $manager_password\""
+done
 }
 
 

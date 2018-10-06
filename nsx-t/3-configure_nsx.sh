@@ -84,10 +84,10 @@ function create_transport_zone() {
 
 
 # This function creates an uplink profile for overlay in NSX Manager
-function create_uplink_profile_overlay() {
+function create_uplink_profile_overlay_edgevm() {
   local uplink_profile_json="{ \
     \"resource_type\": \"UplinkHostSwitchProfile\", \
-    \"display_name\": \"tz-uplink-profile-overlay\", \
+    \"display_name\": \"tz-uplink-profile-overlay-edgevm\", \
     \"mtu\": 1600, \
     \"teaming\": { \
         \"standby_list\": [], \
@@ -100,6 +100,27 @@ function create_uplink_profile_overlay() {
           \"policy\": \"FAILOVER_ORDER\" \
       }, \
       \"transport_vlan\": 0 \
+  }"
+
+  get_rest_response "api/v1/host-switch-profiles" "$uplink_profile_json"
+}
+
+function create_uplink_profile_overlay_host() {
+  local uplink_profile_json="{ \
+    \"resource_type\": \"UplinkHostSwitchProfile\", \
+    \"display_name\": \"tz-uplink-profile-overlay-host\", \
+    \"mtu\": 1600, \
+    \"teaming\": { \
+        \"standby_list\": [], \
+        \"active_list\": [ \
+            { \
+              \"uplink_name\": \"uplink-1\",
+              \"uplink_type\": \"PNIC\"
+            } \
+          ], \
+          \"policy\": \"FAILOVER_ORDER\" \
+      }, \
+      \"transport_vlan\": ${VLAN_OVERLAY_HOST} \
   }"
 
   get_rest_response "api/v1/host-switch-profiles" "$uplink_profile_json"
@@ -198,12 +219,14 @@ function create_ipam_entries() {
 # This function configures a transport node from the edge node
 function configure_edge_transport_node() {
   get_edge_node_response=$(get_rest_response "api/v1/fabric/nodes")
-  local edge_node_id=$(echo  $get_edge_node_response | jq '.results | .[] | select(.resource_type=="EdgeNode") | .id' | tr -d '""')
+  local edge_node_id=($(echo  $get_edge_node_response | jq '.results | .[] | select(.resource_type=="EdgeNode") | .id' | tr -d '""'))
 
+EDGE_ID=1
+for EDGE in ${edge_node_id[@]}; do
   local configure_edge_json="{ \
     \"description\":\"Edge Transport Node\", \
-    \"display_name\":\"tn-edge\", \
-    \"node_id\":\"$edge_node_id\", \
+    \"display_name\":\"tn-edge-${EDGE_ID}\", \
+    \"node_id\":\"${EDGE}\", \
     \"host_switches\": [ \
       { \
         \"host_switch_name\": \"overlay-host-switch\", \
@@ -248,6 +271,9 @@ function configure_edge_transport_node() {
   }"
 
   get_rest_response "api/v1/transport-nodes" "$configure_edge_json"
+
+  EDGE_ID=$( expr ${EDGE_ID} + 1 )
+done
 }
 
 
@@ -271,13 +297,20 @@ function create_edge_cluster() {
           \"profile_id\":\"$cluster_profile_id\", \
           \"resource_type\": \"EdgeHighAvailabilityProfile\" \
       } \
-    ], \
-  \"members\": [ \
-      { \
-          \"transport_node_id\":\"${1}\"
-      } \
-    ] \
-  }"
+    ], \"members\": ["
+
+get_edge_node_response=$(get_rest_response "api/v1/fabric/nodes")
+local edge_node_id=($(echo  $get_edge_node_response | jq '.results | .[] | select(.resource_type=="EdgeNode") | .id' | tr -d '""'))
+
+#EDGE_ID=1
+for EDGE in ${edge_node_id[@]}; do
+  local create_edge_cluster_json=${create_edge_cluster_json}" \
+      { \"transport_node_id\":\"${EDGE}\" } \
+      ,"
+done
+local create_edge_cluster_json=$( echo ${create_edge_cluster_json} | sed "s/,$//" )
+
+  local create_edge_cluster_json=${create_edge_cluster_json}" ] }"
 
   get_rest_response "api/v1/edge-clusters" "$create_edge_cluster_json"
 }
@@ -486,9 +519,14 @@ overlay_transport_id=$(get_response_id "$response")
 
 # Step 3: Creating uplink profiles
 echo "Step 3: Creating uplink profiles"
-response=$(create_uplink_profile_overlay)
+response=$(create_uplink_profile_overlay_host)
 check_for_error "$response"
-uplink_profile_overlay_id=$(get_response_id "$response")
+uplink_profile_overlay_host_id=$(get_response_id "$response")
+
+response=$(create_uplink_profile_overlay_edgevm)
+check_for_error "$response"
+uplink_profile_overlay_edgevm_id=$(get_response_id "$response")
+
 response=$(create_uplink_profile_vlan)
 check_for_error "$response"
 uplink_profile_vlan_id=$(get_response_id "$response")
@@ -505,14 +543,15 @@ ipam_entry=$(create_ipam_entries "$response")
 #check_for_error "$response"
 
 # Step 5: Configure Edge Trasnsport node
-echo "Step 5: Configuring Edge transport node"
-response=$(configure_edge_transport_node $vlan_transport_id $overlay_transport_id $uplink_profile_overlay_id $uplink_profile_vlan_id $ip_pool_id)
-check_for_error "$response"
-transport_node_id=$(get_response_id "$response")
+echo "Step 5: Configuring Edge(s) transport node"
+response=$(configure_edge_transport_node $vlan_transport_id $overlay_transport_id $uplink_profile_overlay_edgevm_id $uplink_profile_vlan_id $ip_pool_id)
+#check_for_error "$response"
+#transport_node_id=$(get_response_id "$response")
 
 # Step 6: Create Edge Cluster
 echo "Step 6: Creating Edge cluster"
-response=$(create_edge_cluster $transport_node_id)
+#response=$(create_edge_cluster $transport_node_id)
+response=$(create_edge_cluster)
 check_for_error "$response"
 edge_cluster_id=$(get_response_id "$response")
 

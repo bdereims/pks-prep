@@ -1,9 +1,11 @@
 #!/bin/bash
 #bdereims@vmware.com
 
-NSX_MANAGER=nsx.cpod-vbc-sddc.rax.lab
-NSX_USER=admin
-NSX_USER_PASSWD=fbj0qS3AQtxa6BC!
+source ../env
+
+NSX_MANAGER=${NSX_COMMON_DOMAIN}
+NSX_USER=${ADMIN}
+NSX_USER_PASSWD=${PASSWORD}
 
 nsx_call() {
 	# $1 : [GET, POST, DELETE] 

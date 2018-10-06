@@ -8,6 +8,8 @@ upload_opsmanager() {
 	HOSTNAME=$( echo ${OVA_OPSMANAGER_NAME} | tr '[:upper:]' '[:lower:]' )
 
 	export MYSCRIPT=/tmp/$$
+export NETMASK="255.255.255.128"
+export GATEWAY="192.168.45.129"
 
 	cat << EOF > ${MYSCRIPT}
 ovftool --acceptAllEulas --skipManifestCheck --X:injectOvfEnv --allowExtraConfig --X:waitForIp \
