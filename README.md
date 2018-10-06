@@ -1,6 +1,6 @@
 # pks-prep
 
-[PKS Documentation](https://docs.vmware.com/en/VMware-Pivotal-Container-Service/1.0/vmware-pks-10/GUID-PKS10-index.html)
+[PKS Documentation](https://docs.vmware.com/en/VMware-Pivotal-Container-Service/1.1/vmware-pks-11/GUID-PKS11-index.html?hWord=N4IghgNiBcIA4GsDOIC+Q)
 
 __How to install and configure:__
 [In French](https://shwrfr.com/nextcloud/index.php/s/gpsJK697rKv11of)
