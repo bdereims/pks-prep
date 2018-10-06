@@ -5,7 +5,7 @@
 __How to install and configure:__
 [In French](https://shwrfr.com/nextcloud/index.php/s/gpsJK697rKv11of)
 
-Validated for PKS 1.2 + NSX-T 2.2 and NSX-T 2.3
-New feature for deployiong multiple controllers and edges
-Add overlay_host with VLAN_ID and overlay_edgevm in the case of VLAN for TEP
-Add VCSA automaticaly within MSX Manager compute manager
+Validated for PKS 1.2 + NSX-T 2.2 and NSX-T 2.3\
+New feature for deployiong multiple controllers and edges\
+Add overlay_host with VLAN_ID and overlay_edgevm in the case of VLAN for TEP\
+Add VCSA automaticaly within MSX Manager compute manager\
