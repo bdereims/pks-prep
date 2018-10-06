@@ -10,7 +10,7 @@ PIVNETRELEASE=0.0.54
 APIREFRESHTOKEN="<insert-refresh-token-here>"
 PKSRELEASE=1.1.5
 
-if [$APIREFRESHTOKEN == "<insert-refresh-token-here>"]
+if [ $APIREFRESHTOKEN = "<insert-refresh-token-here>" ]
 then
     echo "Update APIREFRESHTOKEN value in script before running it"
     exit 1
