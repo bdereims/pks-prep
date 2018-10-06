@@ -8,7 +8,9 @@ HELMRELEASE=2.11.0
 OMRELEASE=0.41.0
 PIVNETRELEASE=0.0.54
 APIREFRESHTOKEN="<insert-refresh-token-here>"
+OPSMANRELEASE=2.2.7
 PKSRELEASE=1.1.5
+STEMCELLRELEASE=3586.36
 
 if [ $APIREFRESHTOKEN = "<insert-refresh-token-here>" ]
 then
@@ -48,14 +50,14 @@ sudo cp linux-amd64/helm ${BINDIR}/helm
 rm -fr linux-amd64
 rm helm-v${HELMRELEASE}-linux-amd64.tar.gz
 
-# pivnet
+# pivnet cli
 curl -LO https://github.com/pivotal-cf/pivnet-cli/releases/download/v${PIVNETRELEASE}/pivnet-linux-amd64-${PIVNETRELEASE}
 
 sudo chown root pivnet-linux-amd64-${PIVNETRELEASE}
 sudo chmod ugo+x pivnet-linux-amd64-${PIVNETRELEASE}
 sudo mv pivnet-linux-amd64-${PIVNETRELEASE} ${BINDIR}/pivnet
 
-# pks
+# pks cli
 pivnet login --api-token=$APIREFRESHTOKEN
 PKSFileID=`pivnet pfs -p pivotal-container-service -r $PKSRELEASE | grep 'PKS CLI - Linux' | awk '{ print $2}'`
 pivnet download-product-files -p pivotal-container-service -r $PKSRELEASE -i $PKSFileID
@@ -64,3 +66,16 @@ mv pks-linux-amd64* pks
 sudo chown root:root pks
 sudo chmod +x pks
 sudo cp pks ${BINDIR}/pks
+
+# ops manager for vsphere
+OpsmanFileId=`pivnet pfs -p ops-manager -r $OPSMANRELEASE | grep 'pcf-vsphere' | awk '{ print $2 }'`
+pivnet download-product-files -p pivotal-container-service -r $OPSMANRELEASE -i $OpsmanFileId
+
+# pks tile
+PKSFileID=`pivnet pfs -p pivotal-container-service -r $PKSRELEASE | grep 'pivotal-container-service' | awk '{ print $2 }'`
+pivnet download-product-files -p pivotal-container-service -r $PKSRELEASE -i $PKSFileID
+
+#pks stemcell
+StemcellFileId=`pivnet pfs -p stemcells -r $STEMCELLRELEASE | grep 'vsphere' | awk '{ print $2 }'`
+pivnet download-product-files -p stemcells -r $STEMCELLRELEASE -i $StemcellFileId
+
