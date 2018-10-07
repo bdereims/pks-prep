@@ -13,6 +13,8 @@
 #PKSRELEASE=1.1.5
 #STEMCELLRELEASE=3586.36
 
+source set_env
+
 if [ $APIREFRESHTOKEN = "<insert-refresh-token-here>" ]
 then
     echo "Update APIREFRESHTOKEN value in set_env before running it"
