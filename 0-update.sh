@@ -13,7 +13,8 @@
 #PKSRELEASE=1.1.5
 #STEMCELLRELEASE=3586.36
 
-source set_env
+# source set_env
+. set_env
 
 if [ $APIREFRESHTOKEN = "<insert-refresh-token-here>" ]
 then
