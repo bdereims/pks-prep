@@ -2,24 +2,50 @@
 #bdereims@vmware.com
 #Only tested on Ubuntu 16.04/18.04 LTS
 
-BINDIR=/usr/local/bin
-BOSHRELEASE=5.3.1
-HELMRELEASE=2.11.0
-OMRELEASE=0.41.0
-PIVNETRELEASE=0.0.54
-APIREFRESHTOKEN="<insert-refresh-token-here>"
-OPSMANRELEASE=2.2.7
-PKSRELEASE=1.1.5
-STEMCELLRELEASE=3586.36
+#BINDIR=/usr/local/bin
+#BOSHRELEASE=5.3.1
+#HELMRELEASE=2.11.0
+#OMRELEASE=0.41.0
+#PIVNETRELEASE=0.0.54
+#APIREFRESHTOKEN="<insert-refresh-token-here>"
+#BITSDIR=/data/bits
+#OPSMANRELEASE=2.2.7
+#PKSRELEASE=1.1.5
+#STEMCELLRELEASE=3586.36
 
 if [ $APIREFRESHTOKEN = "<insert-refresh-token-here>" ]
 then
-    echo "Update APIREFRESHTOKEN value in script before running it"
+    echo "Update APIREFRESHTOKEN value in set_env before running it"
     exit 1
 fi
 
+if [ $VMWUSER = '<username>' ]
+then
+    echo "Update VMWUSER value in set_env before running it"
+    exit 1
+fi
+
+if [ $VMWPASS = '<password>' ]
+then
+    echo "Update VMWPASS value in set_env before running it"
+    exit 1
+fi
+
+
+#checking and creating BITSDIR if needed
+if [[ ! -e $BITSDIR ]]; then
+    mkdir $BITSDIR
+fi
+
 sudo apt-get update ; sudo apt-get upgrade
-sudo apt-get install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 sshpass jq dnsmasq iperf3
+sudo apt-get install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 sshpass jq dnsmasq iperf3 npm
+
+# vwm-cli - requires nodejs >=8
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt-get install -y nodejs
+npm install vmw-cli --global
+
+
 
 # uuac
 sudo gem install cf-uaac
@@ -73,7 +99,7 @@ pivnet accept-eula -p ops-manager -r $OPSMANRELEASE
 pivnet download-product-files -p ops-manager -r $OPSMANRELEASE -i $OpsmanFileId
 
 # pks tile
-PKSFileID=`pivnet pfs -p pivotal-container-service -r $PKSRELEASE | grep 'pivotal-container-service' | awk '{ print $2 }'`
+PKSFileID=`pivnet pfs -p pivotal-container-service -r $PKSRELEASE | grep pivotal-container-service-$PKSRELEASE | awk '{ print $2 }'`
 pivnet accept-eula -p pivotal-container-service -r $PKSRELEASE
 pivnet download-product-files -p pivotal-container-service -r $PKSRELEASE -i $PKSFileID
 
