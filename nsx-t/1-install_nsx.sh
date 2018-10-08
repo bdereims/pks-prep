@@ -128,7 +128,10 @@ vi://$host_username:$host_password@$host_ip/$host_datacenter/host/$host_cluster"
 }
 
 function install_nsx_controller {
-  echo "=== Install NSX Controller ==="
+echo "=== Install NSX Controller(s) ==="
+
+CTRL_ID=1
+for CTRL_IP in ${NSX_CONTROLLER_IP[@]}; do
 
   # Share the common host variables if installing NSX components on the same host.
   local host_ip=${NSX_CONTROLLER_HOST_IP:=$VCENTER_IP}
@@ -140,8 +143,8 @@ function install_nsx_controller {
   local host_network=${NSX_CONTROLLER_HOST_NETWORK:=$NSX_HOST_COMMON_NETWORK0}
 
   # Some network settings are also commonly shared among NSX components.
-  local name=${NSX_CONTROLLER_NAME}
-  local ip=$NSX_CONTROLLER_IP
+  local name=${NSX_CONTROLLER_NAME}${CTRL_ID}
+  local ip=${CTRL_IP}
   local domain=${NSX_CONTROLLER_DOMAIN:=$NSX_COMMON_DOMAIN}
   local netmask=${NSX_CONTROLLER_NETMASK:=$NSX_COMMON_NETMASK}
   local gateway=${NSX_CONTROLLER_GATEWAY:=$NSX_COMMON_GATEWAY}
@@ -177,10 +180,17 @@ vi://$host_username:$host_password@$host_ip/$host_datacenter/host/$host_cluster"
 
   echo "Executing $cmd"
   eval $cmd
+
+  CTRL_ID=$( expr ${CTRL_ID} + 1 )
+
+done
 }
 
 function install_nsx_edge {
-  echo "=== Install NSX Edge ==="
+echo "=== Install NSX Edge(s) ==="
+
+EDGE_ID=1
+for EDGE_IP in ${NSX_EDGE_IP[@]}; do
 
   # Share the common host variables if installing NSX components on the same host.
   local host_ip=${NSX_EDGE_HOST_IP:=$VCENTER_IP}
@@ -195,8 +205,8 @@ function install_nsx_edge {
   local host_network3=${NSX_EDGE_HOST_NETWORK3:=$NSX_HOST_COMMON_NETWORK3}
 
   # Some network settings are also commonly shared among NSX components.
-  local name=${NSX_EDGE_NAME}
-  local ip=$NSX_EDGE_IP
+  local name=${NSX_EDGE_NAME}${EDGE_ID}
+  local ip=${EDGE_IP}
   local domain=${NSX_EDGE_DOMAIN:=$NSX_COMMON_DOMAIN}
   local netmask=${NSX_EDGE_NETMASK:=$NSX_COMMON_NETMASK}
   local gateway=${NSX_EDGE_GATEWAY:=$NSX_COMMON_GATEWAY}
@@ -227,7 +237,7 @@ function install_nsx_edge {
 --allowExtraConfig $overwrite --datastore=\"$host_datastore\" --net:\"Network 0=$host_network0\" \
 --net:\"Network 1=$host_network1\" --net:\"Network 2=$host_network2\" \
 --net:\"Network 3=$host_network3\" --acceptAllEulas --noSSLVerify --diskMode=thin \
---deploymentOption=large \
+--deploymentOption=large --powerOn \
 --prop:\"nsx_ip_0=$ip\" --prop:\"nsx_netmask_0=$netmask\" --prop:\"nsx_gateway_0=$gateway\" \
 --prop:\"nsx_dns1_0=$dns\" --prop:\"nsx_domain_0=$domain\" \
 --prop:\"nsx_ntp_0=$ntp\" --prop:nsx_isSSHEnabled=True --prop:nsx_allowSSHRootLogin=True \
@@ -236,6 +246,10 @@ function install_nsx_edge {
 vi://$host_username:$host_password@$host_ip/$host_datacenter/host/$host_cluster"
   echo "Executing $cmd"
   eval $cmd
+
+  EDGE_ID=$( expr ${EDGE_ID} + 1 )
+
+done
 }
 
 
@@ -269,7 +283,7 @@ echo ""
 echo "Stage -1: check pre-reqs on the system"
 echo ""
 check_tool "wget"
-check_tool "ovftool"
+#check_tool "ovftool"
 check_tool "sshpass"
 
 if [ "$NSX_OVERWRITE" == "true" ]; then

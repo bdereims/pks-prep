@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #bdereims@vmware.com
 #Only tested on Ubuntu 16.04/18.04 LTS
 
@@ -14,26 +14,7 @@
 #STEMCELLRELEASE=3586.36
 
 # source set_env
-. set_env
-
-if [ $APIREFRESHTOKEN = "<insert-refresh-token-here>" ]
-then
-    echo "Update APIREFRESHTOKEN value in set_env before running it"
-    exit 1
-fi
-
-if [ $VMWUSER = '<username>' ]
-then
-    echo "Update VMWUSER value in set_env before running it"
-    exit 1
-fi
-
-if [ $VMWPASS = '<password>' ]
-then
-    echo "Update VMWPASS value in set_env before running it"
-    exit 1
-fi
-
+source set_env
 
 #checking and creating BITSDIR if needed
 if [[ ! -e $BITSDIR ]]; then
@@ -41,7 +22,7 @@ if [[ ! -e $BITSDIR ]]; then
 fi
 
 sudo apt-get update ; sudo apt-get upgrade
-sudo apt-get install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 sshpass jq dnsmasq iperf3 npm
+sudo apt-get install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 sshpass jq dnsmasq iperf3 sshpass npm
 
 # vwm-cli - requires nodejs >=8
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
@@ -85,29 +66,3 @@ curl -LO https://github.com/pivotal-cf/pivnet-cli/releases/download/v${PIVNETREL
 sudo chown root pivnet-linux-amd64-${PIVNETRELEASE}
 sudo chmod ugo+x pivnet-linux-amd64-${PIVNETRELEASE}
 sudo mv pivnet-linux-amd64-${PIVNETRELEASE} ${BINDIR}/pivnet
-
-# pks cli
-pivnet login --api-token=$APIREFRESHTOKEN
-PKSFileID=`pivnet pfs -p pivotal-container-service -r $PKSRELEASE | grep 'PKS CLI - Linux' | awk '{ print $2}'`
-pivnet download-product-files -p pivotal-container-service -r $PKSRELEASE -i $PKSFileID
-
-mv pks-linux-amd64* pks 
-sudo chown root:root pks
-sudo chmod +x pks
-sudo cp pks ${BINDIR}/pks
-
-# ops manager for vsphere
-OpsmanFileId=`pivnet pfs -p ops-manager -r $OPSMANRELEASE | grep 'pcf-vsphere' | awk '{ print $2 }'`
-pivnet accept-eula -p ops-manager -r $OPSMANRELEASE
-pivnet download-product-files -p ops-manager -r $OPSMANRELEASE -i $OpsmanFileId
-
-# pks tile
-PKSFileID=`pivnet pfs -p pivotal-container-service -r $PKSRELEASE | grep pivotal-container-service-$PKSRELEASE | awk '{ print $2 }'`
-pivnet accept-eula -p pivotal-container-service -r $PKSRELEASE
-pivnet download-product-files -p pivotal-container-service -r $PKSRELEASE -i $PKSFileID
-
-#pks stemcell
-StemcellFileId=`pivnet pfs -p stemcells -r $STEMCELLRELEASE | grep 'vsphere' | awk '{ print $2 }'`
-pivnet accept-eula -p stemcells -r $STEMCELLRELEASE
-pivnet download-product-files -p stemcells -r $STEMCELLRELEASE -i $StemcellFileId
-
