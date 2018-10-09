@@ -13,8 +13,8 @@
 #PKSRELEASE=1.1.5
 #STEMCELLRELEASE=3586.36
 
-# source set_env
-source set_env
+# source define_download_version_env
+source define_download_version_env
 
 #checking and creating BITSDIR if needed
 if [[ ! -e $BITSDIR ]]; then
