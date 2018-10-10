@@ -1,0 +1,28 @@
+#!/bin/bash
+
+export BINDIR=/usr/local/bin
+
+export BITSDIR=/data/bits
+
+# CLI Tools version
+export BOSHRELEASE=5.3.1
+export HELMRELEASE=2.11.0
+export OMRELEASE=0.41.0
+
+#Pivotal network 
+export PIVNETRELEASE=0.0.54
+export APIREFRESHTOKEN="<insert-refresh-token-here>"
+
+# Pivotal SW Releases
+export OPSMANRELEASE=2.2.7
+export PKSRELEASE=1.1.5
+export STEMCELLRELEASE=3586.36
+
+# VMware Download Account
+export VMWUSER='<username>'
+export VMWPASS='<password>'
+
+# VMware SW Releases
+export OVFTOOLPG=OVFTOOL430
+export NSXTPG=NSX-T-220
+
