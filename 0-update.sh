@@ -21,13 +21,15 @@ if [[ ! -e $BITSDIR ]]; then
     mkdir $BITSDIR
 fi
 
+sudo add-apt-repository universe
 sudo apt-get update ; sudo apt-get upgrade
-sudo apt-get install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 sshpass jq dnsmasq iperf3 sshpass npm
+sudo apt-get install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 sshpass jq dnsmasq iperf3 sshpass ipcalc
+sudo apt-get npm
 
 # vwm-cli - requires nodejs >=8
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
-npm install vmw-cli --global
+sudo npm install vmw-cli --global
 
 
 

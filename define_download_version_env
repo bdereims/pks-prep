@@ -2,7 +2,7 @@
 
 export BINDIR=/usr/local/bin
 
-export BITSDIR=/data/bits
+export BITSDIR=/data/BITS
 
 # CLI Tools version
 export BOSHRELEASE=5.3.1
@@ -15,15 +15,14 @@ export APIREFRESHTOKEN="<insert-refresh-token-here>"
 
 # Pivotal SW Releases
 export OPSMANRELEASE=2.3.1
-export PKSRELEASE=1.2
+export PKSRELEASE=1.2.0
 export HARBORRELEASE=1.6
 export STEMCELLRELEASE=97.17
 
 # VMware Download Account
-export VMWUSER='<username>'
-export VMWPASS='<password>'
+export VMWUSER='user@acme.fr'
+export VMWPASS='Password123'
 
 # VMware SW Releases
 export OVFTOOLPG=OVFTOOL430
 export NSXTPG=NSX-T-230
-

@@ -3,6 +3,7 @@
 # get download env
 source define_download_version_env
 
+DST_DIR=NSX
 
 # test env variables
 if [ $VMWUSER = '<username>' ]
@@ -28,14 +29,14 @@ vmw-cli index $NSXTPG
 # get manager
 export nsxMgrFileName=`vmw-cli json productGroup:$NSXTPG,fileType:ova,fileName:unified | jq -r '.fileName'`
 vmw-cli get $nsxMgrFileName
-mv $nsxMgrFileName $BITSDIR
+mv $nsxMgrFileName ${BITSDIR}/${DEST_DIR}
 
 #get controller
 export nsxCtrlFileName=`vmw-cli json productGroup:$NSXTPG,fileType:ova,fileName:controller | jq -r '.fileName'`
 vmw-cli get $nsxCtrlFileName
-mv $nsxCtrlFileName $BITSDIR
+mv $nsxCtrlFileName ${BITSDIR}/${DEST_DIR} 
 
 #get edge
 export nsxEdgeFileName=`vmw-cli json productGroup:$NSXTPG,fileType:ova,fileName:edge | jq -r '.fileName'`
 vmw-cli get $nsxEdgeFileName
-mv $nsxEdgeFileName $BITSDIR
+mv $nsxEdgeFileName ${BITSDIR}/${DEST_DIR} 

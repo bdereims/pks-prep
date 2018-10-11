@@ -109,7 +109,7 @@ curl -k -X POST \
 -d "$pi_request"
 
 # Wait a bit before it's enabled
-sleep 5 
+sleep 20 
 
 # Test if it possible to user service account cert
 printf "\n\nTest:\n"

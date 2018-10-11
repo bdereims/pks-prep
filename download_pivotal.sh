@@ -3,6 +3,8 @@
 # get download env
 source define_download_version_env
 
+DEST_DIR=PKS
+
 
 if [ $APIREFRESHTOKEN = "<insert-refresh-token-here>" ]
 then
@@ -26,21 +28,21 @@ OpsmanFileId=`pivnet pfs -p ops-manager -r $OPSMANRELEASE | grep 'pcf-vsphere' |
 pivnet accept-eula -p ops-manager -r $OPSMANRELEASE
 pivnet download-product-files -p ops-manager -r $OPSMANRELEASE -i $OpsmanFileId
 export OpsmanFileName=`ls pcf-vsphere-*`
-mv $OpsmanFileName $BITSDIR
+mv $OpsmanFileName ${BITSDIR}/${DEST_DIR}
 
 # pks tile
 PKSFileID=`pivnet pfs -p pivotal-container-service -r $PKSRELEASE | grep pivotal-container-service-$PKSRELEASE | awk '{ print $2 }'`
 pivnet accept-eula -p pivotal-container-service -r $PKSRELEASE
 pivnet download-product-files -p pivotal-container-service -r $PKSRELEASE -i $PKSFileID
 export PKSFileName=`ls pivotal-container-service-*`
-mv $PKSFileName $BITSDIR
+mv $PKSFileName ${BITSDIRi}/${DEST_DIR} 
 
 #pks stemcell
 StemcellFileId=`pivnet pfs -p stemcells -r $STEMCELLRELEASE | grep 'vsphere' | awk '{ print $2 }'`
 pivnet accept-eula -p stemcells -r $STEMCELLRELEASE
 pivnet download-product-files -p stemcells -r $STEMCELLRELEASE -i $StemcellFileId
 export StemcellFileName=`ls bosh-stemcell-*`
-mv $StemcellFileName $BITSDIR
+mv $StemcellFileName ${BITSDIRi}/${DEST_DIR} 
 
 #Harbor Tile
 
@@ -48,4 +50,4 @@ HarborFileId=`pivnet pfs -p harbor-container-registry -r $HARBORRELEASE --format
 pivnet accept-eula -p harbor-container-registry -r $HARBORRELEASE
 pivnet download-product-files -p harbor-container-registry -r $HARBORRELEASE -i $HarborFileId
 export HarborFileName=`ls harbor-container-registry*`
-mv $HarborFileName $BITSDIR
+mv $HarborFileName ${BITSDIRi}/${DEST_DIR} 
