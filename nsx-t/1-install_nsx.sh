@@ -1,7 +1,9 @@
 #!/bin/bash -e
 
-#source ./install_nsx.env 
+#read software bits
+source ../software_filenames.env
 
+# read deployment env
 source ../env
 
 function print_help()
