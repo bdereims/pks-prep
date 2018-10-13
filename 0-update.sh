@@ -19,6 +19,9 @@ source define_download_version_env
 #checking and creating BITSDIR if needed
 if [[ ! -e $BITSDIR ]]; then
     mkdir $BITSDIR
+    mkdir $BITSDIR$NSXFOLDER
+    mkdir $BITSDIR$PKSFOLDER
+    mkdir $BITSDIR$VREALIZEFOLDER
 fi
 
 sudo apt-get update ; sudo apt-get upgrade
@@ -28,8 +31,6 @@ sudo apt-get install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl l
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
 npm install vmw-cli --global
-
-
 
 # uuac
 sudo gem install cf-uaac

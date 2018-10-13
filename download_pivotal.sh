@@ -9,6 +9,14 @@ then
     exit 1
 fi
 
+#checking and creating BITSDIR if needed
+if [[ ! -e $BITSDIR ]]; then
+    mkdir $BITSDIR
+    mkdir $BITSDIR$NSXFOLDER
+    mkdir $BITSDIR$PKSFOLDER
+    mkdir $BITSDIR$VREALIZEFOLDER
+fi
+
 # pks cli
 pivnet login --api-token=$APIREFRESHTOKEN
 PKSFileID=`pivnet pfs -p pivotal-container-service -r $PKSRELEASE | grep 'PKS CLI - Linux' | awk '{ print $2}'`

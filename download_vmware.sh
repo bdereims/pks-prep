@@ -17,6 +17,14 @@ then
     exit 1
 fi
 
+#checking and creating BITSDIR if needed
+if [[ ! -e $BITSDIR ]]; then
+    mkdir $BITSDIR
+    mkdir $BITSDIR$NSXFOLDER
+    mkdir $BITSDIR$PKSFOLDER
+    mkdir $BITSDIR$VREALIZEFOLDER
+fi
+
 # OVFTOOL
 vmw-cli index $OVFTOOLPG
 ovfFileName=`vmw-cli json productGroup:$OVFTOOLPG,fileName:lin.X86 | jq -r '.fileName'`
