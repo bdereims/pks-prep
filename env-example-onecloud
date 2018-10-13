@@ -78,9 +78,9 @@ export DOCKER_CONTENT_TRUST_SERVER=https://${REG_FQDN}:4443
 
 # Location of OVA files
 export BITS_NSX=NSX
-export NSX_MANAGER_OVA_FILE=${BITS}/${BITS_NSX}/nsx-unified-appliance-2.3.0.0.0.10085405.ova
-export NSX_CONTROLLER_OVA_FILE=${BITS}/${BITS_NSX}/nsx-controller-2.3.0.0.0.10085396.ova
-export NSX_EDGE_OVA_FILE=${BITS}/${BITS_NSX}/nsx-edge-2.3.0.0.0.10085448.ova
+export NSX_MANAGER_OVA_FILE=${nsxMgrFileName}
+export NSX_CONTROLLER_OVA_FILE=${nsxCtrlFileName}
+export NSX_EDGE_OVA_FILE=${nsxEdgeFileName}
 
 # VM names on vCenter
 export NSX_MANAGER_NAME=NSX-T_manager
