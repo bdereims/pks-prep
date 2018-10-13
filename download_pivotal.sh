@@ -26,6 +26,7 @@ mv pks-linux-amd64* pks
 sudo chown root:root pks
 sudo chmod +x pks
 sudo cp pks ${BINDIR}/pks
+rm pks
 
 # ops manager for vsphere
 OpsmanFileId=`pivnet pfs -p ops-manager -r $OPSMANRELEASE | grep 'pcf-vsphere' | awk '{ print $2 }'`

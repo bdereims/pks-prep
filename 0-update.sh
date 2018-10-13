@@ -2,17 +2,6 @@
 #bdereims@vmware.com
 #Only tested on Ubuntu 16.04/18.04 LTS
 
-#BINDIR=/usr/local/bin
-#BOSHRELEASE=5.3.1
-#HELMRELEASE=2.11.0
-#OMRELEASE=0.41.0
-#PIVNETRELEASE=0.0.54
-#APIREFRESHTOKEN="<insert-refresh-token-here>"
-#BITSDIR=/data/bits
-#OPSMANRELEASE=2.2.7
-#PKSRELEASE=1.1.5
-#STEMCELLRELEASE=3586.36
-
 # source define_download_version_env
 source define_download_version_env
 
