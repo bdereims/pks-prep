@@ -3,6 +3,9 @@
 export BINDIR=/usr/local/bin
 
 export BITSDIR=/data/bits
+export PKSFOLDER=/PKS
+export NSXFOLDER=/NSX
+export VREALIZEFOLDER=/VREALIZE
 
 # CLI Tools version
 export BOSHRELEASE=5.3.1
@@ -17,12 +20,14 @@ export APIREFRESHTOKEN="<insert-refresh-token-here>"
 export OPSMANRELEASE=2.2.7
 export PKSRELEASE=1.1.5
 export STEMCELLRELEASE=3586.36
+export HARBORRELEASE=1.5.2
+export STEMCELLXENIALRELEASE=97.19
 
 # VMware Download Account
 export VMWUSER='<username>'
 export VMWPASS='<password>'
 
-# VMware SW Releases
+# VMware SW Releases [ProductGroup]
 export OVFTOOLPG=OVFTOOL430
 export NSXTPG=NSX-T-220
 
