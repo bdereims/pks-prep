@@ -4,6 +4,11 @@
 source ../software_filenames.env
 
 # read deployment env
+if [[ ! -e ../env ]]; then
+    echo "../env file not present. create on based on env-example."
+    exit 1
+fi
+
 source ../env
 
 function print_help()
