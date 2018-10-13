@@ -3,7 +3,6 @@
 # get download env
 source define_download_version_env
 
-
 # test env variables
 if [ $VMWUSER = '<username>' ]
 then
@@ -51,3 +50,18 @@ nsxEdgeFileName=`vmw-cli json productGroup:$NSXTPG,fileType:ova,fileName:edge | 
 vmw-cli get $nsxEdgeFileName
 mv $nsxEdgeFileName $BITSDIR$NSXFOLDER
 echo "export nsxEdgeFileName="$BITSDIR$NSXFOLDER"/"$nsxEdgeFileName >> software_filenames.env
+
+#get VRLI
+vmw-cli index $VRLIPG
+VRLIFileName=`vmw-cli json productGroup:$VRLIPG,fileType:ova | jq -r '.fileName'`
+vmw-cli get $VRLIFileName
+mv $VRLIFileName $BITSDIR$VREALIZEFOLDER
+echo "export VRLIFileName="$BITSDIR$VREALIZEFOLDER"/"$VRLIFileName >> software_filenames.env
+
+#get VROPS
+vmw-cli index $VROPSPG
+VROPSFileName=`vmw-cli json productGroup:$VROPSPG,fileType:ova | jq -r '.fileName'`
+vmw-cli get $VROPSFileName
+mv $VROPSFileName $BITSDIR$VREALIZEFOLDER
+echo "export VROPSFileName="$BITSDIR$VREALIZEFOLDER"/"$VROPSFileName >> software_filenames.env
+

@@ -1,7 +1,12 @@
 #!/bin/bash
 #bdereims@vmware.com
 
-. ./env
+#read deployment parameters
+source ./env
+
+#read software bits
+source ./software_filenames.env
+
 
 upload_opsmanager() {
 

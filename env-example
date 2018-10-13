@@ -1,7 +1,10 @@
-#!/bin/sh
+#!/bin/bash
+
+#read software bits
+source ./software_filenames.env
 
 # Where are the bits?
-export BITS=/data/BITS
+#export BITS=/data/BITS
 #ovftool Path
 export PATH=$PATH:${BITS}/ovftool
 # Generic credentials 
@@ -33,17 +36,17 @@ export NTP=${GATEWAY}
 export OVA_OPSMANAGER_DEPLOY="YES"
 export OVA_OPSMANAGER_NAME="OPSMANAGER"
 export OVA_OPSMANAGER_IP="192.168.45.130"
-export OVA_OPSMANAGER="${BITS}/PKS/pcf-vsphere-2.3-build.146.ova"
+export OVA_OPSMANAGER="${OpsmanFileName}"
 
 export OVA_VRLI_DEPLOY="NO"
 export OVA_VRLI_NAME="VRLI"
 export OVA_VRLI_IP="172.18.5.9"
-export OVA_VRLI="${BITS}/vREALIZE/VMware-vRealize-Log-Insight-4.5.1-6858700.ova"
+export OVA_VRLI="${VRLIFileName}"
 
 export OVA_VROPS_DEPLOY="NO"
 export OVA_VROPS_NAME="VROPS"
 export OVA_VROPS_IP="172.18.5.10"
-export OVA_VROPS="${BITS}/vREALIZE/vRealize-Operations-Manager-Appliance-6.7.0.8183617_OVF10.ova"
+export OVA_VROPS="${VROPSFileName}"
 
 ################
 ### PKS Conf ###
@@ -78,9 +81,9 @@ export DOCKER_CONTENT_TRUST_SERVER=https://${REG_FQDN}:4443
 
 # Location of OVA files
 export BITS_NSX=NSX
-export NSX_MANAGER_OVA_FILE=${BITS}/${BITS_NSX}/nsx-unified-appliance-2.3.0.0.0.10085405.ova
-export NSX_CONTROLLER_OVA_FILE=${BITS}/${BITS_NSX}/nsx-controller-2.3.0.0.0.10085396.ova
-export NSX_EDGE_OVA_FILE=${BITS}/${BITS_NSX}/nsx-edge-2.3.0.0.0.10085448.ova
+export NSX_MANAGER_OVA_FILE=${nsxMgrFileName}
+export NSX_CONTROLLER_OVA_FILE=${nsxCtrlFileName}
+export NSX_EDGE_OVA_FILE=${nsxEdgeFileName}
 
 # VM names on vCenter
 export NSX_MANAGER_NAME=NSX-T_manager

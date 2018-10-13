@@ -30,4 +30,7 @@ export VMWPASS='<password>'
 # VMware SW Releases [ProductGroup]
 export OVFTOOLPG=OVFTOOL430
 export NSXTPG=NSX-T-220
+export VRLIPG=VRLI-460
+export VROPSPG=VROPS-670
+
 

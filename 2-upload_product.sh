@@ -1,6 +1,11 @@
 #!/bin/bash
 
-. ./env
+#read deployment parameters
+source ./env
+
+#read software bits
+source ./software_filenames.env
+
 
 function upload_product {
 	om -t https://${OPSMANAGER} -k -u "${ADMIN}" -p "${PASSWORD}" upload-product --product ${1} 
@@ -11,10 +16,13 @@ function upload_stemcell {
 }
 
 rm -fr /tmp/*
-#upload_product ${BITS}/PKS/pivotal-container-service-1.1.4-build.5.pivotal
-#upload_product ${BITS}/PKS/harbor-container-registry-1.5.2-build.8.pivotal
-#upload_stemcell ${BITS}/PKS/bosh-stemcell-3586.27-vsphere-esxi-ubuntu-trusty-go_agent.tgz
-#upload_stemcell ${BITS}/PKS/bosh-stemcell-3468.42-vsphere-esxi-ubuntu-trusty-go_agent.tgz
-#upload_product ${BITS}/PKS/pivotal-container-service-1.2.0-build.47.pivotal
-#upload_product ${BITS}/PKS/harbor-container-registry-1.6.0-build.35.pivotal
-upload_stemcell ${BITS}/PKS/bosh-stemcell-97.17-vsphere-esxi-ubuntu-xenial-go_agent.tgz
+
+#upload PKS Tile
+upload_product ${PKSFileName}
+#upload trusty Stemcell
+upload_stemcell ${StemcellFileName}
+
+#upload Harbor tile
+upload_product ${HarborFileName}
+#upload Xenial Stemcell
+upload_stemcell ${StemcellXenialFileName}
