@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #read software bits
-source ./software_filenames.env
+#source ./software_filenames.env
 
 # Where are the bits?
 #export BITS=/data/BITS

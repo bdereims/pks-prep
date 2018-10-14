@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Where are the bits?
-export BITS=/data/BITS
+#export BITS=/data/BITS
 #ovftool Path
 export PATH=$PATH:${BITS}/ovftool
 # Generic credentials 
@@ -12,10 +12,10 @@ export DOMAIN="corp.local"
 
 # vCenter attributes
 export VCENTER_IP="192.168.110.22"
-export VCENTER_USERNAME="administrator%40${DOMAIN}"
+export VCENTER_USERNAME="administrator@vsphere.local"
 export VCENTER_PASSWORD=${PASSWORD}
 export VCENTER_DATACENTER="RegionA01"
-export VCENTER_CLUSTER="RegionA01-K8s"
+export VCENTER_CLUSTER="RegionA01-MGMT"
 export VCENTER_TARGET="${VCENTER_IP}/${VCENTER_DATACENTER}/host/${VCENTER_CLUSTER}"
 export VCENTER_DATASTORE="RegionA01-ISCSI01-COMP01"
 export VCENTER_PORTGROUP="VM-RegionA01-vDS-COMP"
@@ -32,18 +32,18 @@ export NTP="192.168.110.10"
 
 export OVA_OPSMANAGER_DEPLOY="YES"
 export OVA_OPSMANAGER_NAME="pks-opsman"
-export OVA_OPSMANAGER_IP="192.168.50.2"
-export OVA_OPSMANAGER="${BITS}/PKS/pcf-vsphere-2.3-build.146.ova"
+export OVA_OPSMANAGER_IP="192.168.110.100"
+export OVA_OPSMANAGER="${OpsmanFileName}"
 
 export OVA_VRLI_DEPLOY="NO"
 export OVA_VRLI_NAME="VRLI"
-export OVA_VRLI_IP="172.18.5.9"
-export OVA_VRLI="${BITS}/vREALIZE/VMware-vRealize-Log-Insight-4.5.1-6858700.ova"
+export OVA_VRLI_IP="192.168.110.90"
+export OVA_VRLI="${VRLIFileName}"
 
 export OVA_VROPS_DEPLOY="NO"
 export OVA_VROPS_NAME="VROPS"
-export OVA_VROPS_IP="172.18.5.10"
-export OVA_VROPS="${BITS}/vREALIZE/vRealize-Operations-Manager-Appliance-6.7.0.8183617_OVF10.ova"
+export OVA_VROPS_IP="192.168.110.91"
+export OVA_VROPS="${VROPSFileName}"
 
 ################
 ### PKS Conf ###
@@ -111,9 +111,9 @@ export NSX_HOST_COMMON_NETWORK3="${VCENTER_PORTGROUP}"
 # NSX Manager, Controller, Edge Network Attributes
 # IP BASE like 172.18.5
 export NSX_IP_BASE="192.168.100"
-export NSX_MANAGER_IP="${NSX_IP_BASE}.110"
-export NSX_CONTROLLER_IP=("${NSX_IP_BASE}.111" "${NSX_IP_BASE}.6" "${NSX_IP_BASE}.7")
-export NSX_EDGE_IP=("${NSX_IP_BASE}.112" "${NSX_IP_BASE}.8") 
+export NSX_MANAGER_IP="${NSX_IP_BASE}.120"
+export NSX_CONTROLLER_IP=("${NSX_IP_BASE}.121") # "${NSX_IP_BASE}.122" "${NSX_IP_BASE}.123")
+export NSX_EDGE_IP=("${NSX_IP_BASE}.124") # "${NSX_IP_BASE}.125") 
 export NSX_COMMON_PASSWORD="${PASSWORD}"
 export NSX_COMMON_DOMAIN="nsx.${DOMAIN}"
 export NSX_COMMON_NETMASK="255.255.255.0"
