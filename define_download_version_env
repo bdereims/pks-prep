@@ -14,7 +14,7 @@ export PIVNETRELEASE=0.0.54
 export APIREFRESHTOKEN="<insert-refresh-token-here>"
 
 # Pivotal SW Releases
-export OPSMANRELEASE=2.3.1
+export OPSMANRELEASE=2.3.2
 export PKSRELEASE=1.2.0
 export HARBORRELEASE=1.6
 export STEMCELLRELEASE=97.17

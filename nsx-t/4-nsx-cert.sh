@@ -1,6 +1,9 @@
 #!/bin/bash
 #bdereims@vmware.com
 
+ID=$( id -u )
+[ "${ID}" != "0" ] && echo "Must be root..." ; exit 0
+
 . ../env
 
 NETWORK_MANAGER_USERNAME=${ADMIN}
