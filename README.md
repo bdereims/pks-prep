@@ -1,4 +1,4 @@
-# pks-prep
+ ![pks-prep](https://github.com/bdereims/pks-prep/blob/master/pks-prep.png)
 
 [PKS Documentation](https://docs.vmware.com/en/VMware-Pivotal-Container-Service/1.1/vmware-pks-11/GUID-PKS11-index.html?hWord=N4IghgNiBcIA4GsDOIC+Q)
 
