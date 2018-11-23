@@ -11,11 +11,11 @@ export OMRELEASE=0.41.0
 
 #Pivotal network 
 export PIVNETRELEASE=0.0.54
-export APIREFRESHTOKEN="<insert-refresh-token-here>"
+export APIREFRESHTOKEN="your-token"
 
 # Pivotal SW Releases
-export OPSMANRELEASE=2.3.2
-export PKSRELEASE=1.2.0
+export OPSMANRELEASE=2.3.194
+export PKSRELEASE=1.2.2
 export HARBORRELEASE=1.6
 export STEMCELLRELEASE=97.17
 

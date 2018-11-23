@@ -2,6 +2,7 @@ env
 *.cert
 *.crt
 *.key
+define_download_version_env
 nsx-t/ovftool.log
 nsx-t/pks-nsx-t-superuser.*
 nsx-t/nsx.crt

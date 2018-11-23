@@ -1,7 +1,0 @@
-{
- "name": "lb-profile-large",
- "description": "Network profile for LARGE size NSX-T load balancer",
- "parameters": { 
-    "lb_size": "large" 
-    }
-}

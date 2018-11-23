@@ -14,8 +14,8 @@ ovftool --acceptAllEulas --skipManifestCheck --X:injectOvfEnv --allowExtraConfig
 --prop:admin_password=${PASSWORD} \
 --prop:custom_hostname=${HOSTNAME} \
 --prop:ip0=${OVA_OPSMANAGER_IP} \
---prop:netmask0=${NETMASK} \
---prop:gateway=${GATEWAY} \
+--prop:netmask0=${OVA_OPSMANAGER_NETMASK} \
+--prop:gateway=${OVA_OPSMANAGER_GATEWAY} \
 --prop:DNS=${DNS} \
 --prop:ntp_servers=${NTP} \
 --powerOn \

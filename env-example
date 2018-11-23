@@ -5,16 +5,16 @@ export BITS=/data/BITS
 #ovftool Path
 #export PATH=$PATH:${BITS}/ovftool
 # Generic credentials 
-export PASSWORD="vly7gRrJ06v7AWI!"
+export PASSWORD="zuYwbRkkg2H1a7k!"
 export ADMIN="admin"
 # DNS Zone
-export DOMAIN="cpod-pks.shwrfr.com"
+export DOMAIN="cpod-bbrunder01.shwrfr.com"
 
 # vCenter attributes
 export VCENTER_IP="vcsa.${DOMAIN}"
 export VCENTER_USERNAME="administrator%40${DOMAIN}"
 export VCENTER_PASSWORD=${PASSWORD}
-export VCENTER_DATACENTER="cPod-PKS"
+export VCENTER_DATACENTER="cPod-BBRUNDERT01"
 export VCENTER_CLUSTER="Cluster"
 export VCENTER_TARGET="${VCENTER_IP}/${VCENTER_DATACENTER}/host/${VCENTER_CLUSTER}"
 export VCENTER_DATASTORE="Datastore"
@@ -22,7 +22,7 @@ export VCENTER_PORTGROUP="VM Network"
 
 # Some network stuffs
 export NETMASK="255.255.255.0"
-export GATEWAY="172.18.25.1"
+export GATEWAY="172.18.16.1"
 export DNS=${GATEWAY}
 export NTP=${GATEWAY}
 
@@ -32,17 +32,19 @@ export NTP=${GATEWAY}
 
 export OVA_OPSMANAGER_DEPLOY="YES"
 export OVA_OPSMANAGER_NAME="OPSMANAGER"
-export OVA_OPSMANAGER_IP="172.18.25.12"
+export OVA_OPSMANAGER_IP="192.168.66.2"
+export OVA_OPSMANAGER_NETMASK="255.255.255.0"
+export OVA_OPSMANAGER_GATEWAY="192.168.66.1"
 export OVA_OPSMANAGER="${BITS}/PKS/pcf-vsphere-2.3-build.167.ova"
 
 export OVA_VRLI_DEPLOY="NO"
 export OVA_VRLI_NAME="VRLI"
-export OVA_VRLI_IP="172.18.5.9"
+export OVA_VRLI_IP="172.18.16.9"
 export OVA_VRLI="${BITS}/vREALIZE/VMware-vRealize-Log-Insight-4.5.1-6858700.ova"
 
 export OVA_VROPS_DEPLOY="NO"
 export OVA_VROPS_NAME="VROPS"
-export OVA_VROPS_IP="172.18.5.10"
+export OVA_VROPS_IP="172.18.16.10"
 export OVA_VROPS="${BITS}/vREALIZE/vRealize-Operations-Manager-Appliance-6.7.0.8183617_OVF10.ova"
 
 ################
@@ -111,10 +113,10 @@ export NSX_HOST_COMMON_NETWORK3="${VCENTER_PORTGROUP}"
 
 # NSX Manager, Controller, Edge Network Attributes
 # IP BASE like 172.18.5
-export NSX_IP_BASE="172.18.25"
+export NSX_IP_BASE="172.18.16"
 export NSX_MANAGER_IP="${NSX_IP_BASE}.4"
-export NSX_CONTROLLER_IP=("${NSX_IP_BASE}.5")
-export NSX_EDGE_IP=("${NSX_IP_BASE}.8" "${NSX_IP_BASE}.9" "${NSX_IP_BASE}.10") 
+export NSX_CONTROLLER_IP=("${NSX_IP_BASE}.5" "${NSX_IP_BASE}.6" "${NSX_IP_BASE}.7")
+export NSX_EDGE_IP=("${NSX_IP_BASE}.8" "${NSX_IP_BASE}.9") 
 export NSX_COMMON_PASSWORD="${PASSWORD}"
 export NSX_COMMON_DOMAIN="nsx.${DOMAIN}"
 export NSX_COMMON_NETMASK="255.255.255.0"
@@ -135,11 +137,11 @@ export NETWORK_T0_SUBNET_PREFIX_LENGTH=24
 export NETWORK_T0_GATEWAY="${NSX_IP_BASE}.1"
 export NETWORK_HOST_UPLINK_PNIC="vmnic1"
 export NETWORK_PKS_IP_BLOCK="172.16.0.0/16"
-export NETWORK_PKS_NODES_IP_BLOCK="10.255.0.0/16"
+export NETWORK_PKS_NODES_IP_BLOCK="10.246.0.0/16"
 #export NETWORK_VIPS_BASE="192.168.53"
-export NETWORK_VIPS_CIDR="192.168.54.0/23"
-export NETWORK_VIPS_ALLOCATION_START="192.168.54.1"
-export NETWORK_VIPS_ALLOCATION_END="192.168.55.126"
+export NETWORK_VIPS_CIDR="192.168.64.0/23"
+export NETWORK_VIPS_ALLOCATION_START="192.168.64.1"
+export NETWORK_VIPS_ALLOCATION_END="192.168.65.254"
 
 # NSX Cert and Creds
 export PI_NAME="pks-nsx-t-superuser"
