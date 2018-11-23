@@ -20,7 +20,7 @@ ovftool --acceptAllEulas --skipManifestCheck --X:injectOvfEnv --allowExtraConfig
 --prop:ntp_servers=${NTP} \
 --powerOn \
 --noSSLVerify \
--ds=${VCENTER_DATASTORE} -n=${OVA_OPSMANAGER_NAME} --network='${VCENTER_PORTGROUP}' \
+-ds=${VCENTER_DATASTORE} -n=${OVA_OPSMANAGER_NAME} --network='${OVA_OPSMANAGER_PORTGROUP}' \
 ${OVA_OPSMANAGER} \
 vi://${VCENTER_USERNAME}:'${VCENTER_PASSWORD}'@${VCENTER_TARGET}
 EOF
