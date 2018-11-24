@@ -2,13 +2,12 @@
 #bdereims@vmware.com
 
 ID=$( id -u )
-[ "${ID}" != "0" ] && echo "Must be root..." && exit 0
+[ "${ID}" != "0" ] && echo "Must be root..." ; exit 0
+
 . ../env
 
 NETWORK_MANAGER_USERNAME=${ADMIN}
 NETWORK_MANAGER_PASSWORD=$NSX_COMMON_PASSWORD
-
-echo $NETWORK_MANAGER_USERNAME
 
 NODE_ID=$(cat /proc/sys/kernel/random/uuid)
 
@@ -19,7 +18,6 @@ function get_response_id() {
 
 # This function imports certificat in NSX Manager
 function import_certificat() {
-  echo "import_certificat"
   CERT=$(awk '{printf "%s\\n", $0}' nsx.crt)
   KEY=$(awk '{printf "%s\\n", $0}' nsx.key)
   local certificat_json="{ \
@@ -52,7 +50,6 @@ cat nsx-cert.cnf | sed -e "s/###NSX_CN###/${NSX_COMMON_DOMAIN}/" > /tmp/nsx-cert
 # <(printf "[SAN]\nsubjectAltName=IP:${NSX_MANAGER_IP}")) -sha256 -days 3650
 
 # Create NSX Web certificat
-echo "create NSX Web certificate"
 openssl req -newkey rsa:2048 -x509 -nodes \
 -keyout nsx.key -new -out nsx.crt -subj /CN=${NSX_COMMON_DOMAIN} \
 -reqexts SAN -extensions SAN -config <(cat /tmp/nsx-cert.cnf \
