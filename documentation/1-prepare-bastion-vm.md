@@ -8,17 +8,17 @@ Update distro:\
 `$ apt upgrade`
 
 Dedicate a directory for the repo and binaries:\
-$ mkdir -p /data/BITS\
-$ cd /data
+`$ mkdir -p /data/BITS`\
+`$ cd /datai`
 
 Clone this repo:\
-$ git clone https://github.com/bdereims/pks-prep
+`$ git clone https://github.com/bdereims/pks-prep`
 
 Update VM to execute scripts:\
-$ cd pks-prep\
-$ ./0-update.sh
+`$ cd pks-prep`\
+`$ ./0-update.sh`
 
-Download all binaries:\
+Download all binaries:
 - PKS product + Pivotal Opsmanager from pivotal.io
 - NSX-T Manager, Controler and Edge OVAs
 

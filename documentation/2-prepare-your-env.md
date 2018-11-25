@@ -3,7 +3,7 @@
 In order to automate installation, you need to maintain a 'env' file describing your installation.
 
 Copy example file:\
-$ cp env-example env
+`$ cp env-example env`
 
 Edit this file with your favorite editor and update variables accordingly your vSphere installation.
 There are some comments and variable names are pretty obvious.
