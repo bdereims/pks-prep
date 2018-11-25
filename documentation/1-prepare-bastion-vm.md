@@ -13,3 +13,16 @@ $ cd /data
 
 Clone this repo:\
 $ git clone https://github.com/bdereims/pks-prep
+
+Update VM to execute scripts:\
+$ cd pks-prep\
+$ ./0-update.sh
+
+Download all binaries:\
+- PKS product + Pivotal Opsmanager from pivotal.io
+- NSX-T Manager, Controler and Edge OVAs
+
+You should obtain something like this:\
+![alt text][bastion-vm]
+
+[bastion-vm]: img/bastion-vm.png "Bastion VM"
