@@ -3,6 +3,8 @@
 
 . ../env
 
+rm nsx.* pks-nsx-t-superuser.* /tmp/nsx-cert.cnf
+
 NETWORK_MANAGER_USERNAME=${ADMIN}
 NETWORK_MANAGER_PASSWORD=$NSX_COMMON_PASSWORD
 
@@ -99,6 +101,7 @@ curl -k -X GET \
 cat nsx-cert.cnf | sed -e "s/###NSX_CN###/${NSX_COMMON_DOMAIN}/" > /tmp/nsx-cert.cnf
 
 # Create NSX Web certificat
+echo " "
 echo "create NSX Web certificate"
 openssl req -newkey rsa:2048 -x509 -nodes \
 -keyout nsx.key -new -out nsx.crt -subj /CN=${NSX_COMMON_DOMAIN} \
