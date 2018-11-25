@@ -1,6 +1,6 @@
 # Install and Configure NSX-T
 
-As a first step, deploy NSX-T automatically base on env file.
+As a first step, we need to deploy NSX-T automatically based on the 'env' file.
 
 Let's do that:\
 `$ cd nsx-t`\
@@ -19,6 +19,9 @@ Activate Controller(s) and Edge(s) against Manager:\
 Configure and create virtual network items in NSX for PKS, you will see created item list:\
 `$ ./3-configure_nsx.sh`
 
+The result:\
+![alt text][configure-nsx]
 
 
 [vcsa-nsx]: img/vcsa-nsx.png "VCSA NSX"
+[configure-nsx]: img/configure-nsx.png "VCSA NSX"
