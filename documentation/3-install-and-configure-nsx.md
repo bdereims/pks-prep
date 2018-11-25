@@ -20,8 +20,8 @@ Configure and create virtual network items in NSX for PKS, you will see created 
 `$ ./3-configure_nsx.sh`
 
 The result:\
-![alt text][configure-nsx]
+![alt text][configure-nsx =400x]
 
 
 [vcsa-nsx]: img/vcsa-nsx.png "VCSA NSX"
-[configure-nsx]: img/configure-nsx.png =400x "VCSA NSX"
+[configure-nsx]: img/configure-nsx.png "VCSA NSX"
