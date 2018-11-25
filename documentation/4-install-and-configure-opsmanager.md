@@ -16,6 +16,7 @@ Within Opsmanager, setup the Bosh Director for vSphere Tile with:
 - Security: copy/paste CA Cert from `admin -> Settings -> Advanced -> Download Root CA Cert`
 
 Pivotal Container Service Tile with:
+
 Networking Configurations: 
 - under `NSX Manager Super User Principal Identity Certificate` copy/paste `pks-nsx-t-superuser.crt` and `pks-nsx-t-superuser.key` from nsx-t directory
 - check box for `Disable SSL certificate verification` because we're using self-signed certificate
