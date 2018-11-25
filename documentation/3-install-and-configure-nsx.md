@@ -20,8 +20,17 @@ Configure and create virtual network items in NSX for PKS, you will see created 
 `$ ./3-configure_nsx.sh`
 
 The result:\
-![alt text][configure-nsx =400x]
+![alt text][configure-nsx]
 
+Create and upload NSX Service Account and Certificate:\
+`$ ./4-nsx-cert.sh`
+
+Check out precious files used later during OpsManager setup:
+- nsx.crt
+- pks-nsx-t-superuser.crt
+- pks-nsx-t-superuser.key
+
+Now, NSX-T is almost ready for PKS! You have to adjust depenping your context.
 
 [vcsa-nsx]: img/vcsa-nsx.png "VCSA NSX"
 [configure-nsx]: img/configure-nsx.png "VCSA NSX"
