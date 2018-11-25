@@ -24,4 +24,4 @@ The result:\
 
 
 [vcsa-nsx]: img/vcsa-nsx.png "VCSA NSX"
-[configure-nsx]: img/configure-nsx.png "VCSA NSX"
+[configure-nsx]: img/configure-nsx.png =400x "VCSA NSX"
