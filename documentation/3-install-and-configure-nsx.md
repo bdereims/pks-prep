@@ -30,7 +30,15 @@ Check out precious files used later during OpsManager setup:
 - pks-nsx-t-superuser.crt
 - pks-nsx-t-superuser.key
 
+Don't forget to configure vSphere Cluster in NSX-T Manager in order to deploy VIB and set the PNIC:
+![alt text][nsx-esx-tep]
+
+Verify that Edges and ESXs are now transport nodes:\
+![alt text][nsx-transport-nodes]
+
 Now, NSX-T is almost ready for PKS! You have to adjust depenping your context.
 
 [vcsa-nsx]: img/vcsa-nsx.png "VCSA NSX"
 [configure-nsx]: img/configure-nsx.png "VCSA NSX"
+[nsx-esx-tep]: img/nsx-esx-tep.png "ESX TEP Network"
+[nsx-transport-nodes]: img/nsx-transport-nodes.png "Transport Nodes"
