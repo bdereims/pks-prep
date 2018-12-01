@@ -2,6 +2,9 @@
 
 source ../env
 
+OUTPUT_FILE="outcomes.lst"
+cp /dev/null ${OUTPUT_FILE}
+
 # Default values
 NETWORK_MANAGER_USERNAME=${ADMIN}
 NETWORK_MANAGER_PASSWORD=$NSX_COMMON_PASSWORD
@@ -204,7 +207,10 @@ function create_ipam_entries() {
     \"cidr\": \"$NETWORK_PKS_IP_BLOCK\"
   }"
 
-  get_rest_response "api/v1/pools/ip-blocks" "$ipam_json"
+  response=$( get_rest_response "api/v1/pools/ip-blocks" "$ipam_json" )
+
+  pks_ip_block_id=$(get_response_id "$response")
+  echo "IP Block ID: ${pks_ip_block_id}" >> ${OUTPUT_FILE}
 
   local ipam_json="{ \
     \"display_name\": \"pks-nodes-ip-block\", \
@@ -212,7 +218,10 @@ function create_ipam_entries() {
     \"cidr\": \"$NETWORK_PKS_NODES_IP_BLOCK\"
   }"
 
-  get_rest_response "api/v1/pools/ip-blocks" "$ipam_json"
+  response=$( get_rest_response "api/v1/pools/ip-blocks" "$ipam_json" )
+  
+  nodes_ip_block_id=$(get_response_id "$response")
+  echo "Nodes IP Block ID: ${nodes_ip_block_id}" >> ${OUTPUT_FILE}
 }
 
 
@@ -554,6 +563,7 @@ echo "Step 4: Creating IP address pools"
 response=$(create_ip_pool_pks "pks-vips")
 check_for_error "$response"
 pks_vips=$(get_response_id "$response")
+echo "VIPS pool ID: ${pks_vips}" >> ${OUTPUT_FILE}
 response=$(create_ip_pool "tunnel-ip-pool")
 check_for_error "$response"
 ip_pool_id=$(get_response_id "$response")
@@ -579,6 +589,7 @@ echo "Step 7: Creating T0 router"
 response=$(create_router "tier-0-router" $edge_cluster_id "TIER0" "ACTIVE_STANDBY")
 check_for_error "$response"
 t0_router_id=$(get_response_id "$response")
+echo "T0 Router ID: ${t0_router_id}" >> ${OUTPUT_FILE}
 
 # Step 8: Create Logical switch
 echo "Step 8: Creating logical switch"
@@ -659,3 +670,5 @@ echo ""
 echo "OPERATION COMPLETED: Configure NSX"
 echo ""
 
+echo "All details in '${OUTPUT_FILE}':"
+cat ${OUTPUT_FILE}
