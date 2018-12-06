@@ -3,7 +3,7 @@
 
 . ../env
 
-rm nsx.* pks-nsx-t-superuser.* /tmp/nsx-cert.cnf
+rm nsx.* pks-nsx-t-superuser.* /tmp/nsx-cert.cnf 2>&1 > /dev/null
 
 NETWORK_MANAGER_USERNAME=${ADMIN}
 NETWORK_MANAGER_PASSWORD=$NSX_COMMON_PASSWORD
