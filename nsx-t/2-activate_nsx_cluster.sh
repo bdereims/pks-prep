@@ -23,7 +23,8 @@ function configure_nsx_cluster() {
 
 I=0
 for CTRL_IP in ${NSX_CONTROLLER_IP[@]}; do
-  echo "Join NSX controller to management plane"
+  echo "Join NSX controller(s) to management plane"
+  echo "---"
 
 #  eval sshpass -p $manager_password ssh -o StrictHostKeyChecking=no root@${CTRL_IP} "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"set logging-server ${OVA_VRLI_IP} proto udp level info\""
 
@@ -47,6 +48,7 @@ for CTRL_IP in ${CTRL_SECONDARY}; do
 done
 
 for EDGE_IP in ${NSX_EDGE_IP[@]}; do
+  echo "---"
   echo "Join NSX edge(s) to management plane"
 
 #  eval sshpass -p $manager_password ssh -o StrictHostKeyChecking=no root@${EDGE_IP} "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"set logging-server ${OVA_VRLI_IP} proto udp level info\""
@@ -73,4 +75,6 @@ configure_nsx_cluster
 
 echo ""
 echo "OPERATION COMPLETED: Activate NSX cluster"
+echo ""
+echo "Verifiy the configuration in NSX GUI, strongly suggest to wait few minutes before execute next step"
 echo ""
