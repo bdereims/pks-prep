@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash 
 
 source ../env
 
@@ -208,7 +208,14 @@ function create_ipam_entries() {
   }"
 
   response=$( get_rest_response "api/v1/pools/ip-blocks" "$ipam_json" )
+  echo $response | jq '.id' | sed 's/"//'
+  echo "BRICE"
+  read a
+  echo "### ${response}"
+
   pks_ip_block_id=$(get_response_id "$response")
+  echo "### ${pks_ip_block_id}"
+  read a
 
   local ipam_json="{ \
     \"display_name\": \"pks-nodes-ip-block\", \
@@ -217,7 +224,10 @@ function create_ipam_entries() {
   }"
 
   response=$( get_rest_response "api/v1/pools/ip-blocks" "$ipam_json" )
+  echo "### ${response}"
+  
   nodes_ip_block_id=$(get_response_id "$response")
+  echo "### ${nodes_ip_block_id}"
 }
 
 
@@ -528,32 +538,6 @@ echo "OPERATION COMPLETED: Configure NSX"
 echo ""
 
 
-# Step 1: Creating VLAN transport zone
-echo "Step 1: Creating VLAN transport zone"
-response=$(create_transport_zone "tz-vlan" "vlan-host-switch" "VLAN Trasnsport Zone" "VLAN")
-check_for_error "$response"
-vlan_transport_id=$(get_response_id "$response")
-
-# Step 2: Creating OVERLAY transport zone
-echo "Step 2: Creating OVERLAY transport zone"
-response=$(create_transport_zone "tz-overlay" "overlay-host-switch" "Overlay Trasnsport Zone" "OVERLAY")
-check_for_error "$response"
-overlay_transport_id=$(get_response_id "$response")
-
-# Step 3: Creating uplink profiles
-echo "Step 3: Creating uplink profiles"
-response=$(create_uplink_profile_overlay_host)
-check_for_error "$response"
-uplink_profile_overlay_host_id=$(get_response_id "$response")
-
-response=$(create_uplink_profile_overlay_edgevm)
-check_for_error "$response"
-uplink_profile_overlay_edgevm_id=$(get_response_id "$response")
-
-response=$(create_uplink_profile_vlan)
-check_for_error "$response"
-uplink_profile_vlan_id=$(get_response_id "$response")
-
 # Step 4: Create IP address pool
 echo "Step 4: Creating IP address pools"
 response=$(create_ip_pool_pks "pks-vips")
@@ -562,111 +546,14 @@ pks_vips=$(get_response_id "$response")
 response=$(create_ip_pool "tunnel-ip-pool")
 check_for_error "$response"
 ip_pool_id=$(get_response_id "$response")
-#ipam_entry=$(create_ipam_entries "$response")
 create_ipam_entries "$response"
 #check_for_error "$response"
-
-# Step 5: Configure Edge Trasnsport node(s)
-echo "Step 5: Configuring Edge transport node(s)"
-response=$(configure_edge_transport_node $vlan_transport_id $overlay_transport_id $uplink_profile_overlay_edgevm_id $uplink_profile_vlan_id $ip_pool_id)
-#check_for_error "$response"
-#transport_node_id=$(get_response_id "$response")
-
-# Step 6: Create Edge Cluster
-echo "Step 6: Creating Edge cluster"
-#response=$(create_edge_cluster $transport_node_id)
-response=$(create_edge_cluster)
-check_for_error "$response"
-edge_cluster_id=$(get_response_id "$response")
-
-# Step 7: Create T0 router
-echo "Step 7: Creating T0 router"
-#response=$(create_router "tier-0-router" $edge_cluster_id "TIER0" "ACTIVE_ACTIVE")
-response=$(create_router "tier-0-router" $edge_cluster_id "TIER0" "ACTIVE_STANDBY")
-check_for_error "$response"
-t0_router_id=$(get_response_id "$response")
-
-# Step 8: Create Logical switch
-echo "Step 8: Creating logical switch"
-response=$(create_logical_switch $vlan_transport_id "vlan-logical-switch")
-check_for_error "$response"
-logical_switch_id=$(get_response_id "$response")
-
-# Step 9: Create Logical port
-echo "Step 9: Creating logical port"
-response=$(create_logical_port "to-tier0-router" $logical_switch_id)
-check_for_error "$response"
-logical_port_id=$(get_response_id "$response")
-
-# Step 10: Create Router port
-echo "Step 10: Creating router port"
-response=$(create_uplink_router_port "to-vlan-logical-switch" $t0_router_id $logical_port_id $NETWORK_T0_SUBNET_IP_ADDRESS $NETWORK_T0_SUBNET_PREFIX_LENGTH)
-check_for_error "$response"
-t0_rourter_port_id=$(get_response_id "$response")
-
-# Step 11: Add static route
-echo "Step 11: Adding static route"
-response=$(add_static_route $t0_router_id $NETWORK_T0_GATEWAY)
-check_for_error "$response"
-t0_static_route_id=$(get_response_id "$response")
-
-# Step 12: Register vCenter
-echo "Step 12: Register VCSA"
-response=$(register_vcsa ${VCENTER_IP} ${VCENTER_USERNAME} ${PASSWORD})
-check_for_error "$response"
-t0_static_route_id=$(get_response_id "$response")
-
-# DHCP Steps: Create T1 router
-#echo "DHCP Configure: Creating T1 router"
-#response=$(create_router "dhcp-server-router" $edge_cluster_id "TIER1" "ACTIVE_STANDBY")
-#check_for_error "$response"
-#dhcp_router_id=$(get_response_id "$response")
-
-# DHCP Steps: Create router port in T0 for DHCP router
-#echo "DHCP Configure: Creating router port in T0 for DHCP router"
-#response=$(create_T0_link_router_port "link_to_dhcp_port" $t0_router_id)
-#check_for_error "$response"
-#t0_link_router_port_for_dhcp_router_id=$(get_response_id "$response")
-
-# DHCP Steps: Create router port in DHCP router and link it to T0 router port
-#echo "DHCP Configure: Creating router port in DHCP router and link it to T0 router port"
-#response=$(create_T1_link_router_port "link_to_t0_port" $dhcp_router_id $t0_link_router_port_for_dhcp_router_id)
-#check_for_error "$response"
-#dhch_router_port_link_t0_id=$(get_response_id "$response")
-
-# DHCP Steps: Create logical switch to connect to dhcp server
-#echo "DHCP Configure: Creating logical switch to connect to dhcp server"
-#response=$(create_logical_switch $overlay_transport_id "dhcp-server-switch")
-#check_for_error "$response"
-#dhcp_logical_switch_id=$(get_response_id "$response")
-
-# DHCP Steps: Create logical port to connect to dhcp server
-#echo "DHCP Configure: Creating logical port to connect to dhcp server"
-#response=$(create_logical_port "to-dchp-router" $dhcp_logical_switch_id)
-#check_for_error "$response"
-#dhcp_logical_port_id=$(get_response_id "$response")
-
-# DHCP Steps: Create router port connect to dhcp server
-#echo "DHCP Configure: Creating router port to connect to dhcp server"
-#response=$(create_downlink_router_port "to-dhcp-switch-port" $dhcp_router_id $dhcp_logical_port_id $NETWORK_DHCP_SUBNET_IP_ADDRESS $NETWORK_DHCP_SUBNET_PREFIX_LENGTH)
-#check_for_error "$response"
-#dhcp_rourter_port_id=$(get_response_id "$response")
-
-# DHCP Steps: Configure router advertisement configuration
-#echo "DHCP Configure: Configuring router advertisement configuration"
-#response=$(edit_router_advertisement $dhcp_router_id)
-#check_for_error "$response"
-
-# Enable install upgrade
-echo "Enabling Install Upgrade"
-enable_install_upgrade
 
 echo ""
 echo "OPERATION COMPLETED: Configure NSX"
 echo ""
 
-echo "All details in '${OUTPUT_FILE}' file, copy/paste these IDs in Opsmanager:"
-echo " "
+echo "All details in '${OUTPUT_FILE}':"
 echo "Pods IP Block ID: ${pks_ip_block_id}" >> ${OUTPUT_FILE}
 echo "Nodes IP Block ID: ${nodes_ip_block_id}" >> ${OUTPUT_FILE}
 echo "T0 Router ID: ${t0_router_id}" >> ${OUTPUT_FILE}
