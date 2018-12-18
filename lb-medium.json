@@ -2,6 +2,8 @@
  "name": "lb-profile-medium",
  "description": "Network profile for MEDIUM size NSX-T load balancer",
  "parameters": { 
-    "lb_size": "medium" 
+    "lb_size": "medium",
+    "pod_routable": true,
+    "pod_ip_block_ids": [c43c3412-22b6-4503-a66e-cdc1574f6663]
     }
 }

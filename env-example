@@ -64,7 +64,7 @@ export CLUSTER_NAME="k8s-1"
 
 # OpsManager VM IP = DIRECTOR VM deployed by OpsManager, fill-in after deployment
 #export DIRECTOR="director.${DOMAIN}"
-export DIRECTOR="192.168.55.131"
+export DIRECTOR="192.168.72.10"
 export BOSH_ENVIRONMENT=pks
 # OpsManager VM IP or FQDN
 export OPSMANAGER="opsmanager.${DOMAIN}"
