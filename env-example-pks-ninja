@@ -57,7 +57,7 @@ alias notary="${PWD}/docker/notary -s https://${REG_FQDN}:4443 --tlscacert ~/.do
 export UAA_FQDN="api.${PKS_FQDN}"
 
 # K8s Cluster name, add this in your hosts or dns, ex: "k8s-1"
-export CLUSTER_NAME="k8s-01"
+export CLUSTER_NAME="my-cluster"
 
 # OpsManager VM IP = DIRECTOR VM deployed by OpsManager, fill-in after deployment
 export DIRECTOR="director.${DOMAIN}"
