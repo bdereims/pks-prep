@@ -612,7 +612,7 @@ t0_static_route_id=$(get_response_id "$response")
 
 # Step 12: Register vCenter
 echo "Step 12: Register VCSA"
-response=$(register_vcsa ${VCENTER_IP} ${VCENTER_USERNAME} ${PASSWORD})
+response=$(register_vcsa ${VCENTER_IP} ${VCENTER_USERNAME} ${VCENTER_PASSWORD})
 check_for_error "$response"
 t0_static_route_id=$(get_response_id "$response")
 
