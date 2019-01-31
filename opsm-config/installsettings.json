@@ -1,0 +1,1688 @@
+{
+    "guid": "841b89688393dccc283c",
+    "infrastructure": {
+        "availability_zones": [
+            {
+                "clusters": [
+                    {
+                        "cluster": "Cluster",
+                        "guid": "df03678ecffac89d00e9",
+                        "resource_pool": "PKS"
+                    }
+                ],
+                "guid": "fc538aac81c6296c575c",
+                "iaas_configuration_guid": "d75d90b163879415f250",
+                "name": "PKS"
+            }
+        ],
+        "compilation_vm_credentials": {
+            "identity": "vcap",
+            "password": "lEu39Kr7_htJm3QlHdOKDlE9zQVTtden",
+            "salt": "24532e35f7f7d897"
+        },
+        "iaas_configurations": [
+            {
+                "bosh_disk_path": "pcf_disk",
+                "bosh_template_folder": "pcf_templates",
+                "bosh_vm_folder": "pcf_vms",
+                "datacenter": "cPod-APPTX",
+                "disk_type": "thin",
+                "ephemeral_datastores": [
+                    "Datastore NFS"
+                ],
+                "guid": "d75d90b163879415f250",
+                "name": "cPod-APPTX",
+                "nsx_address": "nsx.cpod-apptx.az-lab.shwrfr.com",
+                "nsx_ca_certificate": "-----BEGIN CERTIFICATE-----\r\nMIIDDjCCAfagAwIBAgIJAKTSYDlslu5AMA0GCSqGSIb3DQEBCwUAMCsxKTAnBgNV\r\nBAMMIG5zeC5jcG9kLWFwcHR4LmF6LWxhYi5zaHdyZnIuY29tMB4XDTE5MDEyMzEz\r\nNTIyNloXDTI5MDEyMDEzNTIyNlowKzEpMCcGA1UEAwwgbnN4LmNwb2QtYXBwdHgu\r\nYXotbGFiLnNod3Jmci5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB\r\nAQDjIY49E7XVuTqD578PGZimpSdSFThbwykA3QMZt0jerFIKIMC1UiatWRy3abz2\r\nw83lmhepA94iP9JjdSqvM4bMjZ6g9pEPWeyeD56OSguTwRxiKCjvKFNDaxvyqz/w\r\nEbw6S1cm6Y0d4NaJ4zb4R1MasxL0T4cYvlBGrgu+Nb8fr+ZZJyqmXOKiGJlPgcRA\r\nCL41HAxSaDOxPomjJlRO9/uwcYJM8KV9T6z8o7X/4JMElORJYy511UXcYwyI12pP\r\nX2oEfDP8cQrKoYWzzgTgkx/zC8DpWSX4wwk8Dx0ALJwTw17DEU1Az4Cj5XocgpK/\r\nKfP2H1n96IzbCnjvHJMg2xPhAgMBAAGjNTAzMDEGA1UdEQQqMCiCIG5zeC5jcG9k\r\nLWFwcHR4LmF6LWxhYi5zaHdyZnIuY29thwSsFAMEMA0GCSqGSIb3DQEBCwUAA4IB\r\nAQBOUG7GFVdMyJX01GFwQMOzAv4jhmbcwYNPyByCbb0p48N3YOvxLFAe9zUQcMqU\r\nIBGQb2/44+7iLcy+yoIIQp2ARJ19NZ+2Gwdcot1NCwCma7Fahr6wRk64IN/Qzm14\r\nAQo+eWFceLT/kuRgWxWS2vVE3o8K2bR7uD9Y5tub7D2jsnBL5oUrvXQEvb/464Z+\r\ntcOgmn0h8nB/S0vylaSop4AGyMyjrH0ybz+zWj4Nj6Lh+B03+lFNC+CdEDmSDVmv\r\nWGSwTkMkKpFsRZclX9UFbB7WGL+VwcPcuIzucHba4u+zZ+wkyPcaCo4JJvl+vW87\r\nDfsgZJwSJziCATyiebDKyALC\r\n-----END CERTIFICATE-----\r\n",
+                "nsx_mode": "nsx-t",
+                "nsx_networking_enabled": true,
+                "nsx_password": "vxnjecZWHP2zZPR!",
+                "nsx_username": "admin",
+                "persistent_datastores": [
+                    "Datastore NFS"
+                ],
+                "ssl_verification_enabled": false,
+                "vcenter_host": "vcsa.cpod-apptx.az-lab.shwrfr.com",
+                "vcenter_password": "vxnjecZWHP2zZPR!",
+                "vcenter_username": "administrator@cpod-apptx.az-lab.shwrfr.com"
+            }
+        ],
+        "icmp_checks_enabled": true,
+        "include_opsmanager_root_ca_in_trusted_certificates": false,
+        "locked": false,
+        "networks": [
+            {
+                "guid": "dea1eede6c708e5963cd",
+                "name": "PKS",
+                "subnets": [
+                    {
+                        "availability_zone_references": [
+                            "fc538aac81c6296c575c"
+                        ],
+                        "cidr": "1.1.1.0/24",
+                        "dns": "172.20.3.1",
+                        "gateway": "172.20.3.1",
+                        "guid": "791d4c56bc4d0f2c453d",
+                        "iaas_identifier": "pks-mgmt",
+                        "reserved_ip_ranges": "1.1.1.1-1.1.1.10"
+                    }
+                ]
+            }
+        ],
+        "trusted_certificates": "-----BEGIN CERTIFICATE-----\r\nMIIDUDCCAjigAwIBAgIUHrx/vYjzpGnNi4VOstXCUf1u50MwDQYJKoZIhvcNAQEL\r\nBQAwHzELMAkGA1UEBhMCVVMxEDAOBgNVBAoMB1Bpdm90YWwwHhcNMTkwMTI0MDkw\r\nODI1WhcNMjMwMTI1MDkwODI1WjAfMQswCQYDVQQGEwJVUzEQMA4GA1UECgwHUGl2\r\nb3RhbDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAODGdqqgT3aNJ8s5\r\n90yp/tv9cB+D1NSYTl2vbYIesnYJb/Tbo9YdpgqAQWVzRRP8a+VHITS0bqNso4SJ\r\nRR4igPDDqnRyYKJRnyPUTdoMv8wK4wXEh2A6AuEQTTeMaRBUkwPbak4oNAPHmlni\r\n55wCuGNnpJP6pVNvpo9ger8Uct3jWu/K/AnIiwYLN3TXNC9UBb0AAxhg0Hfiprsc\r\nSqZUp0cZfz6JwktJ23aL3ZcAcqLO6/fbHdLVgeB0+6z6tTEK6g6LKODIy9xd144V\r\nVtoJrZDQZVeElwjaqbLIxni59BDrzP2+sf3xIkQbNGFW7qDqKZvNP6OSP0yawsqu\r\nRuez8PkCAwEAAaOBgzCBgDAdBgNVHQ4EFgQUxuqZFkaLiDqu8cvnRYyzGllTumow\r\nHwYDVR0jBBgwFoAUxuqZFkaLiDqu8cvnRYyzGllTumowHQYDVR0lBBYwFAYIKwYB\r\nBQUHAwIGCCsGAQUFBwMBMA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgEG\r\nMA0GCSqGSIb3DQEBCwUAA4IBAQCfBt6zXERvaS/RSLikALvvGdD+CFKdAYa1CGv7\r\nNlmOJwm48sSWNulxzUZfxjoD/XoOsbtGleI66S73oHgKCEx6g1BbcsqEacwzN9Nc\r\nbcTqKbCUDyjIh7oxjFyZoPF+gIxRKeu64C2JTnn6VVn06GsoWWT9s1ox/yAhgDuq\r\nah2yXMgz5HDDJPKXHMhsYKqm2KxbVknBp9dMoehfy680J9M7T00st7zxTj4lhSCA\r\n8Z9kZko2CGsz9UzqUk5p+ZHMOr0fxVvHm3tOoYhpl3LRNq0uA3e+euey3GnZT+wh\r\nwnW771UL2PuyH8RDJkwoBpisWXBctGUNRJu1FAtpTFig4GZ/\r\n-----END CERTIFICATE-----",
+        "type": "vsphere",
+        "vm_password_type": "generate"
+    },
+    "installation_schema_version": "2.4",
+    "products": [
+        {
+            "bosh_metrics_forwarder_client_credentials": {
+                "identity": "bosh_metrics_client",
+                "password": "U-9Cq7maOeqb-JOa_e3nVSGJgRx0g8gC"
+            },
+            "bosh_metrics_forwarder_server_credentials": {
+                "identity": "bosh_metrics_server",
+                "password": "DLk0MQKTDhauBJ6HoNZ5y00tBfONDXV_"
+            },
+            "credhub_encryption_password": {
+                "secret": "FlrPQwWARDwpOZ-WDe6mWUJaybzeHkmg"
+            },
+            "director_configuration": {
+                "allow_legacy_agents": true,
+                "blobstore_type": "local",
+                "bosh_recreate_on_next_deploy": false,
+                "bosh_recreate_persistent_disks_on_next_deploy": false,
+                "custom_ssh_banner": "cPod-APPTX",
+                "database_type": "internal",
+                "director_worker_count": 5,
+                "external_database_options": {
+                    "tls_enabled": false
+                },
+                "gcs_blobstore_options": {
+                    "storage_class": "REGIONAL"
+                },
+                "hm_emailer_options": {
+                    "enabled": false,
+                    "recipients": {
+                        "value": null
+                    },
+                    "tls": false
+                },
+                "hm_pager_duty_options": {
+                    "enabled": false
+                },
+                "keep_unreachable_vms": false,
+                "local_blobstore_options": {
+                    "tls_enabled": true
+                },
+                "ntp_servers": [
+                    "172.20.3.1"
+                ],
+                "post_deploy_enabled": true,
+                "resurrector_enabled": true,
+                "retry_bosh_deploys": false,
+                "s3_blobstore_options": {
+                    "signature_version": "2"
+                },
+                "skip_director_drain": true
+            },
+            "director_credhub_client_credentials": {
+                "identity": "director_to_credhub",
+                "password": "JjpwdwSB0PIlknvL7RWR9S2qF_OT7OhY"
+            },
+            "guid": "p-bosh-0bd4d421ff55e26a124b",
+            "identifier": "p-bosh",
+            "installation_name": "p-bosh",
+            "jobs": [
+                {
+                    "guid": "director-9024c11b8263a8380670",
+                    "identifier": "director",
+                    "installation_name": "director",
+                    "instance": {
+                        "identifier": "instances"
+                    },
+                    "properties": [
+                        {
+                            "deployed": false,
+                            "identifier": "agent_credentials",
+                            "value": {
+                                "identity": "vcap"
+                            }
+                        },
+                        {
+                            "deployed": false,
+                            "identifier": "registry_credentials",
+                            "value": {
+                                "identity": "registry"
+                            }
+                        },
+                        {
+                            "deployed": false,
+                            "identifier": "director_credentials",
+                            "value": {
+                                "identity": "director"
+                            }
+                        },
+                        {
+                            "deployed": false,
+                            "identifier": "nats_credentials",
+                            "value": {
+                                "identity": "nats"
+                            }
+                        },
+                        {
+                            "deployed": false,
+                            "identifier": "postgres_credentials",
+                            "value": {
+                                "identity": "postgres"
+                            }
+                        },
+                        {
+                            "deployed": false,
+                            "identifier": "blobstore_credentials",
+                            "value": {
+                                "identity": "blobstore"
+                            }
+                        },
+                        {
+                            "deployed": false,
+                            "identifier": "health_monitor_credentials",
+                            "value": {
+                                "identity": "health_monitor"
+                            }
+                        },
+                        {
+                            "deployed": false,
+                            "identifier": "uaa_admin_credentials",
+                            "value": {
+                                "identity": "admin"
+                            }
+                        },
+                        {
+                            "deployed": false,
+                            "identifier": "uaa_jwt_key"
+                        },
+                        {
+                            "deployed": false,
+                            "identifier": "uaa_login_client_credentials",
+                            "value": {
+                                "identity": "login"
+                            }
+                        },
+                        {
+                            "deployed": false,
+                            "identifier": "uaa_bosh_client_credentials",
+                            "value": {
+                                "identity": "bosh_admin_client"
+                            }
+                        },
+                        {
+                            "deployed": false,
+                            "identifier": "jmx_rsa_certificate"
+                        },
+                        {
+                            "deployed": false,
+                            "identifier": "bbr_ssh_credentials"
+                        },
+                        {
+                            "deployed": false,
+                            "identifier": "uaa_encryption_key"
+                        }
+                    ],
+                    "vm_credentials": {
+                        "identity": "vcap",
+                        "password": "zOF_q5n7QdPmr0iYl2NnWs37iryAElc6",
+                        "salt": "6f653306680ac45e"
+                    }
+                },
+                {
+                    "guid": "compilation-25d2af1545a472c46b2a",
+                    "identifier": "compilation",
+                    "installation_name": "compilation",
+                    "instance": {
+                        "identifier": "instances"
+                    },
+                    "vm_credentials": {
+                        "identity": "vcap",
+                        "password": "S0ZS2l_8iwcx_VrEgyascGwhyQVSTO7o",
+                        "salt": "82eafabaeec6c4c4"
+                    }
+                }
+            ],
+            "network_reference": "dea1eede6c708e5963cd",
+            "prepared": false,
+            "product_version": "2.4-build.131",
+            "singleton_availability_zone_reference": "fc538aac81c6296c575c",
+            "stemcell": {
+                "file": "bosh-stemcell-170.9-vsphere-esxi-ubuntu-xenial-go_agent.tgz",
+                "hypervisor": "esxi",
+                "infrastructure": "vsphere",
+                "name": "bosh-vsphere-esxi-ubuntu-xenial-go_agent",
+                "os": "ubuntu-xenial",
+                "version": "170.9"
+            },
+            "syslog_config": {
+                "enabled": false,
+                "tls_enabled": false,
+                "transport_protocol": "tcp"
+            },
+            "uaa_admin_client_credentials": {
+                "identity": "admin",
+                "password": "t_YFnEwg_iHmRWLNNju6r_a_J_9UiXLa"
+            },
+            "uaa_admin_user_credentials": {
+                "identity": "admin",
+                "password": "hEzvaIDp4LY4J1rZLO8WnW3_UIC8yNuW"
+            },
+            "uaa_bbr_client_credentials": {
+                "identity": "bbr_client",
+                "password": "i8lRQhZTqCdQtC2xEz0Dc9P4iUKsE-IT"
+            },
+            "uaa_credentials": {
+                "identity": "ops_manager",
+                "password": "aL3t9flB57zIMHRVe1bQj-AAwA0DCfUo"
+            }
+        },
+        {
+            "applied_data_migrations": [
+                "201804131454_enabling_multi_azs.js",
+                "201806141411_master_instances.js",
+                "201802271027_uaa_credentials_rename.js",
+                "201810151625_sink_resource.js",
+                "201804180215_enable_k8s_public_ips.js",
+                "201811201612_syslog_migration_to_syslog.js",
+                "201803061207_persistent_disk_type_to_worker_persistent_disk_type.js",
+                "201802201637_uaa_url_to_api_hostname.js",
+                "201803291019_master_creds.js"
+            ],
+            "availability_zone_references": [
+                "fc538aac81c6296c575c"
+            ],
+            "guid": "pivotal-container-service-c3fc470828a8f21a6380",
+            "identifier": "pivotal-container-service",
+            "installation_name": "pivotal-container-service-c3fc470828a8f21a6380",
+            "jobs": [
+                {
+                    "guid": "pivotal-container-service-7de5cd80e6e169e00ccd",
+                    "identifier": "pivotal-container-service",
+                    "installation_name": "pivotal-container-service",
+                    "instance": {
+                        "identifier": "instances"
+                    },
+                    "properties": [
+                        {
+                            "deployed": false,
+                            "identifier": "pks_tls",
+                            "value": {
+                                "cert_pem": "-----BEGIN CERTIFICATE-----\r\nMIIDkzCCAnugAwIBAgIUIuX0rpeQzCHRhQSeunUGaxZqrLIwDQYJKoZIhvcNAQEL\r\nBQAwHzELMAkGA1UEBhMCVVMxEDAOBgNVBAoMB1Bpdm90YWwwHhcNMTkwMTMwMTU1\r\nODAwWhcNMjEwMTMwMTU1ODAwWjBIMQswCQYDVQQGEwJVUzEQMA4GA1UECgwHUGl2\r\nb3RhbDEnMCUGA1UEAwweKi5jcG9kLWFwcHR4LmF6LWxhYi5zaHdyZnIuY29tMIIB\r\nIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApaVJqTzC/LungcvSwX0BOVg8\r\nKbf4UlQhi24d+WSOfItVh0KwAS1oEkYncyH7oDvXbpOUuxEgk8moKlV4sRAgxO2h\r\n3nF5w7Evp8v6wEFMTRaM5KwwXrA8EOTRsDWyU9n30gr58ue++4gO23SICVLqqkJ/\r\nH+FhTQIs8FZO0DYtcnWSH3wGZZzjtkSds8sjCCaUk4N9VoLzsq16mer/2iImnk8C\r\n9eI2s9hTRrlPlP/a0NT1SQ663zWyqWFghprJaJjJzV4ahgYRoD+gohbrxI3H2tnW\r\nbFyyDdLe/or4KwXvOOuL7Q9wtOnqTjZ99zAJS3W+6VguyBsShC3rxzpkrJaCRwID\r\nAQABo4GdMIGaMB0GA1UdDgQWBBSJWJVoOHO56BpiHPmxwd5we0SqhjAfBgNVHSME\r\nGDAWgBRnR11xdD5GlqV8vVtk/XA1+lbUnzAdBgNVHSUEFjAUBggrBgEFBQcDAgYI\r\nKwYBBQUHAwEwDgYDVR0PAQH/BAQDAgeAMCkGA1UdEQQiMCCCHiouY3BvZC1hcHB0\r\neC5hei1sYWIuc2h3cmZyLmNvbTANBgkqhkiG9w0BAQsFAAOCAQEAJMoZJ80PcrT4\r\nO/0x8Td/3tBmHv5KjB2MBufkkLxC4lSb89mpAZ/tgUnvKwaCAa9igTgPIR1/EI5g\r\nS1b538uneKa9Hdzkppe8nWyKpQfDqkMlkaagXDcrUSangNgqgExqn1WCuE+YnSbc\r\n/aiHucAGhINZyGhIiSdw8iQ7CQFjvleeBFze6Ci/ZEvkBJt90Lvqh0vj0rykfL5C\r\ns4E3C8xTU3EafJTONJvYPV19ncrr06UUmPhEk/zc3dcFr00rYaxf5sJ9gd0FtmZd\r\nVxmgdCcYR7AnZDUbD8JUfdE8/rWe37bz0oKgI5bgayDaj5QczsSAtDD/Mx/x/24R\r\n+dv+/OsfTw==\r\n-----END CERTIFICATE-----\r\n",
+                                "private_key_pem": "-----BEGIN RSA PRIVATE KEY-----\r\nMIIEowIBAAKCAQEApaVJqTzC/LungcvSwX0BOVg8Kbf4UlQhi24d+WSOfItVh0Kw\r\nAS1oEkYncyH7oDvXbpOUuxEgk8moKlV4sRAgxO2h3nF5w7Evp8v6wEFMTRaM5Kww\r\nXrA8EOTRsDWyU9n30gr58ue++4gO23SICVLqqkJ/H+FhTQIs8FZO0DYtcnWSH3wG\r\nZZzjtkSds8sjCCaUk4N9VoLzsq16mer/2iImnk8C9eI2s9hTRrlPlP/a0NT1SQ66\r\n3zWyqWFghprJaJjJzV4ahgYRoD+gohbrxI3H2tnWbFyyDdLe/or4KwXvOOuL7Q9w\r\ntOnqTjZ99zAJS3W+6VguyBsShC3rxzpkrJaCRwIDAQABAoIBAGIJhaNIdw8l8Wn8\r\nvGwQFB1gf5shazMu3/up3MuyHDLSNHitm4XW3fWS195oioi3YjXr2ucsp99QRttn\r\nYttI9FwZWOhSuQJ9Z/sj2vDWtNYbNqBQ2P/xxlspUoG8BiNiqi4CmRSO3JX6XPC9\r\n85WxIXpLiPnRZskxNG+6ZUMODa/jufzJNXng7nSUUKv6iYiEYr1V5LTesFoSqbUD\r\nb7vBYpyGd1o6y6V6xLhahPe5LXKiK39JH5XA7oM5BOyrEI1bxnwa6yxoB3M5mLRq\r\n2vDIJB5xCdw64EdqA6Joc0pH10XaECI7Bnb3H9K22+ziYOx42EK/qhJY5DbtCsJm\r\nrbDHfKECgYEA1fI0Ar9lASOG/nFcoE8evPRFshnPYId2l84y868eKfPpbg6pDX4X\r\n+UWq00iA41quoLhk4nyaL3JqPiVZ816S+l5XAWAdi+jIG5q55w7ByXvT+0tStyHn\r\nLLfr0HHdLXct3PYWUEEQqo9G4oANaU69JdOPCE2ySYmqkK9QpRJSW6UCgYEAxjSZ\r\ncW0ZcZkVtdsbjVd/Jf31ybAL9Cg2GGqIhdL9qWoAEySdhWWLshR97/EqHA2VCZsq\r\noapiq/mkNhAnHVDuQzl6vBEBO81ELBm9l/HjnZkzXhB0eVyvndAqKnosu6WyByo4\r\nj6mJG1rIi1z1LcMoWBCV4FH/dXoRuC7l3fdRcnsCgYBGihzr6v76aSRRMD9B+9Q+\r\nqKtyFWByizdmxe22ur5PRsRoLR0//ZsZ7QZtszILxBJfm2xn4H1Vt3ugEeCehUgg\r\nlIpLQc18G7wend09eXgbXmB+Mk+LYfo+nEV77I7oNqtAd0LUIx/DnInalC3X0sY6\r\neo5mRnfKF0HNgoAsbOYKoQKBgGX1ju2TUuBmAI4RTYYS+XxgvPxojG2n9dPvkZVN\r\n6WEp/ynZzxJdH1SXSAWTSLcvoXhUksShMqsG+5s4CfcBt99rBSETmk/aEvSgtTAh\r\npZZfxdXgnxoDPO/wspAxUyugXAllhb0ZWEdzFvDh+9nzp6BNv9uqMsCK7+yQa30Y\r\niZRbAoGBAKGxtgJ0m2Dyy+jocjkNcghAfBA+eDgY8HBfqwEs/J0jPcif6gN/akpq\r\n+UmyIEFxZQjgS5CwJTAD8VExRgqi2RcWp1JkbUd+bG15HXBnXsFWO5sEvp7pCPUm\r\nOlqoUm70S3xx775Npa7lcZCB63E9SrPT6vlfzAzyxBVpjbTt+9Jj\r\n-----END RSA PRIVATE KEY-----\r\n"
+                            }
+                        }
+                    ],
+                    "vm_credentials": {
+                        "identity": "vcap",
+                        "password": "LGbY4MFQXZEw_lVxpMdrEvDeme0HqTEU",
+                        "salt": "47d5c895c89dc64a"
+                    }
+                }
+            ],
+            "network_reference": "dea1eede6c708e5963cd",
+            "post_deploy_errands": [
+                {
+                    "identifier": "pks-nsx-t-precheck",
+                    "run_default_operator_config": true
+                },
+                {
+                    "identifier": "smoke-tests"
+                },
+                {
+                    "identifier": "upgrade-all-service-instances"
+                },
+                {
+                    "identifier": "wavefront-alert-creation"
+                }
+            ],
+            "pre_delete_errands": [
+                {
+                    "identifier": "delete-all-clusters"
+                },
+                {
+                    "identifier": "wavefront-alert-deletion"
+                }
+            ],
+            "prepared": false,
+            "product_version": "1.3.0-build.38",
+            "properties": [
+                {
+                    "deployed": false,
+                    "identifier": "cf_mysql_mysql_admin_password"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "cf_mysql_mysql_cluster_health_password"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "cf_mysql_mysql_galera_healthcheck_endpoint_password"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "cf_mysql_mysql_galera_healthcheck_db_password"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "cf_mysql_pks_db_password"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "cf_mysql_uaa_db_password"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "cf_mysql_telemetry_db_password"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "cf_mysql_billing_db_password"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "pks_api_uaa_client"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "pks_uaa_management_admin_client"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "pks_services_admin_uaa_client"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "uaa_admin_password"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "uaa_encryption_passphrase"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "cloud_provider",
+                    "options": [
+                        {
+                            "identifier": "gcp",
+                            "properties": [
+                                {
+                                    "deployed": false,
+                                    "identifier": "project_id"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "network"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "master_service_account"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "worker_service_account"
+                                }
+                            ]
+                        },
+                        {
+                            "identifier": "vsphere",
+                            "properties": [
+                                {
+                                    "deployed": false,
+                                    "identifier": "vcenter_master_creds",
+                                    "value": {
+                                        "identity": "administrator@cpod-apptx.az-lab.shwrfr.com",
+                                        "password": "vxnjecZWHP2zZPR!"
+                                    }
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "vcenter_ip",
+                                    "value": "vcsa.cpod-apptx.az-lab.shwrfr.com"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "vcenter_dc",
+                                    "value": "cPod-APPTX"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "vcenter_ds",
+                                    "value": "Datastore NFS"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "vcenter_vms",
+                                    "value": "pcf_vms"
+                                }
+                            ]
+                        },
+                        {
+                            "identifier": "aws",
+                            "properties": [
+                                {
+                                    "deployed": false,
+                                    "identifier": "iam_instance_profile_master"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "iam_instance_profile_worker"
+                                }
+                            ]
+                        },
+                        {
+                            "identifier": "azure",
+                            "properties": [
+                                {
+                                    "deployed": false,
+                                    "identifier": "azure_cloud_name",
+                                    "value": "AzurePublicCloud"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "subscription_id"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "tenant_id"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "location"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "resource_group_name"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "vnet_resource_group_name"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "vnet_name"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "default_security_group"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "primary_availability_set"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "azure_master_managed_identity"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "azure_worker_managed_identity"
+                                }
+                            ]
+                        }
+                    ],
+                    "value": "vSphere"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "network_selector",
+                    "options": [
+                        {
+                            "identifier": "flannel",
+                            "properties": [
+                                {
+                                    "deployed": false,
+                                    "identifier": "pod_network_cidr",
+                                    "value": "10.200.0.0/16"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "service_cluster_cidr",
+                                    "value": "10.100.200.0/24"
+                                }
+                            ]
+                        },
+                        {
+                            "identifier": "nsx",
+                            "properties": [
+                                {
+                                    "deployed": false,
+                                    "identifier": "nsx-t-host",
+                                    "value": "nsx.cpod-apptx.az-lab.shwrfr.com"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "nsx-t-ca-cert",
+                                    "value": "-----BEGIN CERTIFICATE-----\r\nMIIDDjCCAfagAwIBAgIJAKTSYDlslu5AMA0GCSqGSIb3DQEBCwUAMCsxKTAnBgNV\r\nBAMMIG5zeC5jcG9kLWFwcHR4LmF6LWxhYi5zaHdyZnIuY29tMB4XDTE5MDEyMzEz\r\nNTIyNloXDTI5MDEyMDEzNTIyNlowKzEpMCcGA1UEAwwgbnN4LmNwb2QtYXBwdHgu\r\nYXotbGFiLnNod3Jmci5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB\r\nAQDjIY49E7XVuTqD578PGZimpSdSFThbwykA3QMZt0jerFIKIMC1UiatWRy3abz2\r\nw83lmhepA94iP9JjdSqvM4bMjZ6g9pEPWeyeD56OSguTwRxiKCjvKFNDaxvyqz/w\r\nEbw6S1cm6Y0d4NaJ4zb4R1MasxL0T4cYvlBGrgu+Nb8fr+ZZJyqmXOKiGJlPgcRA\r\nCL41HAxSaDOxPomjJlRO9/uwcYJM8KV9T6z8o7X/4JMElORJYy511UXcYwyI12pP\r\nX2oEfDP8cQrKoYWzzgTgkx/zC8DpWSX4wwk8Dx0ALJwTw17DEU1Az4Cj5XocgpK/\r\nKfP2H1n96IzbCnjvHJMg2xPhAgMBAAGjNTAzMDEGA1UdEQQqMCiCIG5zeC5jcG9k\r\nLWFwcHR4LmF6LWxhYi5zaHdyZnIuY29thwSsFAMEMA0GCSqGSIb3DQEBCwUAA4IB\r\nAQBOUG7GFVdMyJX01GFwQMOzAv4jhmbcwYNPyByCbb0p48N3YOvxLFAe9zUQcMqU\r\nIBGQb2/44+7iLcy+yoIIQp2ARJ19NZ+2Gwdcot1NCwCma7Fahr6wRk64IN/Qzm14\r\nAQo+eWFceLT/kuRgWxWS2vVE3o8K2bR7uD9Y5tub7D2jsnBL5oUrvXQEvb/464Z+\r\ntcOgmn0h8nB/S0vylaSop4AGyMyjrH0ybz+zWj4Nj6Lh+B03+lFNC+CdEDmSDVmv\r\nWGSwTkMkKpFsRZclX9UFbB7WGL+VwcPcuIzucHba4u+zZ+wkyPcaCo4JJvl+vW87\r\nDfsgZJwSJziCATyiebDKyALC\r\n-----END CERTIFICATE-----\r\n",
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "nsx-t-insecure",
+                                    "value": true
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "nsx-t-superuser-certificate",
+                                    "value": {
+                                        "cert_pem": "-----BEGIN CERTIFICATE-----\r\nMIIC1jCCAb6gAwIBAgIJAIZVIvkAlgLrMA0GCSqGSIb3DQEBCwUAMB4xHDAaBgNV\r\nBAMME3Brcy1uc3gtdC1zdXBlcnVzZXIwHhcNMTkwMTIzMTM1MjA1WhcNMjkwMTIw\r\nMTM1MjA1WjAeMRwwGgYDVQQDDBNwa3MtbnN4LXQtc3VwZXJ1c2VyMIIBIjANBgkq\r\nhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0pDYJbwqCPb3iiXpUbKN0GnbPZrOd0tY\r\nXzRXSiIB3/Rg7ZJqxMbN/A5o6s/rD3TNsQmj7VXnAKaTkcHPKYs4WNIneBBaRfON\r\n3M7lA0r+0D2h76A0ge5M0CNWCRjidjJhHYzFhEMyF7oo4qBo0SK9w/W9M0csoDKF\r\nbiFTDwePrONrKLarvbcBC0qp/ndgfAhS590S4raZxMqCn4SnXJNd3CyLM32ewicI\r\nUHapGVDEErMd4IyyNytgpxfY7HuJNwY2REK15BRTc7PeJYFAJMNxfwqtQuY1CAJU\r\n4OtuoPescc4Jv5lnN4kHIVaUpLU0eWLwSUISKu+GUwTm+CPE3fnm2QIDAQABoxcw\r\nFTATBgNVHSUEDDAKBggrBgEFBQcDAjANBgkqhkiG9w0BAQsFAAOCAQEAcmLqqtbP\r\n4mPoU35a9KAsjc4JFAZrz0esfpGeX/TqLADowZGzQtOk1aXhBDGRVeBT1PVwvExI\r\nGpFWfdT7oknHsAj9Ht6d7ig8SpTfM1vsgnYHmb8WJegDlDSQaNTdhv6dA0jwbR/q\r\nL3DEETa6oySgIjeaPCRF3xmdmBqk/worpIbSZ8UI7G7TfPefr9KDrwTUWHacX5Au\r\nCEL037St6+43h7Srt85h2KerzauLhPiiL3u/8AdA7VD3+kl3mOF/5Uas3TXsRGed\r\nnhL3Glqg3Sz4JrBAKhfIgY8tP1BocWRAkhweDNgrFgdJ5lIkz0MoN7ccydR7c2eZ\r\nRvDGsBe/karm/Q==\r\n-----END CERTIFICATE-----\r\n",
+                                        "private_key_pem": "-----BEGIN PRIVATE KEY-----\r\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDSkNglvCoI9veK\r\nJelRso3Qads9ms53S1hfNFdKIgHf9GDtkmrExs38Dmjqz+sPdM2xCaPtVecAppOR\r\nwc8pizhY0id4EFpF843czuUDSv7QPaHvoDSB7kzQI1YJGOJ2MmEdjMWEQzIXuiji\r\noGjRIr3D9b0zRyygMoVuIVMPB4+s42sotqu9twELSqn+d2B8CFLn3RLitpnEyoKf\r\nhKdck13cLIszfZ7CJwhQdqkZUMQSsx3gjLI3K2CnF9jse4k3BjZEQrXkFFNzs94l\r\ngUAkw3F/Cq1C5jUIAlTg626g96xxzgm/mWc3iQchVpSktTR5YvBJQhIq74ZTBOb4\r\nI8Td+ebZAgMBAAECggEBAICnxZmQ1bIyi98Z+OxVB7c+5plGfD6Bh9Zr2aXPD4wx\r\n+gNOgfQHcJZAi7RlI7+G46L3O/TolsNcBDB71cMRcHU8uqbufuncvWIb++u+J+E+\r\ntzH9lfeJjd9ip8/ZJ42GjLYMbCa7E+FReme2ETUvX/laraamJ0sec05uCBzXxt6f\r\n3f6oymk/xpeM3q56pSoLs3iL9/gmznyvc6ElOK5fUWI06TrwoE79daFPi0FWCPnY\r\nCG5SgArKEOPPozTWl2FcEMlneq5NAte2mDgKQYyz9mDX0xMistbqGTd6MXtblw8J\r\nFWkgwZBZ1BfaL/+75tKGqrOCcx/a0/kFrP6w/Zauvr0CgYEA6oNcDrhamx+cclfB\r\ng5ddEzjjhj0OAiJSVd8Vo8RYSOfNjtAcIgtwexu7zFVOwjWtxlkPy7hTIcdtLb+Q\r\nplETqedWuBWliHmt2X5Q/ZpWl5t5Z8eHF7ln+aYqJY8bqMK/rgRfbxnZ5UgvFeP+\r\n1jXTXSPxucaToXSACxEOlgigK68CgYEA5dvJUpxvi+tWuDVYarOAEPei4yOSmIu0\r\nMqe2XmymGrfDJo7n+K3NdEY1JyM+kT/LbMCNqs6xtbqnSwAndbXXvA197uYlmNfw\r\nXxlXVlwUAVyBRRrgCDSvhEuXhpmfmL+U11+CczcGIinfQpgNfyDUitpNZNzySXw2\r\nz8QjVELHj/cCgYAWU0ENSbGeeOjs3bvXai57KPxICEHwJBJQiHdH6uY4spCYGunC\r\nt/ISVjaPokNoK7IKYuolC7wmSBT1uPntS2Si1RolVjI3BtZtESBmtC2wKyXook8T\r\nDByA4Le8cZ5Bd6DF0TbAneZndHK/E8Br5h3kDQrzE5t0UGHsK8iGsfWFkwKBgQDg\r\n+Q1C3foPaHeoNA4l4SoncTjsN5Tz2Ui1i5DjOlQZMmK/Cn/g1buRYmYDuGs0nsvr\r\n1UrTMxqcU+QJdE0q2KAeXtYzTO7fefq6GYNx8w1hh7i+el9rqKVhRts30oRybJCx\r\ne7miKujF51WtSEVteCSPArtdTSOW6Qx8rewmPHY2YQKBgQC7QZVYNNb19lp82Ua8\r\nKOvc3tawD642cDPtArSjILzaNdhYA83uk68P399TbDemWPvFI8UAp+j7JHNRZ1RE\r\nZOslXZu6f0ZwbOHXIu8AyD2ob8dGXUXyw+7w1jugw0ytpF/Z0wj4+zprXJ/E6xE2\r\nZR2NblZkB1XhaADzKs1ZBoQzww==\r\n-----END PRIVATE KEY-----\r\n",
+                                    }
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "vcenter_cluster",
+                                    "value": "Cluster"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "t0-router-id",
+                                    "value": "2658c383-4c8c-40d5-bf45-30fbf67a8f88"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "ip-block-id",
+                                    "value": "40c7b06c-bcba-481d-b7f7-e60660f3db1d"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "floating-ip-pool-ids",
+                                    "value": "5c82054f-f84e-42a7-a73f-4edb5b8d3085"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "network_automation",
+                                    "value": true
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "nat_mode",
+                                    "value": true
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "lb_size_medium_supported",
+                                    "value": true
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "lb_size_large_supported",
+                                    "value": true
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "nodes-ip-block-id",
+                                    "value": "7183c3bc-34d0-4c67-ac05-e276d11cfb30"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "cloud-config-dns",
+                                    "value": "172.20.3.1"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "lb-created-by-proxy",
+                                    "value": false
+                                }
+                            ]
+                        }
+                    ],
+                    "value": "nsx"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "vm_extensions",
+                    "value": [
+                        "public_ip"
+                    ]
+                },
+                {
+                    "deployed": false,
+                    "identifier": "proxy_selector",
+                    "options": [
+                        {
+                            "identifier": "disabled"
+                        },
+                        {
+                            "identifier": "enabled",
+                            "properties": [
+                                {
+                                    "deployed": false,
+                                    "identifier": "http_proxy_url"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "http_proxy_credentials"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "https_proxy_url"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "https_proxy_credentials"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "no_proxy"
+                                }
+                            ]
+                        }
+                    ],
+                    "value": "Disabled"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "plan1_selector",
+                    "options": [
+                        {
+                            "identifier": "active",
+                            "properties": [
+                                {
+                                    "deployed": false,
+                                    "identifier": "name",
+                                    "value": "default"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "description",
+                                    "value": "Example: This plan will configure a lightweight kubernetes cluster. Not recommended for production workloads."
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "master_az_placement",
+                                    "value": [
+                                        "PKS"
+                                    ]
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "worker_az_placement",
+                                    "value": [
+                                        "PKS"
+                                    ]
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "master_vm_type",
+                                    "resources": [
+                                        {
+                                            "identifier": "ram"
+                                        },
+                                        {
+                                            "identifier": "ephemeral_disk"
+                                        },
+                                        {
+                                            "identifier": "cpu"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "master_persistent_disk_type",
+                                    "resources": [
+                                        {
+                                            "identifier": "persistent_disk"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "worker_vm_type",
+                                    "resources": [
+                                        {
+                                            "identifier": "ram"
+                                        },
+                                        {
+                                            "identifier": "ephemeral_disk"
+                                        },
+                                        {
+                                            "identifier": "cpu"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "worker_persistent_disk_type",
+                                    "resources": [
+                                        {
+                                            "identifier": "persistent_disk"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "master_instances",
+                                    "value": 1
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "max_worker_instances",
+                                    "value": 50
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "worker_instances",
+                                    "value": 3
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "errand_vm_type",
+                                    "resources": [
+                                        {
+                                            "identifier": "ram"
+                                        },
+                                        {
+                                            "identifier": "ephemeral_disk"
+                                        },
+                                        {
+                                            "identifier": "cpu"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "addons_spec"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "allow_privileged_containers",
+                                    "value": false
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "disable_deny_escalating_exec",
+                                    "value": false
+                                }
+                            ]
+                        }
+                    ],
+                    "value": "Plan Active"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "plan2_selector",
+                    "options": [
+                        {
+                            "identifier": "inactive"
+                        },
+                        {
+                            "identifier": "active",
+                            "properties": [
+                                {
+                                    "deployed": false,
+                                    "identifier": "name",
+                                    "value": "medium"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "description",
+                                    "value": "Example: This plan will configure a medium sized kubernetes cluster, suitable for more pods."
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "master_az_placement"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "worker_az_placement"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "master_vm_type",
+                                    "resources": [
+                                        {
+                                            "identifier": "ram"
+                                        },
+                                        {
+                                            "identifier": "ephemeral_disk"
+                                        },
+                                        {
+                                            "identifier": "cpu"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "master_persistent_disk_type",
+                                    "resources": [
+                                        {
+                                            "identifier": "persistent_disk"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "worker_vm_type",
+                                    "resources": [
+                                        {
+                                            "identifier": "ram"
+                                        },
+                                        {
+                                            "identifier": "ephemeral_disk"
+                                        },
+                                        {
+                                            "identifier": "cpu"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "worker_persistent_disk_type",
+                                    "resources": [
+                                        {
+                                            "identifier": "persistent_disk"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "master_instances",
+                                    "value": 3
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "max_worker_instances",
+                                    "value": 50
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "worker_instances",
+                                    "value": 5
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "errand_vm_type",
+                                    "resources": [
+                                        {
+                                            "identifier": "ram"
+                                        },
+                                        {
+                                            "identifier": "ephemeral_disk"
+                                        },
+                                        {
+                                            "identifier": "cpu"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "addons_spec"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "allow_privileged_containers",
+                                    "value": false
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "disable_deny_escalating_exec",
+                                    "value": false
+                                }
+                            ]
+                        }
+                    ],
+                    "value": "Plan Inactive"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "plan3_selector",
+                    "options": [
+                        {
+                            "identifier": "inactive"
+                        },
+                        {
+                            "identifier": "active",
+                            "properties": [
+                                {
+                                    "deployed": false,
+                                    "identifier": "name",
+                                    "value": "large"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "description",
+                                    "value": "Example: This plan will configure a large kubernetes cluster for resource heavy workloads, or a high number of workloads."
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "master_az_placement"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "worker_az_placement"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "master_vm_type",
+                                    "resources": [
+                                        {
+                                            "identifier": "ram"
+                                        },
+                                        {
+                                            "identifier": "ephemeral_disk"
+                                        },
+                                        {
+                                            "identifier": "cpu"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "master_persistent_disk_type",
+                                    "resources": [
+                                        {
+                                            "identifier": "persistent_disk"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "worker_vm_type",
+                                    "resources": [
+                                        {
+                                            "identifier": "ram"
+                                        },
+                                        {
+                                            "identifier": "ephemeral_disk"
+                                        },
+                                        {
+                                            "identifier": "cpu"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "worker_persistent_disk_type",
+                                    "resources": [
+                                        {
+                                            "identifier": "persistent_disk"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "master_instances",
+                                    "value": 3
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "max_worker_instances",
+                                    "value": 50
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "worker_instances"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "errand_vm_type",
+                                    "resources": [
+                                        {
+                                            "identifier": "ram"
+                                        },
+                                        {
+                                            "identifier": "ephemeral_disk"
+                                        },
+                                        {
+                                            "identifier": "cpu"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "addons_spec"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "allow_privileged_containers",
+                                    "value": false
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "disable_deny_escalating_exec",
+                                    "value": false
+                                }
+                            ]
+                        }
+                    ],
+                    "value": "Plan Inactive"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "uaa",
+                    "options": [
+                        {
+                            "identifier": "internal"
+                        },
+                        {
+                            "identifier": "ldap",
+                            "properties": [
+                                {
+                                    "deployed": false,
+                                    "identifier": "url"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "credentials"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "search_base"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "search_filter",
+                                    "value": "cn={0}"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "group_search_base"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "group_search_filter",
+                                    "value": "member={0}"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "server_ssl_cert"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "server_ssl_cert_alias"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "mail_attribute_name",
+                                    "value": "mail"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "email_domains"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "first_name_attribute"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "last_name_attribute"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "ldap_referrals",
+                                    "value": "follow"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "external_groups_whitelist",
+                                    "value": "*"
+                                }
+                            ]
+                        }
+                    ],
+                    "value": "internal"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "uaa_oidc",
+                    "value": false
+                },
+                {
+                    "deployed": false,
+                    "identifier": "pks_api_hostname",
+                    "value": "pks-api.cpod-apptx.az-lab.shwrfr.com"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "worker_max_in_flight",
+                    "value": 1
+                },
+                {
+                    "deployed": false,
+                    "identifier": "uaa_pks_cli_access_token_lifetime",
+                    "value": 600
+                },
+                {
+                    "deployed": false,
+                    "identifier": "uaa_pks_cli_refresh_token_lifetime",
+                    "value": 21600
+                },
+                {
+                    "deployed": false,
+                    "identifier": "syslog_selector",
+                    "options": [
+                        {
+                            "identifier": "disabled"
+                        },
+                        {
+                            "identifier": "enabled",
+                            "properties": [
+                                {
+                                    "deployed": false,
+                                    "identifier": "address"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "port"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "transport_protocol",
+                                    "value": "tcp"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "tls_enabled",
+                                    "value": true
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "permitted_peer"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "ca_cert"
+                                }
+                            ]
+                        }
+                    ],
+                    "value": "disabled"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "wavefront",
+                    "options": [
+                        {
+                            "identifier": "disabled"
+                        },
+                        {
+                            "identifier": "enabled",
+                            "properties": [
+                                {
+                                    "deployed": false,
+                                    "identifier": "wavefront_api_url"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "wavefront_token"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "wavefront_alert_targets"
+                                }
+                            ]
+                        }
+                    ],
+                    "value": "disabled"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "pks-vrli",
+                    "options": [
+                        {
+                            "identifier": "disabled"
+                        },
+                        {
+                            "identifier": "enabled",
+                            "properties": [
+                                {
+                                    "deployed": false,
+                                    "identifier": "host"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "use_ssl",
+                                    "value": true
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "skip_cert_verify",
+                                    "value": false
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "ca_cert"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "rate_limit_msec",
+                                    "value": 0
+                                }
+                            ]
+                        }
+                    ],
+                    "value": "disabled"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "telemetry_selector",
+                    "options": [
+                        {
+                            "identifier": "enabled",
+                            "properties": [
+                                {
+                                    "deployed": false,
+                                    "identifier": "telemetry_url",
+                                    "value": "https://vcsa.vmware.com"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "telemetry_polling_interval",
+                                    "value": 600
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "billing_polling_interval",
+                                    "value": 60
+                                }
+                            ]
+                        },
+                        {
+                            "identifier": "disabled"
+                        }
+                    ],
+                    "value": "disabled"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "sink_resources_selector",
+                    "options": [
+                        {
+                            "identifier": "disabled"
+                        },
+                        {
+                            "identifier": "enabled"
+                        }
+                    ],
+                    "value": "enabled"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "sink_resources_manifest_0_12",
+                    "value": "---\napiVersion: apiextensions.k8s.io/v1beta1\nkind: CustomResourceDefinition\nmetadata:\n  name: clustersinks.apps.pivotal.io\nspec:\n  group: apps.pivotal.io\n  version: v1beta1\n  versions:\n    - name: v1beta1\n      served: true\n      storage: true\n  scope: Cluster\n  names:\n    plural: clustersinks\n    singular: clustersink\n    kind: ClusterSink\n  validation:\n    openAPIV3Schema:\n      properties:\n        spec:\n          required:\n          - type\n          - port\n          - host\n          properties:\n            port:\n              type: integer\n              minimum: 0\n              maximum: 65535\n            type:\n              type: string\n              enum:\n              - syslog\n            host:\n              type: string\n              pattern: '^([a-zA-Z0-9-\\.]+)$|^([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})$|^([a-fA-F0-9\\:]+)$'\n            enable_tls:\n              type: boolean\n            insecure_skip_verify:\n              type: boolean\n  additionalPrinterColumns:\n    - name: Type\n      JSONPath: .spec.type\n      type: string\n    - name: Host\n      JSONPath: .spec.host\n      type: string\n    - name: Port\n      JSONPath: .spec.port\n      type: integer\n    - name: TLS\n      JSONPath: .spec.enable_tls\n      type: boolean\n    - name: Insecure\n      JSONPath: .spec.insecure_skip_verify\n      type: boolean\n      description: |\n        Accept any certificate presented by the server and any host name in\n        that certificate.\n    - JSONPath: .metadata.creationTimestamp\n      name: Age\n      type: date\n---\napiVersion: apiextensions.k8s.io/v1beta1\nkind: CustomResourceDefinition\nmetadata:\n  name: sinks.apps.pivotal.io\nspec:\n  group: apps.pivotal.io\n  version: v1beta1\n  versions:\n    - name: v1beta1\n      served: true\n      storage: true\n  scope: Namespaced\n  names:\n    plural: sinks\n    singular: sink\n    kind: Sink\n  validation:\n    openAPIV3Schema:\n      properties:\n        spec:\n          required:\n          - type\n          - port\n          - host\n          properties:\n            port:\n              type: integer\n              minimum: 0\n              maximum: 65535\n            type:\n              type: string\n              enum:\n              - syslog\n            host:\n              type: string\n              pattern: '^([a-zA-Z0-9-\\.]+)$|^([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})$|^([a-fA-F0-9\\:]+)$'\n            enable_tls:\n              type: boolean\n            insecure_skip_verify:\n              type: boolean\n  additionalPrinterColumns:\n    - name: Type\n      JSONPath: .spec.type\n      type: string\n    - name: Host\n      JSONPath: .spec.host\n      type: string\n    - name: Port\n      JSONPath: .spec.port\n      type: integer\n    - name: TLS\n      JSONPath: .spec.enable_tls\n      type: boolean\n    - name: Insecure\n      JSONPath: .spec.insecure_skip_verify\n      type: boolean\n      description: |\n        Accept any certificate presented by the server and any host name in\n        that certificate.\n    - JSONPath: .metadata.creationTimestamp\n      name: Age\n      type: date\n---\napiVersion: v1\nkind: Namespace\nmetadata:\n  name: pks-system\n---\nkind: Role\napiVersion: rbac.authorization.k8s.io/v1\nmetadata:\n  name: cert-generator\n  namespace: pks-system\nrules:\n- apiGroups: [\"\"]\n  resources: [\"secrets\"]\n  verbs: [\"get\", \"create\"]\n- apiGroups:\n  - policy\n  resources:\n  - podsecuritypolicies\n  verbs:\n  - use\n  resourceNames:\n  - cert-generator\n---\nkind: RoleBinding\napiVersion: rbac.authorization.k8s.io/v1\nmetadata:\n  name: cert-generator\n  namespace: pks-system\nsubjects:\n- kind: ServiceAccount\n  name: cert-generator\n  namespace: pks-system\nroleRef:\n  kind: Role\n  name: cert-generator\n  apiGroup: rbac.authorization.k8s.io\n---\nkind: ClusterRole\napiVersion: rbac.authorization.k8s.io/v1\nmetadata:\n  name: event-controller\nrules:\n# The event-controller needs to be able to watch events\n- apiGroups: [\"\"]\n  resources: [\"events\"]\n  verbs: [\"get\", \"list\", \"watch\"]\n- apiGroups:\n  - policy\n  resources:\n  - podsecuritypolicies\n  verbs:\n  - use\n  resourceNames:\n  - event-controller\n---\nkind: ClusterRoleBinding\napiVersion: rbac.authorization.k8s.io/v1\nmetadata:\n  name: event-controller\nsubjects:\n- kind: ServiceAccount\n  name: event-controller\n  namespace: pks-system\nroleRef:\n  kind: ClusterRole\n  name: event-controller\n  apiGroup: rbac.authorization.k8s.io\n---\nkind: ClusterRole\napiVersion: rbac.authorization.k8s.io/v1\nmetadata:\n  name: fluent-bit\nrules:\n# This rule is for kubernetes-metadata-filter\n- apiGroups:\n  - \"\"\n  - \"apps\"\n  - \"batch\"\n  resources: [\"*\"]\n  verbs: [\"get\", \"list\", \"watch\"]\n- apiGroups:\n  - policy\n  resources:\n  - podsecuritypolicies\n  verbs:\n  - use\n  resourceNames:\n  - fluent-bit\n---\nkind: ClusterRoleBinding\napiVersion: rbac.authorization.k8s.io/v1\nmetadata:\n  name: fluent-bit\nsubjects:\n- kind: ServiceAccount\n  name: fluent-bit\n  namespace: pks-system\nroleRef:\n  kind: ClusterRole\n  name: fluent-bit\n  apiGroup: rbac.authorization.k8s.io\n---\nkind: ClusterRole\napiVersion: rbac.authorization.k8s.io/v1\nmetadata:\n  name: sink-controller\nrules:\n# The sink-controller needs to patch the configmap for fluent-bit\n- apiGroups: [\"\"] # \"\" indicates the core API group\n  resources: [\"configmaps\"]\n  verbs: [\"get\", \"list\", \"watch\", \"patch\"] # TODO: Do we need watch?\n# The sink-controller needs to be able to delete the fluent-bit pods\n- apiGroups: [\"\"] # \"\" indicates the core API group\n  resources: [\"pods\"]\n  verbs: [\"deletecollection\"]\n# The sink-controller needs to be able to watch sinks and clustersinks\n- apiGroups: [\"pksapi.io\"]\n  resources: [\"sinks\", \"clustersinks\"]\n  verbs: [\"get\", \"list\", \"watch\"]\n# This api group is for backwards compatability\n- apiGroups: [\"apps.pivotal.io\"]\n  resources: [\"sinks\", \"clustersinks\"]\n  verbs: [\"get\", \"list\", \"watch\"]\n- apiGroups:\n  - policy\n  resources:\n  - podsecuritypolicies\n  verbs:\n  - use\n  resourceNames:\n  - sink-controller\n---\nkind: ClusterRoleBinding\napiVersion: rbac.authorization.k8s.io/v1\nmetadata:\n  name: sink-controller\nsubjects:\n- kind: ServiceAccount\n  name: sink-controller\n  namespace: pks-system\nroleRef:\n  kind: ClusterRole\n  name: sink-controller\n  apiGroup: rbac.authorization.k8s.io\n---\napiVersion: v1\nkind: ServiceAccount\nmetadata:\n  name: cert-generator\n  namespace: pks-system\n---\napiVersion: v1\nkind: ServiceAccount\nmetadata:\n  name: event-controller\n  namespace: pks-system\n---\napiVersion: v1\nkind: ServiceAccount\nmetadata:\n  name: fluent-bit\n  namespace: pks-system\n---\napiVersion: v1\nkind: ServiceAccount\nmetadata:\n  name: sink-controller\n  namespace: pks-system\n---\napiVersion: policy/v1beta1\nkind: PodSecurityPolicy\nmetadata:\n  name: cert-generator\nspec:\n  volumes:\n  - secret\n  runAsUser:\n    rule: RunAsAny\n  seLinux:\n    rule: RunAsAny\n  supplementalGroups:\n    rule: RunAsAny\n  fsGroup:\n    rule: RunAsAny\n---\napiVersion: policy/v1beta1\nkind: PodSecurityPolicy\nmetadata:\n  name: event-controller\nspec:\n  volumes:\n  - emptyDir\n  - secret\n  runAsUser:\n    rule: RunAsAny\n  seLinux:\n    rule: RunAsAny\n  supplementalGroups:\n    rule: RunAsAny\n  fsGroup:\n    rule: RunAsAny\n---\napiVersion: policy/v1beta1\nkind: PodSecurityPolicy\nmetadata:\n  name: fluent-bit\nspec:\n  volumes:\n  - hostPath\n  - configMap\n  - emptyDir\n  - secret\n  allowedHostPaths:\n  - pathPrefix: /var/log\n    readOnly: false\n  - pathPrefix: /var/lib/docker/containers\n    readOnly: true\n  - pathPrefix: /var/vcap/store\n    readOnly: true\n  - pathPrefix: /var/vcap/data\n    readOnly: true\n  runAsUser:\n    rule: RunAsAny\n  seLinux:\n    rule: RunAsAny\n  supplementalGroups:\n    rule: RunAsAny\n  fsGroup:\n    rule: RunAsAny\n---\napiVersion: policy/v1beta1\nkind: PodSecurityPolicy\nmetadata:\n  name: sink-controller\nspec:\n  volumes:\n  - secret\n  runAsUser:\n    rule: RunAsAny\n  seLinux:\n    rule: RunAsAny\n  supplementalGroups:\n    rule: RunAsAny\n  fsGroup:\n    rule: RunAsAny\n---\napiVersion: v1\nkind: ConfigMap\nmetadata:\n  name: fluent-bit\n  namespace: pks-system\n  labels:\n    k8s-app: fluent-bit\ndata:\n  # Configuration files: server, input, filters and output\n  # ======================================================\n  fluent-bit.conf: |\n    [SERVICE]\n        Flush         1\n        Log_Level     info\n        Daemon        off\n        Parsers_File  parsers.conf\n        HTTP_Server   On\n        HTTP_Listen   0.0.0.0\n        HTTP_Port     2020\n\n    @INCLUDE inputs.conf\n    @INCLUDE filters.conf\n    @INCLUDE outputs.conf\n\n  inputs.conf: |\n    @INCLUDE input-kubernetes.conf\n    @INCLUDE input-forward.conf\n\n  filters.conf: |\n    @INCLUDE filter-kubernetes.conf\n\n  outputs.conf: |\n    @INCLUDE output-null.conf\n\n  input-forward.conf: |\n    [INPUT]\n        Name forward\n        Port 24225\n        Listen localhost\n\n  input-kubernetes.conf: |\n    [INPUT]\n        Name              tail\n        Tag               kube.*\n        Path              /var/log/containers/*.log\n        Parser            docker\n        DB                /var/log/flb_kube.db\n        Mem_Buf_Limit     5MB\n        Skip_Long_Lines   On\n        Refresh_Interval  10\n\n  filter-kubernetes.conf: |\n    [FILTER]\n        Name                kubernetes\n        Match               kube.*\n        Kube_URL            https://kubernetes.default.svc.cluster.local:443\n        Merge_Log           On\n        K8S-Logging.Parser  On\n\n  output-file.conf: |\n    [OUTPUT]\n        Name file\n        Match *\n        Path /tmp/output.txt\n\n  output-null.conf: |\n    [OUTPUT]\n        Name null\n\n  output-syslog.conf: |\n    [OUTPUT]\n        Name syslog\n        Match *\n        Sinks [{\\\"addr\\\":\\\"example.com:12345\\\"}]\n\n  parsers.conf: |\n    [PARSER]\n        Name   json\n        Format json\n        Time_Key time\n        Time_Format %d/%b/%Y:%H:%M:%S %z\n\n    [PARSER]\n        Name        docker\n        Format      json\n        Time_Key    time\n        Time_Format %Y-%m-%dT%H:%M:%S.%L\n        Time_Keep   On\n        # Command      |  Decoder | Field | Optional Action\n        # =============|==================|=================\n        Decode_Field_As   escaped    log\n---\napiVersion: v1\nkind: Service\nmetadata:\n  name: fluent-bit\n  namespace: pks-system\nspec:\n  selector:\n    k8s-app: logging-agent\n  ports:\n    - protocol: TCP\n      port: 24224\n      targetPort: forward-plugin\n  type: ClusterIP\n---\napiVersion: batch/v1\nkind: Job\nmetadata:\n  labels:\n    job: cert-generator\n  name: cert-generator-v0.11\n  namespace: pks-system\nspec:\n  backoffLimit: 0\n  template:\n    metadata:\n      labels:\n        job: cert-generator\n    spec:\n      containers:\n      - env:\n        - name: NAMESPACE\n          valueFrom:\n            fieldRef:\n              fieldPath: metadata.namespace\n        image: oratos/cert-generator:v0.12\n        imagePullPolicy: IfNotPresent\n        name: cert-generator\n      restartPolicy: Never\n      serviceAccountName: cert-generator\n---\napiVersion: extensions/v1beta1\nkind: DaemonSet\nmetadata:\n  labels:\n    k8s-app: logging-agent\n    kubernetes.io/cluster-service: \"true\"\n    version: v1\n  name: fluent-bit\n  namespace: pks-system\nspec:\n  template:\n    metadata:\n      labels:\n        k8s-app: logging-agent\n        kubernetes.io/cluster-service: \"true\"\n        version: v1\n    spec:\n      containers:\n      - image: oratos/fluent-bit-out-syslog:v0.11\n        imagePullPolicy: IfNotPresent\n        name: fluent-bit\n        resources:\n          limits:\n            memory: 100Mi\n        volumeMounts:\n        - mountPath: /fluent-bit/etc\n          name: fluent-bit-config\n        - mountPath: /var/log\n          name: varlog\n          readOnly: false\n        - mountPath: /var/lib/docker/containers\n          name: varlibdockercontainers\n          readOnly: true\n        - mountPath: /var/vcap/store\n          name: varvcapstore\n          readOnly: true\n        - mountPath: /var/vcap/data\n          name: varvcapdata\n          readOnly: true\n      - command:\n        - ghostunnel\n        - server\n        - --listen\n        - :24224\n        - --target\n        - localhost:24225\n        - --keystore\n        - /keystore/keystore.pem\n        - --cacert\n        - /pks-ca/tls.crt\n        - --allow-dns-san\n        - event-controller\n        - --cipher-suites\n        - AES\n        image: oratos/ghostunnel:v0.12\n        imagePullPolicy: IfNotPresent\n        name: ghostunnel\n        ports:\n        - containerPort: 24224\n          name: forward-plugin\n        volumeMounts:\n        - mountPath: /keystore\n          name: keystore\n          readOnly: true\n        - mountPath: /pks-ca/tls.crt\n          name: pks-ca\n          readOnly: true\n          subPath: tls.crt\n      initContainers:\n      - command:\n        - /bin/bash\n        - -c\n        - cat /fluent-bit-certs/* > /keystore/keystore.pem\n        image: oratos/fluent-bit-out-syslog:v0.11\n        imagePullPolicy: IfNotPresent\n        name: concat-keystore\n        volumeMounts:\n        - mountPath: /fluent-bit-certs\n          name: fluent-bit-certs\n          readOnly: true\n        - mountPath: /keystore\n          name: keystore\n      serviceAccountName: fluent-bit\n      terminationGracePeriodSeconds: 10\n      volumes:\n      - hostPath:\n          path: /var/log\n        name: varlog\n      - hostPath:\n          path: /var/lib/docker/containers\n        name: varlibdockercontainers\n      - hostPath:\n          path: /var/vcap/store/\n        name: varvcapstore\n      - hostPath:\n          path: /var/vcap/data/\n        name: varvcapdata\n      - configMap:\n          name: fluent-bit\n        name: fluent-bit-config\n      - emptyDir: {}\n        name: keystore\n      - name: fluent-bit-certs\n        secret:\n          secretName: fluent-bit\n      - name: pks-ca\n        secret:\n          secretName: pks-ca\n  updateStrategy:\n    type: RollingUpdate\n---\napiVersion: extensions/v1beta1\nkind: Deployment\nmetadata:\n  name: event-controller\n  namespace: pks-system\nspec:\n  replicas: 1\n  template:\n    metadata:\n      labels:\n        app: event-controller\n    spec:\n      containers:\n      - env:\n        - name: FORWARDER_HOST\n          value: localhost\n        image: oratos/event-controller:v0.12\n        imagePullPolicy: IfNotPresent\n        name: event-controller\n      - command:\n        - ghostunnel\n        - client\n        - --listen\n        - localhost:24224\n        - --target\n        - fluent-bit.pks-system.svc.cluster.local:24224\n        - --override-server-name\n        - fluent-bit\n        - --keystore\n        - /keystore/keystore.pem\n        - --cacert\n        - /pks-ca/tls.crt\n        - --cipher-suites\n        - AES\n        image: oratos/ghostunnel:v0.12\n        imagePullPolicy: IfNotPresent\n        name: ghostunnel\n        volumeMounts:\n        - mountPath: /keystore\n          name: keystore\n          readOnly: true\n        - mountPath: /pks-ca/tls.crt\n          name: pks-ca\n          readOnly: true\n          subPath: tls.crt\n      initContainers:\n      - command:\n        - /bin/bash\n        - -c\n        - cat /event-controller-certs/* > /keystore/keystore.pem\n        image: oratos/fluent-bit-out-syslog:v0.11\n        imagePullPolicy: IfNotPresent\n        name: concat-keystore\n        volumeMounts:\n        - mountPath: /event-controller-certs\n          name: event-controller-certs\n          readOnly: true\n        - mountPath: /keystore\n          name: keystore\n      serviceAccountName: event-controller\n      volumes:\n      - emptyDir: {}\n        name: keystore\n      - name: event-controller-certs\n        secret:\n          secretName: event-controller\n      - name: pks-ca\n        secret:\n          secretName: pks-ca\n---\napiVersion: extensions/v1beta1\nkind: Deployment\nmetadata:\n  name: sink-controller\n  namespace: pks-system\nspec:\n  replicas: 1\n  template:\n    metadata:\n      labels:\n        app: sink-controller\n    spec:\n      containers:\n      - env:\n        - name: NAMESPACE\n          valueFrom:\n            fieldRef:\n              fieldPath: metadata.namespace\n        image: oratos/sink-controller:v0.12\n        imagePullPolicy: IfNotPresent\n        name: sink-controller\n      serviceAccountName: sink-controller\n"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "sink_resources_empty_manifest",
+                    "value": "---\napiVersion: v1\nkind: Namespace\nmetadata:\n  name: pks-system\n"
+                }
+            ],
+            "runtime_configs": [
+                {
+                    "identifier": "enable-pks-helpers",
+                    "name": "pivotal-container-service-c3fc470828a8f21a6380-enable-pks-helpers",
+                    "runtime_config": "releases:\n - name: pks-helpers\n   version: \"50.0.0\"\naddons:\n  - name: bosh-dns-enable\n    jobs:\n    - name: bosh-dns-enable\n      release: pks-helpers\n    include:\n      jobs:\n      - name: kubo-dns-aliases\n        release: kubo\n"
+                }
+            ],
+            "service_network_reference": "dea1eede6c708e5963cd",
+            "singleton_availability_zone_reference": "fc538aac81c6296c575c",
+            "stemcell": {
+                "file": "bosh-stemcell-170.23-vsphere-esxi-ubuntu-xenial-go_agent.tgz",
+                "hypervisor": "esxi",
+                "infrastructure": "vsphere",
+                "name": "bosh-vsphere-esxi-ubuntu-xenial-go_agent",
+                "os": "ubuntu-xenial",
+                "version": "170.23"
+            },
+            "syslog_config": {
+                "enabled": false,
+                "tls_enabled": false,
+                "transport_protocol": "tcp"
+            },
+            "uaa_client_name": "pivotal-container-service-c3fc470828a8f21a6380",
+            "uaa_client_secret": "a3c180730e2dd445c030"
+        },
+        {
+            "applied_data_migrations": [
+                "201712291724_noop.js"
+            ],
+            "availability_zone_references": [
+                "fc538aac81c6296c575c"
+            ],
+            "guid": "harbor-container-registry-7e519a45fe86db66976d",
+            "identifier": "harbor-container-registry",
+            "installation_name": "harbor-container-registry-7e519a45fe86db66976d",
+            "jobs": [
+                {
+                    "guid": "harbor-app-353db4a703765502dd42",
+                    "identifier": "harbor-app",
+                    "installation_name": "harbor-app",
+                    "instance": {
+                        "identifier": "instances"
+                    },
+                    "properties": [
+                        {
+                            "deployed": false,
+                            "identifier": "static_ips"
+                        }
+                    ],
+                    "vm_credentials": {
+                        "identity": "vcap",
+                        "password": "W-y4hrBGTXD7HkHD3QQTSg-Jr85aYZwa",
+                        "salt": "4fcc25be608bb460"
+                    }
+                },
+                {
+                    "guid": "smoke-testing-951744b413bbee6a98cf",
+                    "identifier": "smoke-testing",
+                    "installation_name": "smoke-testing",
+                    "instance": {
+                        "identifier": "instances"
+                    },
+                    "vm_credentials": {
+                        "identity": "vcap",
+                        "password": "Z35fC-354N3azKNjOimsnC98riz_csuU",
+                        "salt": "d392c00639894760"
+                    }
+                }
+            ],
+            "network_reference": "dea1eede6c708e5963cd",
+            "post_deploy_errands": [
+                {
+                    "identifier": "smoke-testing"
+                }
+            ],
+            "pre_delete_errands": [
+                {
+                    "identifier": "uaa-deregistration"
+                }
+            ],
+            "prepared": false,
+            "product_version": "1.7.1-build.3",
+            "properties": [
+                {
+                    "deployed": false,
+                    "identifier": "customize_container_network",
+                    "options": [
+                        {
+                            "identifier": "default"
+                        },
+                        {
+                            "identifier": "customized",
+                            "properties": [
+                                {
+                                    "deployed": false,
+                                    "identifier": "default_address_pool_base1"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "default_address_pool_size1"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "default_address_pool_base2"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "default_address_pool_size2"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "default_address_pool_base3"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "default_address_pool_size3"
+                                }
+                            ]
+                        }
+                    ],
+                    "value": "default"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "clair_db_credential"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "clair_updater_interval",
+                    "value": 0
+                },
+                {
+                    "deployed": false,
+                    "identifier": "harbor_db_credential"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "hostname",
+                    "value": "harbor.cpod-apptx.az-lab.shwrfr.com"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "admin_password",
+                    "value": {
+                        "secret": "vxnjecZWHP2zZPR!"
+                    }
+                },
+                {
+                    "deployed": false,
+                    "identifier": "admin_password_for_smoketest",
+                    "value": {
+                        "secret": "vxnjecZWHP2zZPR!"
+                    }
+                },
+                {
+                    "deployed": false,
+                    "identifier": "harbor_uaa_client_credential",
+                    "value": {
+                        "identity": "harbor"
+                    }
+                },
+                {
+                    "deployed": false,
+                    "identifier": "auth_mode",
+                    "options": [
+                        {
+                            "identifier": "db_auth"
+                        },
+                        {
+                            "identifier": "ldap_auth",
+                            "properties": [
+                                {
+                                    "deployed": false,
+                                    "identifier": "url"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "verify_cert",
+                                    "value": true
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "searchdn"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "searchpwd"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "basedn"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "uid",
+                                    "value": "uid"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "filter"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "scope",
+                                    "value": 2
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "timeout",
+                                    "value": 5
+                                }
+                            ]
+                        },
+                        {
+                            "identifier": "uaa_auth_pks"
+                        },
+                        {
+                            "identifier": "uaa_auth_pas"
+                        }
+                    ],
+                    "value": "db_auth"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "server_cert_key",
+                    "value": {
+                        "cert_pem": "-----BEGIN CERTIFICATE-----\r\nMIIDlDCCAnygAwIBAgIVAIYLdUrCDxwPFhsz8iqvzAtbBXvuMA0GCSqGSIb3DQEB\r\nCwUAMB8xCzAJBgNVBAYTAlVTMRAwDgYDVQQKDAdQaXZvdGFsMB4XDTE5MDEzMDE2\r\nMDIxOVoXDTIxMDEzMDE2MDIxOVowSDELMAkGA1UEBhMCVVMxEDAOBgNVBAoMB1Bp\r\ndm90YWwxJzAlBgNVBAMMHiouY3BvZC1hcHB0eC5hei1sYWIuc2h3cmZyLmNvbTCC\r\nASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBANPfClx9bRorpw0Bi8r8Bqnv\r\nsFg4RLGFvWojlGg13R1eFzAp7ve5ZG3VoyettrfV1dklcJ0eL6bdEkoHXr3kD0Pc\r\nGpn9H7FJenRL2o4qU0cutKishjQdquIa8/LsbTYH2/rW2fTpEd40PoDezCGRDhnL\r\nCb1vDF3M0QEpqKGBgY6MotGhHN5e8Sv5W6uGfAHC6fVRoty0qRZLRt3GtmVfINbL\r\nJKZLfjJA96vloSJ4FnNwZYk0xOM1LCy9G7wuDOLw4Fs5eu9/4v56pRxeEn6zKB2U\r\nbqH54NvUMmOYwZx447IBgDKr1PqFs4/8xtk1h52vAF9bPEs0NS5sPVxbuww9o/UC\r\nAwEAAaOBnTCBmjAdBgNVHQ4EFgQUZAXmVoq3x6v9Y/rp1mo3njaDMCgwHwYDVR0j\r\nBBgwFoAUZ0ddcXQ+RpalfL1bZP1wNfpW1J8wHQYDVR0lBBYwFAYIKwYBBQUHAwIG\r\nCCsGAQUFBwMBMA4GA1UdDwEB/wQEAwIHgDApBgNVHREEIjAggh4qLmNwb2QtYXBw\r\ndHguYXotbGFiLnNod3Jmci5jb20wDQYJKoZIhvcNAQELBQADggEBADygZSZ9tUl1\r\n4eteLQiaOUwVT58tuskB9/KDi6H4nIn9MzqQYNta3SZaZp7+yEcxCUffFdKmtPDP\r\nbXE05IPO8iiwYx4a+ivoxR4t11KcUM5uU812ABb08kuH57sJ7U9pnTcLZ5l48FfM\r\n2IG1yMGA+nJOtnwOX3gfsr199P7LILeLB021ySJHn4BQfytqIVMI2igikCmCBXyC\r\nDNrjk1TRIVBbMR/2St0FBpOdxxnp3NkAs+eCLHicMiBU0KCKtLz5tGDQdHUpAZPl\r\nly3Z4zmEF/ZJe6JaQOVVQ6vKbYSalqEC/Yx0+rMjr2DouT5EgVLn/lYlhdPTBQU/\r\nqjAK/ji+54s=\r\n-----END CERTIFICATE-----\r\n",
+                        "private_key_pem": "-----BEGIN RSA PRIVATE KEY-----\r\nMIIEpAIBAAKCAQEA098KXH1tGiunDQGLyvwGqe+wWDhEsYW9aiOUaDXdHV4XMCnu\r\n97lkbdWjJ622t9XV2SVwnR4vpt0SSgdeveQPQ9wamf0fsUl6dEvajipTRy60qKyG\r\nNB2q4hrz8uxtNgfb+tbZ9OkR3jQ+gN7MIZEOGcsJvW8MXczRASmooYGBjoyi0aEc\r\n3l7xK/lbq4Z8AcLp9VGi3LSpFktG3ca2ZV8g1sskpkt+MkD3q+WhIngWc3BliTTE\r\n4zUsLL0bvC4M4vDgWzl673/i/nqlHF4SfrMoHZRuofng29QyY5jBnHjjsgGAMqvU\r\n+oWzj/zG2TWHna8AX1s8SzQ1Lmw9XFu7DD2j9QIDAQABAoIBAEE0DhNCwnXgY0u8\r\nYxI4F7DqxAGSZ4memBl3E7Ayi3cDQu2eqh1w37hxnAGVE3tmAqcOP6cK6C1ZMcy4\r\nke6spgoDTeiAHuXHsDjkM0G3QuPQOucCGVcmnjVxiAwFuOJ87rU2s+MMa2RP/cBZ\r\nUMcvxgAoHTpAV7TyWIwcDvqNSZrdm3qiSC0eRL/dfHQujwVhS/z5sVBXjeTko4s7\r\nB2M+bZAEdsNKKiZyQ37jaeI7s+AZ/CO18fn+Yavi0DJgLiTSoddTsxy197fN01Iy\r\n7Qn2KGWz4M55URfiX9dv9R+dgZGituR6ykhV77gcr+jHKLZkPEz0uIu7HSMspuZP\r\nFxPwt+0CgYEA+XCiyRVOTWTVquarFNj6ygB80/Bms1KcbJOkuoa7HsKLDj18hyCe\r\n/U+1nl1BisTHH8NE//PUzgbxuJeViN7tfYVYPQi6g5HbmPG32f1sp5nlubWSKmem\r\nfXx2D53m1kXy5lrv2umO0tWY5Cm04LqYW6mU/6j3XewjhAL4bzVb/bMCgYEA2XF4\r\nwFDlqe6i4WYrQ13VWJNEJTh5sju5aFK0rcSL9TP4HBlQkK5yRESeRo3aQVslDJVi\r\nwb/9aBuo1imHSPgPO5CLkqiM1XUBGO9ou+oW8A9c1QGZtwW+5wdnLaCPXzZc9ZIb\r\nHKpDu1JrMjzfnODRLg5LFeCGeSA4K/cVKuA9E7cCgYEAsToaLwz4SXzvYzHpNDLG\r\nXWfjSSJxlc+IXIy6adz4bm6DJmcBZ3ECBbDwtchEnTga0rKG/+RautesPx9Um57o\r\n1lo7y4G8I2cqw4xauIObA6oQ0tXzODXU0SvxJj9ml6+zWYAbE0sGsz4YF2Sao2Fw\r\nhxACUXPX7d+tjEogAcPDzIkCgYEA1TTR9aBc0NbQlrobSZ7EBmm/s89AZGbzUTtn\r\nNcs2gGNIsCSSPosON6ogl4WXr+Wy2jfP8bJSwrX8QqHNqNqx9PGyKUdjcBmdzdlR\r\nlI/flds6ZxF+q1rS6Kz1mmOIsQ8Y7yEnvF+mshIKUeQmTiiSctpI/VZ+BF53NYS8\r\nGKJuwNkCgYAyl1I7WxqHZDJOZlczYjnDtsfkynWT5HklOnMNIr7fH0/12e1rz5qC\r\n/gVDdcAWe2L8XLTcqlJZ90brH6KS7WljsA5TddOZVEz03U9UzKQePUaGpt+MHstx\r\nI5OVs1/6FkqGNEAXnmnmhOGNLVOn1uX91gR2q/v79F7J9MQIFmGLeA==\r\n-----END RSA PRIVATE KEY-----\r\n"
+                    }
+                },
+                {
+                    "deployed": false,
+                    "identifier": "server_cert_ca"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "http_proxy"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "https_proxy"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "no_proxy",
+                    "value": "127.0.0.1,localhost,ui,registry"
+                },
+                {
+                    "deployed": false,
+                    "identifier": "with_clair",
+                    "value": true
+                },
+                {
+                    "deployed": false,
+                    "identifier": "with_notary",
+                    "value": true
+                },
+                {
+                    "deployed": false,
+                    "identifier": "registry_storage",
+                    "options": [
+                        {
+                            "identifier": "filesystem"
+                        },
+                        {
+                            "identifier": "nfs",
+                            "properties": [
+                                {
+                                    "deployed": false,
+                                    "identifier": "server_uri"
+                                }
+                            ]
+                        },
+                        {
+                            "identifier": "s3",
+                            "properties": [
+                                {
+                                    "deployed": false,
+                                    "identifier": "access_key"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "secret_key"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "region",
+                                    "value": "us-west-1"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "endpoint_url"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "bucket"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "root_directory"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "chunksize",
+                                    "value": 5242880
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "v4auth",
+                                    "value": true
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "secure",
+                                    "value": true
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "trusted_certificates"
+                                }
+                            ]
+                        },
+                        {
+                            "identifier": "gcs",
+                            "properties": [
+                                {
+                                    "deployed": false,
+                                    "identifier": "bucket"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "root_directory"
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "chunksize",
+                                    "value": 5242880
+                                },
+                                {
+                                    "deployed": false,
+                                    "identifier": "keyfile"
+                                }
+                            ]
+                        }
+                    ],
+                    "value": "filesystem"
+                }
+            ],
+            "runtime_configs": [
+                {
+                    "identifier": "harbor-bosh-dns-aliases",
+                    "name": "harbor-container-registry-7e519a45fe86db66976d-harbor-bosh-dns-aliases",
+                    "runtime_config": "releases:\n- name: harbor-container-registry\n  version: 1.7.1-build.3\naddons:\n- name: harbor-bosh-dns\n  jobs:\n  - name: harbor-dns-aliases\n    release: harbor-container-registry\n    properties:\n      aliases:\n        (( .properties.hostname.value )):\n        - \"*.harbor-app.(( ..harbor-container-registry.network_name )).(( ..harbor-container-registry.deployment_name )).bosh\"\n        (( .properties.auth_mode.selected_option.parsed_manifest(pks_uaa_fqdn) )):\n        - \"(( .properties.auth_mode.selected_option.parsed_manifest(pks_uaa_instances_name) ))\"\n- name: enable-bosh-dns\n  jobs:\n  - name: enable-bosh-dns\n    release: harbor-container-registry\n  include:\n    deployments:\n    - (( ..harbor-container-registry.deployment_name ))\n"
+                }
+            ],
+            "singleton_availability_zone_reference": "fc538aac81c6296c575c",
+            "stemcell": {
+                "file": "bosh-stemcell-170.23-vsphere-esxi-ubuntu-xenial-go_agent.tgz",
+                "hypervisor": "esxi",
+                "infrastructure": "vsphere",
+                "name": "bosh-vsphere-esxi-ubuntu-xenial-go_agent",
+                "os": "ubuntu-xenial",
+                "version": "170.23"
+            },
+            "syslog_config": {
+                "enabled": false,
+                "tls_enabled": false,
+                "transport_protocol": "tcp"
+            }
+        }
+    ]
+}

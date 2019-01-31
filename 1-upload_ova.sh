@@ -20,7 +20,7 @@ ovftool --acceptAllEulas --skipManifestCheck --X:injectOvfEnv --allowExtraConfig
 --prop:ntp_servers=${NTP} \
 --powerOn \
 --noSSLVerify \
--ds=${VCENTER_DATASTORE} -n=${OVA_OPSMANAGER_NAME} --network='${OVA_OPSMANAGER_PORTGROUP}' \
+-ds="${VCENTER_DATASTORE}" -n=${OVA_OPSMANAGER_NAME} --network='${OVA_OPSMANAGER_PORTGROUP}' \
 ${OVA_OPSMANAGER} \
 vi://${VCENTER_USERNAME}:'${VCENTER_PASSWORD}'@${VCENTER_TARGET}
 EOF
@@ -49,7 +49,7 @@ ovftool --acceptAllEulas --X:injectOvfEnv --allowExtraConfig \
 --prop:vm.rootpw=${PASSWORD} \
 --powerOn \
 --noSSLVerify \
--ds=${VCENTER_DATASTORE} -n=${OVA_VRLI_NAME} "--network=${VCENTER_PORTGROUP}" \
+-ds="${VCENTER_DATASTORE}" -n=${OVA_VRLI_NAME} "--network=${VCENTER_PORTGROUP}" \
 ${OVA_VRLI} \
 vi://${VCENTER_USERNAME}:'${VCENTER_PASSWORD}'@${VCENTER_TARGET}
 EOF
@@ -75,7 +75,7 @@ ovftool --acceptAllEulas --X:injectOvfEnv --allowExtraConfig \
 --prop:vami.netmask0.vRealize_Operations_Manager_Appliance=${NETMASK} \
 --powerOn \
 --noSSLVerify \
--ds=${VCENTER_DATASTORE} -n=${OVA_VROPS_NAME} "--network=${VCENTER_PORTGROUP}" \
+-ds="${VCENTER_DATASTORE}" -n=${OVA_VROPS_NAME} "--network=${VCENTER_PORTGROUP}" \
 ${OVA_VROPS} \
 vi://${VCENTER_USERNAME}:'${VCENTER_PASSWORD}'@${VCENTER_TARGET}
 EOF

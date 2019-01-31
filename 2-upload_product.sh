@@ -10,7 +10,9 @@ function upload_stemcell {
 	om -t https://${OPSMANAGER} -k -u "${ADMIN}" -p "${PASSWORD}" upload-stemcell --stemcell ${1} 
 }
 
+om -t https://${OPSMANAGER} -k -u "${ADMIN}" -p "${PASSWORD}" configure-authentication --decryption-passphrase ${PASSWORD} --password ${PASSWORD} --username ${ADMIN}
+
 rm -fr /tmp/* 2>&1 > /dev/null
-upload_product ${BITS}/PKS/pivotal-container-service-1.2.4-build.6.pivotal
-upload_product ${BITS}/PKS/harbor-container-registry-1.6.0-build.35.pivotal
-upload_stemcell ${BITS}/PKS/bosh-stemcell-97.41-vsphere-esxi-ubuntu-xenial-go_agent.tgz
+upload_product ${BITS}/PKS/pivotal-container-service-1.3.0-build.38.pivotal
+upload_product ${BITS}/PKS/harbor-container-registry-1.7.1-build.3.pivotal
+upload_stemcell ${BITS}/PKS/bosh-stemcell-170.23-vsphere-esxi-ubuntu-xenial-go_agent.tgz
