@@ -40,12 +40,16 @@ eval sshpass -p $controller_password ssh root@${NSX_CONTROLLER_IP[0]} -o StrictH
 
 I=1
 CTRL_SECONDARY=$( echo ${NSX_CONTROLLER_IP[@]} | awk '{ print $2" "$3}' )
-for CTRL_IP in ${CTRL_SECONDARY}; do
-  eval sshpass -p $controller_password ssh root@${NSX_CONTROLLER_IP[0]} -o StrictHostKeyChecking=no "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"join control-cluster ${CTRL_IP} thumbprint ${controller_thumbprint[${I}]}\""
-  eval sshpass -p $controller_password ssh root@${CTRL_IP} -o StrictHostKeyChecking=no "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"activate control-cluster\""
+if [ "X${NSX_CONTROLLER_IP[1]}X" != "XX" ]; then
+	for CTRL_IP in ${CTRL_SECONDARY}; do
+  		eval sshpass -p $controller_password ssh root@${NSX_CONTROLLER_IP[0]} -o StrictHostKeyChecking=no "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"join control-cluster ${CTRL_IP} thumbprint ${controller_thumbprint[${I}]}\""
+  		eval sshpass -p $controller_password ssh root@${CTRL_IP} -o StrictHostKeyChecking=no "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"activate control-cluster\""
 
-  I=$( expr ${I} + 1 )
-done
+  		I=$( expr ${I} + 1 )
+	done
+else
+	eval sshpass -p $controller_password ssh root@${NSX_CONTROLLER_IP[0]} -o StrictHostKeyChecking=no "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"activate control-cluster\""
+fi
 
 for EDGE_IP in ${NSX_EDGE_IP[@]}; do
   echo "---"

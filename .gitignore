@@ -8,3 +8,4 @@ nsx-t/pks-nsx-t-superuser.*
 nsx-t/nsx.crt
 nsx-t/nsx.key
 nsx-t/outcomes.lst
+opsm-config/installsettings.json
