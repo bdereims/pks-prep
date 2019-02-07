@@ -13,4 +13,4 @@
 It's not an official PKS installer. It's my own work for installation automation.
 Don't use it to deploy a pruction environment.
 
-Check out the LICENSE file.
+Check out the ( [LICENSE] (https://github.com/bdereims/pks-prep/blob/master/LICENSE) ) file.
