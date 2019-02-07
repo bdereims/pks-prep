@@ -30,7 +30,6 @@ for CTRL_IP in ${NSX_CONTROLLER_IP[@]}; do
 
   eval sshpass -p $controller_password ssh root@${CTRL_IP} -o StrictHostKeyChecking=no "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"join management-plane $manager_ip username admin thumbprint $manager_thumbprint password $manager_password\""
   eval sshpass -p $controller_password ssh root@${CTRL_IP} -o StrictHostKeyChecking=no "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"set control-cluster security-model shared-secret secret $controller_password\""
-  #eval sshpass -p $controller_password ssh root@${CTRL_IP} -o StrictHostKeyChecking=no "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"initialize control-cluster\""
   controller_thumbprint[${I}]=`eval sshpass -p ${controller_password} ssh -o StrictHostKeyChecking=no root@${CTRL_IP} "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"get control-cluster certificate thumbprint\""`
 
   I=$( expr ${I} + 1 )
@@ -48,8 +47,11 @@ if [ "X${NSX_CONTROLLER_IP[1]}X" != "XX" ]; then
   		I=$( expr ${I} + 1 )
 	done
 else
+	eval sshpass -p $controller_password ssh root@${NSX_CONTROLLER_IP[0]} -o StrictHostKeyChecking=no "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"get control-cluster status\""
 	eval sshpass -p $controller_password ssh root@${NSX_CONTROLLER_IP[0]} -o StrictHostKeyChecking=no "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"activate control-cluster\""
 fi
+	
+eval sshpass -p $controller_password ssh root@${NSX_CONTROLLER_IP[0]} -o StrictHostKeyChecking=no "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"get control-cluster status\""
 
 for EDGE_IP in ${NSX_EDGE_IP[@]}; do
   echo "---"
