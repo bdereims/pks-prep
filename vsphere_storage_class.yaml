@@ -4,4 +4,7 @@ metadata:
   name: thin-disk
 provisioner: kubernetes.io/vsphere-volume
 parameters:
+  datastore: Datastore 
   diskformat: thin
+  fstype: ext3
+
