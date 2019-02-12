@@ -1,0 +1,15 @@
+# on ESX: vmkfstools -c 2G /vmfs/volumes/Datastore/myvol.vmdk 
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: myvol 
+spec:
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  vsphereVolume:
+    volumePath: "[Datastore] myvol"
+    fsType: ext4
