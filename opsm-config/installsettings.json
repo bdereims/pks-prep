@@ -1,12 +1,10 @@
 {
-    "guid": "841b89688393dccc283c",
     "infrastructure": {
         "availability_zones": [
             {
                 "clusters": [
                     {
                         "cluster": "Cluster",
-                        "guid": "df03678ecffac89d00e9",
                         "resource_pool": "PKS"
                     }
                 ],
@@ -15,36 +13,31 @@
                 "name": "PKS"
             }
         ],
-        "compilation_vm_credentials": {
-            "identity": "vcap",
-            "password": "lEu39Kr7_htJm3QlHdOKDlE9zQVTtden",
-            "salt": "24532e35f7f7d897"
-        },
         "iaas_configurations": [
             {
                 "bosh_disk_path": "pcf_disk",
                 "bosh_template_folder": "pcf_templates",
                 "bosh_vm_folder": "pcf_vms",
-                "datacenter": "cPod-PIVOTAL",
+                "datacenter": "cPod-APPSTX",
                 "disk_type": "thin",
                 "ephemeral_datastores": [
                     "Datastore"
                 ],
                 "guid": "d75d90b163879415f250",
-                "name": "cPod-PIVOTAL",
-                "nsx_address": "nsx.cpod-pivotal.az-lab.shwrfr.com",
-                "nsx_ca_certificate": "-----BEGIN CERTIFICATE-----\r\nMIIDFDCCAfygAwIBAgIJAJx4UNLAnagZMA0GCSqGSIb3DQEBCwUAMC0xKzApBgNV\r\nBAMMIm5zeC5jcG9kLXBpdm90YWwuYXotbGFiLnNod3Jmci5jb20wHhcNMTkwMjAx\r\nMTQxNzM1WhcNMjkwMTI5MTQxNzM1WjAtMSswKQYDVQQDDCJuc3guY3BvZC1waXZv\r\ndGFsLmF6LWxhYi5zaHdyZnIuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB\r\nCgKCAQEAz1P4+ubYXQt0FswxtVpXIimDhMXuvRFcJp43BiLbjaNaL3u25HZGrFSD\r\nHE+SwW80iVMD1HIdvh8hcssu8vfohZQSX5hnklJJWd3Rp2vgrZKdbQklV5aJFwgV\r\nx7zwBdZ9ykX6L6WEFM12qWrPDXpAn59nNDrSts8I2ZDraBxsxdMRkvJDgAYoujfh\r\nQrjpMGmtWF8pEaKpXG4Un6Q8BhLdO7sCk6/tozEgGSkLAcWke49S+3XcL51jh731\r\nvtjKqO26Wo1SejSMAyx+jWyTKiueOb9OYiWQxy8IkkFqedqiH0jDy+PLcqJiJ9sJ\r\ne+IGzXmhwD3g6Aqi1bwgc2rEwJG1FQIDAQABozcwNTAzBgNVHREELDAqgiJuc3gu\r\nY3BvZC1waXZvdGFsLmF6LWxhYi5zaHdyZnIuY29thwSsFAoEMA0GCSqGSIb3DQEB\r\nCwUAA4IBAQBGQ2Da9v0VauHZ6pFbNw8eDjiCxD5JijJQXNmQiqDmUuxMbwBOviGd\r\n9Hc22ZwoVc1q1mFfcfjyONENTMdqlUJc0DbJcL6HV0TqbqLATlr24U7PdwU9ol5y\r\nz7XyhBdZDfi+zfYtY0IFqa3w7XIDjYdw7Z8O27SowDcgVHrKHFNQGkPjAOyWe2ct\r\nU6OiX4ugXY/Npkds1cWs3Y0RuHNTljzrhCGESMPcmClSe8hGk+4mgQLbDWiaX3LR\r\nbhuWE7aK1Ex0URVPukvNLJG88Tr8nUo1gErhq9qUBVoa0s7o54BGh9qDGZ2IbXxl\r\n//JeoUgA5bp+4+PtKBclNHCAZPOQsWzg\r\n-----END CERTIFICATE-----\r\n",
+                "name": "cPod-APPSTX",
+                "nsx_address": "nsx.cpod-appstx.az-lab.shwrfr.com",
+                "nsx_ca_certificate": "-----BEGIN CERTIFICATE-----\r\nMIIDETCCAfmgAwIBAgIJAN7mYZY7thMNMA0GCSqGSIb3DQEBCwUAMCwxKjAoBgNV\r\nBAMMIW5zeC5jcG9kLWFwcHN0eC5hei1sYWIuc2h3cmZyLmNvbTAeFw0xOTAyMDcx\r\nNjMzMTNaFw0yOTAyMDQxNjMzMTNaMCwxKjAoBgNVBAMMIW5zeC5jcG9kLWFwcHN0\r\neC5hei1sYWIuc2h3cmZyLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC\r\nggEBALDefkVo5aLd8DDtStux7TzGZuXxb1F9JAsK12BuH0P8UEOsUTd0uaLWkzks\r\nvOIP1UDvdlO2rLT9dXaNRlBOK1aShI0NWFmRKeYYHKDW+Qx8AnchXkBOTt0o6BZu\r\nFJbLIwIw5oWL7XDaskrLLTFvWtXAewbou/k36M77JMbwdoYVM9/JI7ZyE+6JmW0A\r\nbV6AoAX5Yg7NXHfSn+AtseiQ24ggGiSHlmccKo4n2jfthvivQvX6FLFplquN7FG9\r\nOFyRY+uD0GA8/5QL5MP3sjQTjoUfEQUxX1SMy8Al/uFfwSBloDxK/avfvmx6XZLF\r\nSxzHHMKvCOmMNOj/NLs+nAMrcA8CAwEAAaM2MDQwMgYDVR0RBCswKYIhbnN4LmNw\r\nb2QtYXBwc3R4LmF6LWxhYi5zaHdyZnIuY29thwSsFAwEMA0GCSqGSIb3DQEBCwUA\r\nA4IBAQCrWgB3EY58G6Km+qMEzSsh9pGOHQoKMFi+9i2pvOZ2iEZMnrTWL3sN8feT\r\nrgkYd1aefOEvIrprblI67GQEHl4Zhtfe9VhJodYa5BSVPXMvnCHkyVck1tRtri0B\r\nq81+gnb9X9/NM+Aczd4Il2YUfXlPycp10rBk/IkfasjhsWXXbVotuLeuiynJzDIf\r\nGaaNfEcA4+sBhyGljqFQ6JIFrgxH1Oopg4RAqgIFcx57kjR/3h34LN0grY/Z5cc7\r\ny1cp5AmBEvuNOrkbU5EDsHEzR8n4eigNjdpHEBJaTG3C4UeYXovSJdWEK5WSiu8L\r\ncMHb9lPeC7bdeg1BqW8ow32rOo+A\r\n-----END CERTIFICATE-----\r\n",
                 "nsx_mode": "nsx-t",
                 "nsx_networking_enabled": true,
-                "nsx_password": "7YKT6SJAjEFUBWt!",
+                "nsx_password": "DlWFbacVH2q2N5x!",
                 "nsx_username": "admin",
                 "persistent_datastores": [
                     "Datastore"
                 ],
                 "ssl_verification_enabled": false,
-                "vcenter_host": "vcsa.cpod-pivotal.az-lab.shwrfr.com",
-                "vcenter_password": "7YKT6SJAjEFUBWt!",
-                "vcenter_username": "administrator@cpod-pivotal.az-lab.shwrfr.com"
+                "vcenter_host": "vcsa.cpod-appstx.az-lab.shwrfr.com",
+                "vcenter_password": "DlWFbacVH2q2N5x!",
+                "vcenter_username": "administrator@cpod-appstx.az-lab.shwrfr.com"
             }
         ],
         "icmp_checks_enabled": true,
@@ -52,7 +45,6 @@
         "locked": false,
         "networks": [
             {
-                "guid": "dea1eede6c708e5963cd",
                 "name": "PKS",
                 "subnets": [
                     {
@@ -60,8 +52,8 @@
                             "fc538aac81c6296c575c"
                         ],
                         "cidr": "1.1.1.0/24",
-                        "dns": "172.20.10.1",
-                        "gateway": "172.20.10.1",
+                        "dns": "172.20.12.1",
+                        "gateway": "172.20.12.1",
                         "guid": "791d4c56bc4d0f2c453d",
                         "iaas_identifier": "pks-mgmt",
                         "reserved_ip_ranges": "1.1.1.1-1.1.1.10"
@@ -73,26 +65,14 @@
         "type": "vsphere",
         "vm_password_type": "generate"
     },
-    "installation_schema_version": "2.4",
     "products": [
         {
-            "bosh_metrics_forwarder_client_credentials": {
-                "identity": "bosh_metrics_client",
-                "password": "U-9Cq7maOeqb-JOa_e3nVSGJgRx0g8gC"
-            },
-            "bosh_metrics_forwarder_server_credentials": {
-                "identity": "bosh_metrics_server",
-                "password": "DLk0MQKTDhauBJ6HoNZ5y00tBfONDXV_"
-            },
-            "credhub_encryption_password": {
-                "secret": "FlrPQwWARDwpOZ-WDe6mWUJaybzeHkmg"
-            },
             "director_configuration": {
                 "allow_legacy_agents": true,
                 "blobstore_type": "local",
                 "bosh_recreate_on_next_deploy": false,
                 "bosh_recreate_persistent_disks_on_next_deploy": false,
-                "custom_ssh_banner": "cPod-PIVOTAL",
+                "custom_ssh_banner": "cPod-APPSTX",
                 "database_type": "internal",
                 "director_worker_count": 5,
                 "external_database_options": {
@@ -116,7 +96,7 @@
                     "tls_enabled": true
                 },
                 "ntp_servers": [
-                    "172.20.10.1"
+                    "172.20.12.1"
                 ],
                 "post_deploy_enabled": true,
                 "resurrector_enabled": true,
@@ -125,10 +105,6 @@
                     "signature_version": "2"
                 },
                 "skip_director_drain": true
-            },
-            "director_credhub_client_credentials": {
-                "identity": "director_to_credhub",
-                "password": "JjpwdwSB0PIlknvL7RWR9S2qF_OT7OhY"
             },
             "guid": "p-bosh-0bd4d421ff55e26a124b",
             "identifier": "p-bosh",
@@ -229,11 +205,6 @@
                             "identifier": "uaa_encryption_key"
                         }
                     ],
-                    "vm_credentials": {
-                        "identity": "vcap",
-                        "password": "zOF_q5n7QdPmr0iYl2NnWs37iryAElc6",
-                        "salt": "6f653306680ac45e"
-                    }
                 },
                 {
                     "guid": "compilation-25d2af1545a472c46b2a",
@@ -242,25 +213,11 @@
                     "instance": {
                         "identifier": "instances"
                     },
-                    "vm_credentials": {
-                        "identity": "vcap",
-                        "password": "S0ZS2l_8iwcx_VrEgyascGwhyQVSTO7o",
-                        "salt": "82eafabaeec6c4c4"
-                    }
                 }
             ],
             "network_reference": "dea1eede6c708e5963cd",
             "prepared": false,
-            "product_version": "2.4-build.131",
             "singleton_availability_zone_reference": "fc538aac81c6296c575c",
-            "stemcell": {
-                "file": "bosh-stemcell-170.9-vsphere-esxi-ubuntu-xenial-go_agent.tgz",
-                "hypervisor": "esxi",
-                "infrastructure": "vsphere",
-                "name": "bosh-vsphere-esxi-ubuntu-xenial-go_agent",
-                "os": "ubuntu-xenial",
-                "version": "170.9"
-            },
             "syslog_config": {
                 "enabled": false,
                 "tls_enabled": false,
@@ -299,7 +256,6 @@
                 "fc538aac81c6296c575c"
             ],
             "guid": "pivotal-container-service-c3fc470828a8f21a6380",
-            "identifier": "pivotal-container-service",
             "installation_name": "pivotal-container-service-c3fc470828a8f21a6380",
             "jobs": [
                 {
@@ -319,11 +275,6 @@
                             }
                         }
                     ],
-                    "vm_credentials": {
-                        "identity": "vcap",
-                        "password": "LGbY4MFQXZEw_lVxpMdrEvDeme0HqTEU",
-                        "salt": "47d5c895c89dc64a"
-                    }
                 }
             ],
             "network_reference": "dea1eede6c708e5963cd",
@@ -351,7 +302,6 @@
                 }
             ],
             "prepared": false,
-            "product_version": "1.3.0-build.38",
             "properties": [
                 {
                     "deployed": false,
@@ -437,19 +387,19 @@
                                     "deployed": false,
                                     "identifier": "vcenter_master_creds",
                                     "value": {
-                                        "identity": "administrator@cpod-pivotal.az-lab.shwrfr.com",
-                                        "password": "7YKT6SJAjEFUBWt!"
+                                        "identity": "administrator@cpod-appstx.az-lab.shwrfr.com",
+                                        "password": "DlWFbacVH2q2N5x!"
                                     }
                                 },
                                 {
                                     "deployed": false,
                                     "identifier": "vcenter_ip",
-                                    "value": "vcsa.cpod-pivotal.az-lab.shwrfr.com"
+                                    "value": "vcsa.cpod-appstx.az-lab.shwrfr.com"
                                 },
                                 {
                                     "deployed": false,
                                     "identifier": "vcenter_dc",
-                                    "value": "cPod-PIVOTAL"
+                                    "value": "cPod-APPSTX"
                                 },
                                 {
                                     "deployed": false,
@@ -554,12 +504,12 @@
                                 {
                                     "deployed": false,
                                     "identifier": "nsx-t-host",
-                                    "value": "nsx.cpod-pivotal.az-lab.shwrfr.com"
+                                    "value": "nsx.cpod-appstx.az-lab.shwrfr.com"
                                 },
                                 {
                                     "deployed": false,
                                     "identifier": "nsx-t-ca-cert",
-                                    "value": "-----BEGIN CERTIFICATE-----\r\nMIIDFDCCAfygAwIBAgIJAJx4UNLAnagZMA0GCSqGSIb3DQEBCwUAMC0xKzApBgNV\r\nBAMMIm5zeC5jcG9kLXBpdm90YWwuYXotbGFiLnNod3Jmci5jb20wHhcNMTkwMjAx\r\nMTQxNzM1WhcNMjkwMTI5MTQxNzM1WjAtMSswKQYDVQQDDCJuc3guY3BvZC1waXZv\r\ndGFsLmF6LWxhYi5zaHdyZnIuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB\r\nCgKCAQEAz1P4+ubYXQt0FswxtVpXIimDhMXuvRFcJp43BiLbjaNaL3u25HZGrFSD\r\nHE+SwW80iVMD1HIdvh8hcssu8vfohZQSX5hnklJJWd3Rp2vgrZKdbQklV5aJFwgV\r\nx7zwBdZ9ykX6L6WEFM12qWrPDXpAn59nNDrSts8I2ZDraBxsxdMRkvJDgAYoujfh\r\nQrjpMGmtWF8pEaKpXG4Un6Q8BhLdO7sCk6/tozEgGSkLAcWke49S+3XcL51jh731\r\nvtjKqO26Wo1SejSMAyx+jWyTKiueOb9OYiWQxy8IkkFqedqiH0jDy+PLcqJiJ9sJ\r\ne+IGzXmhwD3g6Aqi1bwgc2rEwJG1FQIDAQABozcwNTAzBgNVHREELDAqgiJuc3gu\r\nY3BvZC1waXZvdGFsLmF6LWxhYi5zaHdyZnIuY29thwSsFAoEMA0GCSqGSIb3DQEB\r\nCwUAA4IBAQBGQ2Da9v0VauHZ6pFbNw8eDjiCxD5JijJQXNmQiqDmUuxMbwBOviGd\r\n9Hc22ZwoVc1q1mFfcfjyONENTMdqlUJc0DbJcL6HV0TqbqLATlr24U7PdwU9ol5y\r\nz7XyhBdZDfi+zfYtY0IFqa3w7XIDjYdw7Z8O27SowDcgVHrKHFNQGkPjAOyWe2ct\r\nU6OiX4ugXY/Npkds1cWs3Y0RuHNTljzrhCGESMPcmClSe8hGk+4mgQLbDWiaX3LR\r\nbhuWE7aK1Ex0URVPukvNLJG88Tr8nUo1gErhq9qUBVoa0s7o54BGh9qDGZ2IbXxl\r\n//JeoUgA5bp+4+PtKBclNHCAZPOQsWzg\r\n-----END CERTIFICATE-----\r\n",
+                                    "value": "-----BEGIN CERTIFICATE-----\r\nMIIDETCCAfmgAwIBAgIJAN7mYZY7thMNMA0GCSqGSIb3DQEBCwUAMCwxKjAoBgNV\r\nBAMMIW5zeC5jcG9kLWFwcHN0eC5hei1sYWIuc2h3cmZyLmNvbTAeFw0xOTAyMDcx\r\nNjMzMTNaFw0yOTAyMDQxNjMzMTNaMCwxKjAoBgNVBAMMIW5zeC5jcG9kLWFwcHN0\r\neC5hei1sYWIuc2h3cmZyLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC\r\nggEBALDefkVo5aLd8DDtStux7TzGZuXxb1F9JAsK12BuH0P8UEOsUTd0uaLWkzks\r\nvOIP1UDvdlO2rLT9dXaNRlBOK1aShI0NWFmRKeYYHKDW+Qx8AnchXkBOTt0o6BZu\r\nFJbLIwIw5oWL7XDaskrLLTFvWtXAewbou/k36M77JMbwdoYVM9/JI7ZyE+6JmW0A\r\nbV6AoAX5Yg7NXHfSn+AtseiQ24ggGiSHlmccKo4n2jfthvivQvX6FLFplquN7FG9\r\nOFyRY+uD0GA8/5QL5MP3sjQTjoUfEQUxX1SMy8Al/uFfwSBloDxK/avfvmx6XZLF\r\nSxzHHMKvCOmMNOj/NLs+nAMrcA8CAwEAAaM2MDQwMgYDVR0RBCswKYIhbnN4LmNw\r\nb2QtYXBwc3R4LmF6LWxhYi5zaHdyZnIuY29thwSsFAwEMA0GCSqGSIb3DQEBCwUA\r\nA4IBAQCrWgB3EY58G6Km+qMEzSsh9pGOHQoKMFi+9i2pvOZ2iEZMnrTWL3sN8feT\r\nrgkYd1aefOEvIrprblI67GQEHl4Zhtfe9VhJodYa5BSVPXMvnCHkyVck1tRtri0B\r\nq81+gnb9X9/NM+Aczd4Il2YUfXlPycp10rBk/IkfasjhsWXXbVotuLeuiynJzDIf\r\nGaaNfEcA4+sBhyGljqFQ6JIFrgxH1Oopg4RAqgIFcx57kjR/3h34LN0grY/Z5cc7\r\ny1cp5AmBEvuNOrkbU5EDsHEzR8n4eigNjdpHEBJaTG3C4UeYXovSJdWEK5WSiu8L\r\ncMHb9lPeC7bdeg1BqW8ow32rOo+A\r\n-----END CERTIFICATE-----\r\n",
                                 },
                                 {
                                     "deployed": false,
@@ -570,8 +520,8 @@
                                     "deployed": false,
                                     "identifier": "nsx-t-superuser-certificate",
                                     "value": {
-                                        "cert_pem": "-----BEGIN CERTIFICATE-----\r\nMIIC1jCCAb6gAwIBAgIJALdGuERgJPfXMA0GCSqGSIb3DQEBCwUAMB4xHDAaBgNV\r\nBAMME3Brcy1uc3gtdC1zdXBlcnVzZXIwHhcNMTkwMjAxMTQxNzE0WhcNMjkwMTI5\r\nMTQxNzE0WjAeMRwwGgYDVQQDDBNwa3MtbnN4LXQtc3VwZXJ1c2VyMIIBIjANBgkq\r\nhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAof5+VQgWzLtChMbZzpjRrRJq/M7kT28O\r\ntQufxsFDjg9J8Ho5g/s9nUcl7dX9bE8/sli0qzEj1yqjcHFY0GkispVyqKYcbqaz\r\nA0zdvSsF28KyFwJWK3Ulchg1LbduMS6U/Ptr9lliQBZMunhiH6MH1F2HasC9ghiH\r\nlSXAWknCDxJZdVENqvOam/lmLd4LAf0zWgnjdxiWxTA0x5G/RN5/ayCfRbDOlF9k\r\nQjM8YbLNGUtRw72q02eLiYlqy6sMoRMqOaMo86TgavQqhXgPCCfRxxHn5NjTpb+0\r\nz+Pe+afIfqSOstGiMqY1HTin8mRfoXWboQ9MMk1PG0DGXwQWM3TgDQIDAQABoxcw\r\nFTATBgNVHSUEDDAKBggrBgEFBQcDAjANBgkqhkiG9w0BAQsFAAOCAQEAgiggna2v\r\n/30K0QwvpYv1kHUVln5BX1Jp1ixYSsdAHlJnb5ZSmV+Js44ldAWyYNIzaSKnBYb+\r\niNfv7fz+KNE5Q6RJd7tMebdkRnmC8cpj/7rjShQ9sHmD40IrZ67gm56z1BZx3SHa\r\ngQE8yyEXNnA8+ybgYezOgt54LXorZYOp44d4lRHDrgnrUIbsC9zVp075fboSd7SD\r\ndeFGm0cqMUHsgkQX7/4hyb3adaZKGXwyaroQR/dGg4tTdl0OYiqcKRqHI/Cz6PLY\r\nYz+wVIpkL2Q9Hw3WDudWXsr490Rdh5mWo9rdhCxzS9QUl8WYd1Ks6TQQg1FUjGYw\r\ntdKh+OCEvsSAhA==\r\n-----END CERTIFICATE-----\r\n",
-                                        "private_key_pem": "-----BEGIN PRIVATE KEY-----\r\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCh/n5VCBbMu0KE\r\nxtnOmNGtEmr8zuRPbw61C5/GwUOOD0nwejmD+z2dRyXt1f1sTz+yWLSrMSPXKqNw\r\ncVjQaSKylXKophxuprMDTN29KwXbwrIXAlYrdSVyGDUtt24xLpT8+2v2WWJAFky6\r\neGIfowfUXYdqwL2CGIeVJcBaScIPEll1UQ2q85qb+WYt3gsB/TNaCeN3GJbFMDTH\r\nkb9E3n9rIJ9FsM6UX2RCMzxhss0ZS1HDvarTZ4uJiWrLqwyhEyo5oyjzpOBq9CqF\r\neA8IJ9HHEefk2NOlv7TP4975p8h+pI6y0aIypjUdOKfyZF+hdZuhD0wyTU8bQMZf\r\nBBYzdOANAgMBAAECggEBAJ07IG9z7H1GfGfXgexuk4UCzWkXfq5CwumioLAPQXyP\r\nBlsspsqdfs47EmtoOhN4UADQ7HsEtR7QudYXjfarNQxU1fcvU4Vqs3HOl6JWMdd9\r\nf9GpaO3BRFkbefInigKejemGNuHjG+PMQSj0U3kVijHrndZVwRqWqHJxM+PulzZ8\r\nM5sGsVjHoO5dsTL+WHRNQIQFQ0C8tNhv3Cd8wZx+d0z35ns5xLVFip2m+NoQu20P\r\nKwZv3fys/0mtrbDFjBgC7Weo/U3J++36pGYuh7Q6ux3BjTIXq7cSuRCItcdC7KyA\r\n6w13OI9xHYteP8TGRxyIX/DjWr3ClhVcqAhfnnoUn1kCgYEAy7F6lCDSlNRhR/6T\r\nshFdc8dv49SILFlqkPDpLHBdpC/nnRfFgHlzu7lODaQ7mtZtrAZzvwMRmMNv+w4e\r\nZ7wy9a0DNvZ/aHFs36w98IiABPE+ei7/jIFLnuhiSyHh14vjBNCrDD9g3nbXKA9J\r\nHP6ztu/T4d0bJTIVmTHKDzyq178CgYEAy5fEntdKkquUvTLwP6OgxGvOWC6/HCOu\r\nkaynpst0thAnyzdHeZsoMAkiZMDKooOaF2bQcXVBvMECK1Ja8BDeJ7Vuj3tA8PGr\r\nmaEa9jO6H1YHSOU64aYhQqLIxzQ2tWlon19w7TkzyZ7fNoxSSsc0n2B6k+bSce8U\r\n7FyQhNQFWzMCgYBKFKsrEmDj5fXXdDwNCAm/4OnNp287Ce4a9rMnCVrVKuMGnC2l\r\nUwaHYJaFmZRf9NqANPyFnL0anQGuAe2G9shl112S8MVXm+Dn3EHOqCY/Jen+D/e7\r\nBw8UpRmSj6kOdn7DMozy8F3vqrMHi7+gfvWnc8PQolSMC5IVXClLr1nHCwKBgQCm\r\n2uBiydEtOX/yO6AYl/L3Z985+D3aQwgcDaNtGIuzdrQWYVyrtlSOYb4VUsf/vtl3\r\n2mR0yAOzPX+Yn6s12q0nYBOXdg04KuhXRWkCZExiyC+6N1w1eOEDasQgNpOrxBLh\r\noue7E8l0sUcAvqnm7TIceIadVmwcwjOkrwwmQFmPbwKBgDRR4LZtfe4GHHQPUHJY\r\nzGpEflXNIkB7qWKbmsy3HkcyDAoIJv6PuUjRaSbV9xPIVBaozyn9rLzI5F8iUlva\r\nRflka4mmpmjZaskyz08Uca+22xI7DV0vjkmjNKvCRvKSpP7MJKUx/XGpqYIdh1+Z\r\nJpdW37ghL35QGPnWMZajUq9l\r\n-----END PRIVATE KEY-----\r\n",
+                                        "cert_pem": "-----BEGIN CERTIFICATE-----\r\nMIIC1jCCAb6gAwIBAgIJALpq+bS/g8AqMA0GCSqGSIb3DQEBCwUAMB4xHDAaBgNV\r\nBAMME3Brcy1uc3gtdC1zdXBlcnVzZXIwHhcNMTkwMjA3MTYzMjUxWhcNMjkwMjA0\r\nMTYzMjUxWjAeMRwwGgYDVQQDDBNwa3MtbnN4LXQtc3VwZXJ1c2VyMIIBIjANBgkq\r\nhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApCR5KbirEIBY4m13g6SUwolqO/IuRZRg\r\n9j0l4iq2OZrLhw2k/cHFpv8LoxnE6JQrDGgxtddnyy1MANraIHGxpl8POqeiw37M\r\nMKHXf94DMD4pbfIgwut7BGHLJf6HCwKkPM1iUEYoekL6qBNU9U3cD2opSurgnKQ6\r\n2vUTqvq+ezknasTXOWDDaM1BK3jD7pVmHmGpwUYs4tcctuE9rABXr8yYTf0EwTJI\r\n70risuZQVZbpqamEw2cwRHlcZlObeeBNZSDHIJVNLru8TNBIAQE2BHQJaalzfI//\r\ncs75Js43xtSLzHNBt1VV/m6GnYVplBuYST9lXu0jorrl/bMHfoE+NwIDAQABoxcw\r\nFTATBgNVHSUEDDAKBggrBgEFBQcDAjANBgkqhkiG9w0BAQsFAAOCAQEAjIzoI6lf\r\nUDSJg05c98LkWe/wQheTZX9J5nfEadYkSCy08KbPUPBSDjDRhYXFcDFUmqngdWXh\r\nF11zJF7a6Fuc6enrlbBJlSqwI196oC8z8gSexoxZS5WKgVfN2dfW9OGJ+XAWE1sS\r\nJLYy4RhXcbz9rldxMrWEf8t99VGZgHcKB67P5Kcmv87032b1aJcVf8609NohGz4L\r\naaAO1tnlMI7GaVDi9ARC5WFYoUXm7hWI/DEIteGg3t303GcvmaJQxkOr4NGH+VI8\r\nNWRzh7sczt5u9LFd6iCekZNjsYyfIt8TrPkX2d8PTF7Fs1T9LJto+kzBdsh7T4dY\r\nycVb/oghTv53pA==\r\n-----END CERTIFICATE-----\r\n",
+                                        "private_key_pem": "-----BEGIN PRIVATE KEY-----\r\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCkJHkpuKsQgFji\r\nbXeDpJTCiWo78i5FlGD2PSXiKrY5msuHDaT9wcWm/wujGcTolCsMaDG112fLLUwA\r\n2togcbGmXw86p6LDfswwodd/3gMwPilt8iDC63sEYcsl/ocLAqQ8zWJQRih6Qvqo\r\nE1T1TdwPailK6uCcpDra9ROq+r57OSdqxNc5YMNozUEreMPulWYeYanBRizi1xy2\r\n4T2sAFevzJhN/QTBMkjvSuKy5lBVlumpqYTDZzBEeVxmU5t54E1lIMcglU0uu7xM\r\n0EgBATYEdAlpqXN8j/9yzvkmzjfG1IvMc0G3VVX+boadhWmUG5hJP2Ve7SOiuuX9\r\nswd+gT43AgMBAAECggEAMbIhRPJ2SF6ziopd/utbZrK4CUI/pC1SVfsZdyo7VaF6\r\nMX9+Dp4WO4NIgK8SoOALUIxTUJzQ/gDO3Atmsx/5C0gIkleivdGr/KVjW4FaMccA\r\nQBtos9sbua3qFazEMh8wnoAIXgl/w9R3k1+W/1X9ZGVd7yLBsms+roA43jFgbmnZ\r\nQRTfYRjTWCunQyZ/+3e0DQ9hndutYeU48VFC97GPDSSF+2VgCDy7hY4k8nc13hkE\r\nxOWnNkeUo3G+MNveVb9KP+XcEab30+0SKPHq6ea06MjB+vr3Vdjw801G17wgmINn\r\n9S97wm4HF1DxFZ6zHS/tWfeFKhZcWQagi0xvhXb1MQKBgQDUtSA5wSUI6whfw+Jk\r\nyO9gJLL/phcJaeO8CT5whDq2POk+Up5L2ylPqP/rQArrsNtXFok6h1g4N4n4U6sJ\r\nPtg09kwdU7+okdL5D+hZERGxYvLlqfLSbEwQWErBvJ7NKhZI76lAdmXUizWTAZsG\r\nNcnAPhFjLRRfwLUy/5J22uqz8wKBgQDFjOxENuvO6kLp73KeZIlciZJmiSS5Plej\r\n/lkGRdOh7hTG896P2YKkWbOe2y4QevHg4/bSYGfnKV21AwVE4CfBvhKrnNoP62sz\r\nM1uJUvMr+bTQnLypxlVxzASqidweC0LV1WP9divxyF/voMT9KS0XoC+Kziwu83P9\r\ninzNnWORrQKBgQDDDf2pOKb/kJgzSWwYQ/LPVZgXu3UwmrvNuSRbBcbZSu4Qyq6C\r\nnU060Z0tW6MoExxwtifNVkPd+YA6Cm+zoL+fgaS22A/PQzoWTzIgSvjQlA5t8PTN\r\nZaYy7uRO2Os+9LNO2wd4J5ql16qfTj+c6EJEWiaTrckbLZp8U8U53PKRZQKBgQCq\r\npcUiV97y6mHK+tCkCmytxxj0Adv7OOM0Am6cgI0EAElqYxcKY/X6SpJi0yrDibCP\r\nd9yqdiTLBmywBF/00z0Em1A9dkzYG6CKpf6YbVMp1ZZf7kT60xzUJEyTlGrUeR3O\r\n4XpyZDYpsdFNii8gEQWmtvTajqaUGDFF/u84HpD4MQKBgQDBqAAoUsBFWHYG205O\r\nWvEAi9FXPQ2ouCh069Kv9Y3DgGZnlv5ZeTV7ADlv5JJ+AC/Pp4AIMc1Ij+NTJNBm\r\nH+xZHQ/nUZSurx96ibNZ036PpdjUHI9yiv9xmZti4hT/XtYNdR9AKIwXCgI57A29\r\nZ4OdT5lvo8Xjad3Dvyf8rPea/g==\r\n-----END PRIVATE KEY-----\r\n",
                                     }
                                 },
                                 {
@@ -582,17 +532,17 @@
                                 {
                                     "deployed": false,
                                     "identifier": "t0-router-id",
-                                    "value": "e11d0c1f-8b08-432a-9ef3-a7d2bc47ff9b"
+                                    "value": "53fcad43-2547-4ed3-97eb-5df9183b6087"
                                 },
                                 {
                                     "deployed": false,
                                     "identifier": "ip-block-id",
-                                    "value": "d12cde61-092a-4ab9-ac4e-001c5a7047f3"
+                                    "value": "98686695-a25c-43e8-bde5-d37c83aac1a9"
                                 },
                                 {
                                     "deployed": false,
                                     "identifier": "floating-ip-pool-ids",
-                                    "value": "05efac33-6262-47da-a3e8-6e06e7733cf4"
+                                    "value": "c4b4c933-fe71-4f81-849c-e66b22327eb7"
                                 },
                                 {
                                     "deployed": false,
@@ -617,12 +567,12 @@
                                 {
                                     "deployed": false,
                                     "identifier": "nodes-ip-block-id",
-                                    "value": "73919ba4-52be-49c9-939a-c8f302da7ebb"
+                                    "value": "f5df6b29-3087-41d5-87d6-f8bb710fe12d"
                                 },
                                 {
                                     "deployed": false,
                                     "identifier": "cloud-config-dns",
-                                    "value": "172.20.10.1"
+                                    "value": "172.20.12.1"
                                 },
                                 {
                                     "deployed": false,
@@ -1137,7 +1087,7 @@
                 {
                     "deployed": false,
                     "identifier": "pks_api_hostname",
-                    "value": "pks-api.cpod-pivotal.az-lab.shwrfr.com"
+                    "value": "pks-api.cpod-appstx.az-lab.shwrfr.com"
                 },
                 {
                     "deployed": false,
@@ -1323,14 +1273,6 @@
             ],
             "service_network_reference": "dea1eede6c708e5963cd",
             "singleton_availability_zone_reference": "fc538aac81c6296c575c",
-            "stemcell": {
-                "file": "bosh-stemcell-170.23-vsphere-esxi-ubuntu-xenial-go_agent.tgz",
-                "hypervisor": "esxi",
-                "infrastructure": "vsphere",
-                "name": "bosh-vsphere-esxi-ubuntu-xenial-go_agent",
-                "os": "ubuntu-xenial",
-                "version": "170.23"
-            },
             "syslog_config": {
                 "enabled": false,
                 "tls_enabled": false,
@@ -1395,7 +1337,6 @@
                 }
             ],
             "prepared": false,
-            "product_version": "1.7.1-build.3",
             "properties": [
                 {
                     "deployed": false,
@@ -1452,20 +1393,20 @@
                 {
                     "deployed": false,
                     "identifier": "hostname",
-                    "value": "harbor.cpod-pivotal.az-lab.shwrfr.com"
+                    "value": "harbor.cpod-appstx.az-lab.shwrfr.com"
                 },
                 {
                     "deployed": false,
                     "identifier": "admin_password",
                     "value": {
-                        "secret": "7YKT6SJAjEFUBWt!"
+                        "secret": "DlWFbacVH2q2N5x!"
                     }
                 },
                 {
                     "deployed": false,
                     "identifier": "admin_password_for_smoketest",
                     "value": {
-                        "secret": "7YKT6SJAjEFUBWt!"
+                        "secret": "DlWFbacVH2q2N5x!"
                     }
                 },
                 {
@@ -1670,14 +1611,6 @@
                 }
             ],
             "singleton_availability_zone_reference": "fc538aac81c6296c575c",
-            "stemcell": {
-                "file": "bosh-stemcell-170.23-vsphere-esxi-ubuntu-xenial-go_agent.tgz",
-                "hypervisor": "esxi",
-                "infrastructure": "vsphere",
-                "name": "bosh-vsphere-esxi-ubuntu-xenial-go_agent",
-                "os": "ubuntu-xenial",
-                "version": "170.23"
-            },
             "syslog_config": {
                 "enabled": false,
                 "tls_enabled": false,

@@ -5,7 +5,7 @@
             {
                 "clusters": [
                     {
-                        "cluster": "Cluster",
+                        "cluster": "###CLUSTER###",
                         "guid": "df03678ecffac89d00e9",
                         "resource_pool": "PKS"
                     }
@@ -25,26 +25,26 @@
                 "bosh_disk_path": "pcf_disk",
                 "bosh_template_folder": "pcf_templates",
                 "bosh_vm_folder": "pcf_vms",
-                "datacenter": "cPod-APPTX",
+                "datacenter": "###DATACENTER###",
                 "disk_type": "thin",
                 "ephemeral_datastores": [
-                    "Datastore"
+                    "###DATASTORE###"
                 ],
                 "guid": "d75d90b163879415f250",
-                "name": "cPod-APPTX",
-                "nsx_address": "nsx.cpod-apptx.az-lab.shwrfr.com",
-                "nsx_ca_certificate": "-----BEGIN CERTIFICATE-----\r\nMIIDDjCCAfagAwIBAgIJAKTSYDlslu5AMA0GCSqGSIb3DQEBCwUAMCsxKTAnBgNV\r\nBAMMIG5zeC5jcG9kLWFwcHR4LmF6LWxhYi5zaHdyZnIuY29tMB4XDTE5MDEyMzEz\r\nNTIyNloXDTI5MDEyMDEzNTIyNlowKzEpMCcGA1UEAwwgbnN4LmNwb2QtYXBwdHgu\r\nYXotbGFiLnNod3Jmci5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB\r\nAQDjIY49E7XVuTqD578PGZimpSdSFThbwykA3QMZt0jerFIKIMC1UiatWRy3abz2\r\nw83lmhepA94iP9JjdSqvM4bMjZ6g9pEPWeyeD56OSguTwRxiKCjvKFNDaxvyqz/w\r\nEbw6S1cm6Y0d4NaJ4zb4R1MasxL0T4cYvlBGrgu+Nb8fr+ZZJyqmXOKiGJlPgcRA\r\nCL41HAxSaDOxPomjJlRO9/uwcYJM8KV9T6z8o7X/4JMElORJYy511UXcYwyI12pP\r\nX2oEfDP8cQrKoYWzzgTgkx/zC8DpWSX4wwk8Dx0ALJwTw17DEU1Az4Cj5XocgpK/\r\nKfP2H1n96IzbCnjvHJMg2xPhAgMBAAGjNTAzMDEGA1UdEQQqMCiCIG5zeC5jcG9k\r\nLWFwcHR4LmF6LWxhYi5zaHdyZnIuY29thwSsFAMEMA0GCSqGSIb3DQEBCwUAA4IB\r\nAQBOUG7GFVdMyJX01GFwQMOzAv4jhmbcwYNPyByCbb0p48N3YOvxLFAe9zUQcMqU\r\nIBGQb2/44+7iLcy+yoIIQp2ARJ19NZ+2Gwdcot1NCwCma7Fahr6wRk64IN/Qzm14\r\nAQo+eWFceLT/kuRgWxWS2vVE3o8K2bR7uD9Y5tub7D2jsnBL5oUrvXQEvb/464Z+\r\ntcOgmn0h8nB/S0vylaSop4AGyMyjrH0ybz+zWj4Nj6Lh+B03+lFNC+CdEDmSDVmv\r\nWGSwTkMkKpFsRZclX9UFbB7WGL+VwcPcuIzucHba4u+zZ+wkyPcaCo4JJvl+vW87\r\nDfsgZJwSJziCATyiebDKyALC\r\n-----END CERTIFICATE-----",
+                "name": "###DATACENTER###",
+                "nsx_address": "nsx.###DOMAIN###",
+                "nsx_ca_certificate": "###NSX_CRT###",
                 "nsx_mode": "nsx-t",
                 "nsx_networking_enabled": true,
-                "nsx_password": "vxnjecZWHP2zZPR!",
-                "nsx_username": "admin",
+                "nsx_password": "###PASSWORD###",
+                "nsx_username": "###ADMIN###",
                 "persistent_datastores": [
-                    "Datastore"
+                    "###DATASTORE###"
                 ],
                 "ssl_verification_enabled": false,
-                "vcenter_host": "vcsa.cpod-apptx.az-lab.shwrfr.com",
-                "vcenter_password": "vxnjecZWHP2zZPR!",
-                "vcenter_username": "administrator@cpod-apptx.az-lab.shwrfr.com"
+                "vcenter_host": "vcsa.###DOMAIN###",
+                "vcenter_password": "###PASSWORD###",
+                "vcenter_username": "administrator@###DOMAIN###"
             }
         ],
         "icmp_checks_enabled": true,
@@ -59,12 +59,12 @@
                         "availability_zone_references": [
                             "fc538aac81c6296c575c"
                         ],
-                        "cidr": "192.168.74.0/24",
-                        "dns": "172.20.3.1",
-                        "gateway": "192.168.74.1",
+                        "cidr": "###CIDR###.0/24",
+                        "dns": "###DNS###",
+                        "gateway": "###GATEWAY###",
                         "guid": "791d4c56bc4d0f2c453d",
                         "iaas_identifier": "pks-mgmt",
-                        "reserved_ip_ranges": "192.168.74.1-192.168.74.10"
+                        "reserved_ip_ranges": "###CIDR###.1-###CIDR###.10"
                     }
                 ]
             }
@@ -92,7 +92,7 @@
                 "blobstore_type": "local",
                 "bosh_recreate_on_next_deploy": false,
                 "bosh_recreate_persistent_disks_on_next_deploy": false,
-                "custom_ssh_banner": "cPod-APPTX",
+                "custom_ssh_banner": "###DATACENTER###",
                 "database_type": "internal",
                 "director_worker_count": 5,
                 "external_database_options": {
@@ -116,7 +116,7 @@
                     "tls_enabled": true
                 },
                 "ntp_servers": [
-                    "172.20.3.1"
+                    "###NTP###"
                 ],
                 "post_deploy_enabled": true,
                 "resurrector_enabled": true,
@@ -195,7 +195,7 @@
                             "deployed": false,
                             "identifier": "uaa_admin_credentials",
                             "value": {
-                                "identity": "admin"
+                                "identity": "###ADMIN###"
                             }
                         },
                         {
@@ -267,11 +267,11 @@
                 "transport_protocol": "tcp"
             },
             "uaa_admin_client_credentials": {
-                "identity": "admin",
+                "identity": "###ADMIN###",
                 "password": "t_YFnEwg_iHmRWLNNju6r_a_J_9UiXLa"
             },
             "uaa_admin_user_credentials": {
-                "identity": "admin",
+                "identity": "###ADMIN###",
                 "password": "hEzvaIDp4LY4J1rZLO8WnW3_UIC8yNuW"
             },
             "uaa_bbr_client_credentials": {
@@ -355,7 +355,7 @@
             "properties": [
                 {
                     "deployed": false,
-                    "identifier": "cf_mysql_mysql_admin_password"
+                    "identifier": "cf_mysql_mysql_###ADMIN###_password"
                 },
                 {
                     "deployed": false,
@@ -391,11 +391,11 @@
                 },
                 {
                     "deployed": false,
-                    "identifier": "pks_uaa_management_admin_client"
+                    "identifier": "pks_uaa_management_###ADMIN###_client"
                 },
                 {
                     "deployed": false,
-                    "identifier": "pks_services_admin_uaa_client"
+                    "identifier": "pks_services_###ADMIN###_uaa_client"
                 },
                 {
                     "deployed": false,
@@ -437,24 +437,24 @@
                                     "deployed": false,
                                     "identifier": "vcenter_master_creds",
                                     "value": {
-                                        "identity": "administrator@cpod-apptx.az-lab.shwrfr.com",
-                                        "password": "vxnjecZWHP2zZPR!"
+                                        "identity": "administrator@###DOMAIN###",
+                                        "password": "###PASSWORD###"
                                     }
                                 },
                                 {
                                     "deployed": false,
                                     "identifier": "vcenter_ip",
-                                    "value": "vcsa.cpod-apptx.az-lab.shwrfr.com"
+                                    "value": "vcsa.###DOMAIN###"
                                 },
                                 {
                                     "deployed": false,
                                     "identifier": "vcenter_dc",
-                                    "value": "cPod-APPTX"
+                                    "value": "###DATACENTER###"
                                 },
                                 {
                                     "deployed": false,
                                     "identifier": "vcenter_ds",
-                                    "value": "Datastore"
+                                    "value": "###DATASTORE###"
                                 },
                                 {
                                     "deployed": false,
@@ -554,12 +554,12 @@
                                 {
                                     "deployed": false,
                                     "identifier": "nsx-t-host",
-                                    "value": "nsx.cpod-apptx.az-lab.shwrfr.com"
+                                    "value": "nsx.###DOMAIN###"
                                 },
                                 {
                                     "deployed": false,
                                     "identifier": "nsx-t-ca-cert",
-                                    "value": "-----BEGIN CERTIFICATE-----\r\nMIIDDjCCAfagAwIBAgIJAKTSYDlslu5AMA0GCSqGSIb3DQEBCwUAMCsxKTAnBgNV\r\nBAMMIG5zeC5jcG9kLWFwcHR4LmF6LWxhYi5zaHdyZnIuY29tMB4XDTE5MDEyMzEz\r\nNTIyNloXDTI5MDEyMDEzNTIyNlowKzEpMCcGA1UEAwwgbnN4LmNwb2QtYXBwdHgu\r\nYXotbGFiLnNod3Jmci5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB\r\nAQDjIY49E7XVuTqD578PGZimpSdSFThbwykA3QMZt0jerFIKIMC1UiatWRy3abz2\r\nw83lmhepA94iP9JjdSqvM4bMjZ6g9pEPWeyeD56OSguTwRxiKCjvKFNDaxvyqz/w\r\nEbw6S1cm6Y0d4NaJ4zb4R1MasxL0T4cYvlBGrgu+Nb8fr+ZZJyqmXOKiGJlPgcRA\r\nCL41HAxSaDOxPomjJlRO9/uwcYJM8KV9T6z8o7X/4JMElORJYy511UXcYwyI12pP\r\nX2oEfDP8cQrKoYWzzgTgkx/zC8DpWSX4wwk8Dx0ALJwTw17DEU1Az4Cj5XocgpK/\r\nKfP2H1n96IzbCnjvHJMg2xPhAgMBAAGjNTAzMDEGA1UdEQQqMCiCIG5zeC5jcG9k\r\nLWFwcHR4LmF6LWxhYi5zaHdyZnIuY29thwSsFAMEMA0GCSqGSIb3DQEBCwUAA4IB\r\nAQBOUG7GFVdMyJX01GFwQMOzAv4jhmbcwYNPyByCbb0p48N3YOvxLFAe9zUQcMqU\r\nIBGQb2/44+7iLcy+yoIIQp2ARJ19NZ+2Gwdcot1NCwCma7Fahr6wRk64IN/Qzm14\r\nAQo+eWFceLT/kuRgWxWS2vVE3o8K2bR7uD9Y5tub7D2jsnBL5oUrvXQEvb/464Z+\r\ntcOgmn0h8nB/S0vylaSop4AGyMyjrH0ybz+zWj4Nj6Lh+B03+lFNC+CdEDmSDVmv\r\nWGSwTkMkKpFsRZclX9UFbB7WGL+VwcPcuIzucHba4u+zZ+wkyPcaCo4JJvl+vW87\r\nDfsgZJwSJziCATyiebDKyALC\r\n-----END CERTIFICATE-----"
+                                    "value": "###NSX_CRT###",
                                 },
                                 {
                                     "deployed": false,
@@ -570,29 +570,29 @@
                                     "deployed": false,
                                     "identifier": "nsx-t-superuser-certificate",
                                     "value": {
-                                        "cert_pem": "-----BEGIN CERTIFICATE-----\r\nMIIC1jCCAb6gAwIBAgIJAIZVIvkAlgLrMA0GCSqGSIb3DQEBCwUAMB4xHDAaBgNV\r\nBAMME3Brcy1uc3gtdC1zdXBlcnVzZXIwHhcNMTkwMTIzMTM1MjA1WhcNMjkwMTIw\r\nMTM1MjA1WjAeMRwwGgYDVQQDDBNwa3MtbnN4LXQtc3VwZXJ1c2VyMIIBIjANBgkq\r\nhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0pDYJbwqCPb3iiXpUbKN0GnbPZrOd0tY\r\nXzRXSiIB3/Rg7ZJqxMbN/A5o6s/rD3TNsQmj7VXnAKaTkcHPKYs4WNIneBBaRfON\r\n3M7lA0r+0D2h76A0ge5M0CNWCRjidjJhHYzFhEMyF7oo4qBo0SK9w/W9M0csoDKF\r\nbiFTDwePrONrKLarvbcBC0qp/ndgfAhS590S4raZxMqCn4SnXJNd3CyLM32ewicI\r\nUHapGVDEErMd4IyyNytgpxfY7HuJNwY2REK15BRTc7PeJYFAJMNxfwqtQuY1CAJU\r\n4OtuoPescc4Jv5lnN4kHIVaUpLU0eWLwSUISKu+GUwTm+CPE3fnm2QIDAQABoxcw\r\nFTATBgNVHSUEDDAKBggrBgEFBQcDAjANBgkqhkiG9w0BAQsFAAOCAQEAcmLqqtbP\r\n4mPoU35a9KAsjc4JFAZrz0esfpGeX/TqLADowZGzQtOk1aXhBDGRVeBT1PVwvExI\r\nGpFWfdT7oknHsAj9Ht6d7ig8SpTfM1vsgnYHmb8WJegDlDSQaNTdhv6dA0jwbR/q\r\nL3DEETa6oySgIjeaPCRF3xmdmBqk/worpIbSZ8UI7G7TfPefr9KDrwTUWHacX5Au\r\nCEL037St6+43h7Srt85h2KerzauLhPiiL3u/8AdA7VD3+kl3mOF/5Uas3TXsRGed\r\nnhL3Glqg3Sz4JrBAKhfIgY8tP1BocWRAkhweDNgrFgdJ5lIkz0MoN7ccydR7c2eZ\r\nRvDGsBe/karm/Q==\r\n-----END CERTIFICATE-----",
-                                        "private_key_pem": "-----BEGIN PRIVATE KEY-----\r\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDSkNglvCoI9veK\r\nJelRso3Qads9ms53S1hfNFdKIgHf9GDtkmrExs38Dmjqz+sPdM2xCaPtVecAppOR\r\nwc8pizhY0id4EFpF843czuUDSv7QPaHvoDSB7kzQI1YJGOJ2MmEdjMWEQzIXuiji\r\noGjRIr3D9b0zRyygMoVuIVMPB4+s42sotqu9twELSqn+d2B8CFLn3RLitpnEyoKf\r\nhKdck13cLIszfZ7CJwhQdqkZUMQSsx3gjLI3K2CnF9jse4k3BjZEQrXkFFNzs94l\r\ngUAkw3F/Cq1C5jUIAlTg626g96xxzgm/mWc3iQchVpSktTR5YvBJQhIq74ZTBOb4\r\nI8Td+ebZAgMBAAECggEBAICnxZmQ1bIyi98Z+OxVB7c+5plGfD6Bh9Zr2aXPD4wx\r\n+gNOgfQHcJZAi7RlI7+G46L3O/TolsNcBDB71cMRcHU8uqbufuncvWIb++u+J+E+\r\ntzH9lfeJjd9ip8/ZJ42GjLYMbCa7E+FReme2ETUvX/laraamJ0sec05uCBzXxt6f\r\n3f6oymk/xpeM3q56pSoLs3iL9/gmznyvc6ElOK5fUWI06TrwoE79daFPi0FWCPnY\r\nCG5SgArKEOPPozTWl2FcEMlneq5NAte2mDgKQYyz9mDX0xMistbqGTd6MXtblw8J\r\nFWkgwZBZ1BfaL/+75tKGqrOCcx/a0/kFrP6w/Zauvr0CgYEA6oNcDrhamx+cclfB\r\ng5ddEzjjhj0OAiJSVd8Vo8RYSOfNjtAcIgtwexu7zFVOwjWtxlkPy7hTIcdtLb+Q\r\nplETqedWuBWliHmt2X5Q/ZpWl5t5Z8eHF7ln+aYqJY8bqMK/rgRfbxnZ5UgvFeP+\r\n1jXTXSPxucaToXSACxEOlgigK68CgYEA5dvJUpxvi+tWuDVYarOAEPei4yOSmIu0\r\nMqe2XmymGrfDJo7n+K3NdEY1JyM+kT/LbMCNqs6xtbqnSwAndbXXvA197uYlmNfw\r\nXxlXVlwUAVyBRRrgCDSvhEuXhpmfmL+U11+CczcGIinfQpgNfyDUitpNZNzySXw2\r\nz8QjVELHj/cCgYAWU0ENSbGeeOjs3bvXai57KPxICEHwJBJQiHdH6uY4spCYGunC\r\nt/ISVjaPokNoK7IKYuolC7wmSBT1uPntS2Si1RolVjI3BtZtESBmtC2wKyXook8T\r\nDByA4Le8cZ5Bd6DF0TbAneZndHK/E8Br5h3kDQrzE5t0UGHsK8iGsfWFkwKBgQDg\r\n+Q1C3foPaHeoNA4l4SoncTjsN5Tz2Ui1i5DjOlQZMmK/Cn/g1buRYmYDuGs0nsvr\r\n1UrTMxqcU+QJdE0q2KAeXtYzTO7fefq6GYNx8w1hh7i+el9rqKVhRts30oRybJCx\r\ne7miKujF51WtSEVteCSPArtdTSOW6Qx8rewmPHY2YQKBgQC7QZVYNNb19lp82Ua8\r\nKOvc3tawD642cDPtArSjILzaNdhYA83uk68P399TbDemWPvFI8UAp+j7JHNRZ1RE\r\nZOslXZu6f0ZwbOHXIu8AyD2ob8dGXUXyw+7w1jugw0ytpF/Z0wj4+zprXJ/E6xE2\r\nZR2NblZkB1XhaADzKs1ZBoQzww==\r\n-----END PRIVATE KEY-----"
+                                        "cert_pem": "###PKS_NSX_T_SUPERUSER_CRT###",
+                                        "private_key_pem": "###PKS_NSX_T_SUPERUSER_KEY###",
                                     }
                                 },
                                 {
                                     "deployed": false,
                                     "identifier": "vcenter_cluster",
-                                    "value": "Cluster"
+                                    "value": "###CLUSTER###"
                                 },
                                 {
                                     "deployed": false,
                                     "identifier": "t0-router-id",
-                                    "value": "2658c383-4c8c-40d5-bf45-30fbf67a8f88"
+                                    "value": "###T0_ROUTER_ID###"
                                 },
                                 {
                                     "deployed": false,
                                     "identifier": "ip-block-id",
-                                    "value": "40c7b06c-bcba-481d-b7f7-e60660f3db1d"
+                                    "value": "###IP_BLOCK_ID###"
                                 },
                                 {
                                     "deployed": false,
                                     "identifier": "floating-ip-pool-ids",
-                                    "value": "5c82054f-f84e-42a7-a73f-4edb5b8d3085"
+                                    "value": "###FLOATING_IP_POOL_ID###"
                                 },
                                 {
                                     "deployed": false,
@@ -617,12 +617,12 @@
                                 {
                                     "deployed": false,
                                     "identifier": "nodes-ip-block-id",
-                                    "value": "7183c3bc-34d0-4c67-ac05-e276d11cfb30"
+                                    "value": "###NODES_IP_BLOCK_ID###"
                                 },
                                 {
                                     "deployed": false,
                                     "identifier": "cloud-config-dns",
-                                    "value": "172.20.3.1"
+                                    "value": "###DNS###"
                                 },
                                 {
                                     "deployed": false,
@@ -1137,7 +1137,7 @@
                 {
                     "deployed": false,
                     "identifier": "pks_api_hostname",
-                    "value": "pks-api.cpod-apptx.az-lab.shwrfr.com"
+                    "value": "pks-api.###DOMAIN###"
                 },
                 {
                     "deployed": false,
@@ -1452,20 +1452,20 @@
                 {
                     "deployed": false,
                     "identifier": "hostname",
-                    "value": "harbor.cpod-apptx.az-lab.shwrfr.com"
+                    "value": "harbor.###DOMAIN###"
                 },
                 {
                     "deployed": false,
                     "identifier": "admin_password",
                     "value": {
-                        "secret": "vxnjecZWHP2zZPR!"
+                        "secret": "###PASSWORD###"
                     }
                 },
                 {
                     "deployed": false,
                     "identifier": "admin_password_for_smoketest",
                     "value": {
-                        "secret": "vxnjecZWHP2zZPR!"
+                        "secret": "###PASSWORD###"
                     }
                 },
                 {

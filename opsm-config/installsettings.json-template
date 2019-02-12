@@ -1,12 +1,10 @@
 {
-    "guid": "841b89688393dccc283c",
     "infrastructure": {
         "availability_zones": [
             {
                 "clusters": [
                     {
                         "cluster": "###CLUSTER###",
-                        "guid": "df03678ecffac89d00e9",
                         "resource_pool": "PKS"
                     }
                 ],
@@ -15,11 +13,6 @@
                 "name": "PKS"
             }
         ],
-        "compilation_vm_credentials": {
-            "identity": "vcap",
-            "password": "lEu39Kr7_htJm3QlHdOKDlE9zQVTtden",
-            "salt": "24532e35f7f7d897"
-        },
         "iaas_configurations": [
             {
                 "bosh_disk_path": "pcf_disk",
@@ -52,7 +45,6 @@
         "locked": false,
         "networks": [
             {
-                "guid": "dea1eede6c708e5963cd",
                 "name": "PKS",
                 "subnets": [
                     {
@@ -73,20 +65,8 @@
         "type": "vsphere",
         "vm_password_type": "generate"
     },
-    "installation_schema_version": "2.4",
     "products": [
         {
-            "bosh_metrics_forwarder_client_credentials": {
-                "identity": "bosh_metrics_client",
-                "password": "U-9Cq7maOeqb-JOa_e3nVSGJgRx0g8gC"
-            },
-            "bosh_metrics_forwarder_server_credentials": {
-                "identity": "bosh_metrics_server",
-                "password": "DLk0MQKTDhauBJ6HoNZ5y00tBfONDXV_"
-            },
-            "credhub_encryption_password": {
-                "secret": "FlrPQwWARDwpOZ-WDe6mWUJaybzeHkmg"
-            },
             "director_configuration": {
                 "allow_legacy_agents": true,
                 "blobstore_type": "local",
@@ -125,10 +105,6 @@
                     "signature_version": "2"
                 },
                 "skip_director_drain": true
-            },
-            "director_credhub_client_credentials": {
-                "identity": "director_to_credhub",
-                "password": "JjpwdwSB0PIlknvL7RWR9S2qF_OT7OhY"
             },
             "guid": "p-bosh-0bd4d421ff55e26a124b",
             "identifier": "p-bosh",
@@ -229,11 +205,6 @@
                             "identifier": "uaa_encryption_key"
                         }
                     ],
-                    "vm_credentials": {
-                        "identity": "vcap",
-                        "password": "zOF_q5n7QdPmr0iYl2NnWs37iryAElc6",
-                        "salt": "6f653306680ac45e"
-                    }
                 },
                 {
                     "guid": "compilation-25d2af1545a472c46b2a",
@@ -242,25 +213,11 @@
                     "instance": {
                         "identifier": "instances"
                     },
-                    "vm_credentials": {
-                        "identity": "vcap",
-                        "password": "S0ZS2l_8iwcx_VrEgyascGwhyQVSTO7o",
-                        "salt": "82eafabaeec6c4c4"
-                    }
                 }
             ],
             "network_reference": "dea1eede6c708e5963cd",
             "prepared": false,
-            "product_version": "2.4-build.131",
             "singleton_availability_zone_reference": "fc538aac81c6296c575c",
-            "stemcell": {
-                "file": "bosh-stemcell-170.9-vsphere-esxi-ubuntu-xenial-go_agent.tgz",
-                "hypervisor": "esxi",
-                "infrastructure": "vsphere",
-                "name": "bosh-vsphere-esxi-ubuntu-xenial-go_agent",
-                "os": "ubuntu-xenial",
-                "version": "170.9"
-            },
             "syslog_config": {
                 "enabled": false,
                 "tls_enabled": false,
@@ -299,7 +256,6 @@
                 "fc538aac81c6296c575c"
             ],
             "guid": "pivotal-container-service-c3fc470828a8f21a6380",
-            "identifier": "pivotal-container-service",
             "installation_name": "pivotal-container-service-c3fc470828a8f21a6380",
             "jobs": [
                 {
@@ -319,11 +275,6 @@
                             }
                         }
                     ],
-                    "vm_credentials": {
-                        "identity": "vcap",
-                        "password": "LGbY4MFQXZEw_lVxpMdrEvDeme0HqTEU",
-                        "salt": "47d5c895c89dc64a"
-                    }
                 }
             ],
             "network_reference": "dea1eede6c708e5963cd",
@@ -351,7 +302,6 @@
                 }
             ],
             "prepared": false,
-            "product_version": "1.3.0-build.38",
             "properties": [
                 {
                     "deployed": false,
@@ -1323,14 +1273,6 @@
             ],
             "service_network_reference": "dea1eede6c708e5963cd",
             "singleton_availability_zone_reference": "fc538aac81c6296c575c",
-            "stemcell": {
-                "file": "bosh-stemcell-170.23-vsphere-esxi-ubuntu-xenial-go_agent.tgz",
-                "hypervisor": "esxi",
-                "infrastructure": "vsphere",
-                "name": "bosh-vsphere-esxi-ubuntu-xenial-go_agent",
-                "os": "ubuntu-xenial",
-                "version": "170.23"
-            },
             "syslog_config": {
                 "enabled": false,
                 "tls_enabled": false,
@@ -1395,7 +1337,6 @@
                 }
             ],
             "prepared": false,
-            "product_version": "1.7.1-build.3",
             "properties": [
                 {
                     "deployed": false,
@@ -1670,14 +1611,6 @@
                 }
             ],
             "singleton_availability_zone_reference": "fc538aac81c6296c575c",
-            "stemcell": {
-                "file": "bosh-stemcell-170.23-vsphere-esxi-ubuntu-xenial-go_agent.tgz",
-                "hypervisor": "esxi",
-                "infrastructure": "vsphere",
-                "name": "bosh-vsphere-esxi-ubuntu-xenial-go_agent",
-                "os": "ubuntu-xenial",
-                "version": "170.23"
-            },
             "syslog_config": {
                 "enabled": false,
                 "tls_enabled": false,

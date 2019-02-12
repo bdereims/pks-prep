@@ -49,7 +49,7 @@ ovftool --acceptAllEulas --X:injectOvfEnv --allowExtraConfig \
 --prop:vm.rootpw=${PASSWORD} \
 --powerOn \
 --noSSLVerify \
--ds="${VCENTER_DATASTORE}" -n=${OVA_VRLI_NAME} "--network=${VCENTER_PORTGROUP}" \
+-ds="${VCENTER_DATASTORE}" -dm=thin -n=${OVA_VRLI_NAME} "--network=${VCENTER_PORTGROUP}" \
 ${OVA_VRLI} \
 vi://${VCENTER_USERNAME}:'${VCENTER_PASSWORD}'@${VCENTER_TARGET}
 EOF
