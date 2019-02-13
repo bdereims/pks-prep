@@ -6,9 +6,8 @@ metadata:
     app: php 
 spec:
   containers:
-  - name: php 
-    image: 7.2-fpm-alpine3.8 
-
+  - name: php
+    image: php:7.2-fpm
 ---
 apiVersion: v1
 kind: Service
@@ -17,8 +16,8 @@ metadata:
 spec:
   ports:
   - name: http
-    targetPort: 80 
-    port: 80 
+    targetPort: 9000 
+    port: 9000 
   selector:
-    app: php
+    app: nginx 
   type: LoadBalancer
