@@ -6,7 +6,7 @@ metadata:
   name: myvol 
 spec:
   capacity:
-    storage: 2Gi
+    storage: 50Gi
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain

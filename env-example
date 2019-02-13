@@ -5,24 +5,24 @@ export BITS=/data/BITS
 #ovftool Path
 #export PATH=$PATH:${BITS}/ovftool
 # Generic credentials 
-export PASSWORD="xxx"
+export PASSWORD="DlWFbacVH2q2N5x!"
 export ADMIN="admin"
 # DNS Zone
-export DOMAIN="cpod-apptx.az-lab.shwrfr.com"
+export DOMAIN="cpod-appstx.az-lab.shwrfr.com"
 
 # vCenter attributes
 export VCENTER_IP="vcsa.${DOMAIN}"
 export VCENTER_USERNAME="administrator%40${DOMAIN}"
 export VCENTER_PASSWORD=${PASSWORD}
-export VCENTER_DATACENTER="cPod-APPTX"
+export VCENTER_DATACENTER="cPod-APPSTX"
 export VCENTER_CLUSTER="Cluster"
 export VCENTER_TARGET="${VCENTER_IP}/${VCENTER_DATACENTER}/host/${VCENTER_CLUSTER}"
-export VCENTER_DATASTORE="Datastore NFS"
+export VCENTER_DATASTORE="Datastore"
 export VCENTER_PORTGROUP="VM Network"
 
 # Some network stuffs
 export NETMASK="255.255.255.0"
-export GATEWAY="172.20.3.1"
+export GATEWAY="172.20.12.1"
 export DNS="${GATEWAY}"
 export NTP="${GATEWAY}"
 
@@ -33,10 +33,10 @@ export NTP="${GATEWAY}"
 export OVA_OPSMANAGER_DEPLOY="YES"
 export OVA_OPSMANAGER_NAME="OPSMANAGER"
 export OVA_OPSMANAGER_PORTGROUP="pks-mgmt"
-export OVA_OPSMANAGER_IP="192.168.74.10"
+export OVA_OPSMANAGER_IP="192.168.56.10"
 export OVA_OPSMANAGER_NETMASK="255.255.255.0"
-export OVA_OPSMANAGER_GATEWAY="192.168.74.1"
-export OVA_OPSMANAGER="${BITS}/PKS/pcf-vsphere-2.4-build.131.ova"
+export OVA_OPSMANAGER_GATEWAY="192.168.56.1"
+export OVA_OPSMANAGER="${BITS}/PKS/pcf-vsphere-2.4-build.145.ova"
 
 export OVA_VRLI_DEPLOY="NO"
 export OVA_VRLI_NAME="VRLI"
@@ -52,19 +52,19 @@ export OVA_VROPS="${BITS}/VREALIZE/vRealize-Operations-Manager-Appliance-7.0.0.1
 ### PKS Conf ###
 ################
 
-export PKS_FQDN="pks.apptx"
-export REG_FQDN="harbor.reg.apptx"
+export PKS_FQDN="${DOMAIN}"
+export REG_FQDN="harbor.${DOMAIN}"
 
 alias notary="${PWD}/docker/notary -s https://${REG_FQDN}:4443 --tlscacert ~/.docker/tls/${REG_FQDN}\:4443/ca.crt -d ~/.docker/trust"
 
-export UAA_FQDN="api.${PKS_FQDN}"
+export UAA_FQDN="pks-api.${PKS_FQDN}"
 
 # K8s Cluster name, add this in your hosts or dns, ex: "k8s-1"
 export CLUSTER_NAME="k8s-1"
 
 # OpsManager VM IP = DIRECTOR VM deployed by OpsManager, fill-in after deployment
 #export DIRECTOR="director.${DOMAIN}"
-export DIRECTOR="192.168.74.11"
+export DIRECTOR="192.168.56.11"
 export BOSH_ENVIRONMENT=pks
 # OpsManager VM IP or FQDN
 export OPSMANAGER="opsmanager.${DOMAIN}"
@@ -114,7 +114,7 @@ export NSX_HOST_COMMON_NETWORK3="${VCENTER_PORTGROUP}"
 
 # NSX Manager, Controller, Edge Network Attributes
 # IP BASE like 172.18.5
-export NSX_IP_BASE="172.20.3"
+export NSX_IP_BASE="172.20.12"
 export NSX_MANAGER_IP="${NSX_IP_BASE}.4"
 export NSX_CONTROLLER_IP=("${NSX_IP_BASE}.5")
 export NSX_EDGE_IP=("${NSX_IP_BASE}.8" "${NSX_IP_BASE}.9") 
@@ -150,4 +150,7 @@ export NSX_SUPERUSER_KEY_FILE="pks-nsx-t-superuser.key"
 export NSX_CN="nsx.${DOMAIN}"
 
 ### OPSMANAGER Conf ###
-VARSFILE=vars.yml
+CIDR="10.0.0.0/24"
+CIDR_PRIV_START="10.0.0.1"
+CIDR_PRIV_END="10.0.0.10"
+

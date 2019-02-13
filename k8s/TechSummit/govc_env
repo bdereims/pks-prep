@@ -1,0 +1,9 @@
+export GOVC_USERNAME="administrator@cpod-appstx.az-lab.shwrfr.com"
+export GOVC_PASSWORD="DlWFbacVH2q2N5x!"
+export GOVC_URL="vcsa.cpod-appstx.az-lab.shwrfr.com"
+export GOVC_INSECURE=1
+export GOVC_DATACENTER="cPod-APPSTX"
+export GOVC_DATASTORE=Datastore
+export GOVC_HOST="esx-01.cpod-appstx.az-lab.shwrfr.com"
+export GOVC_NETWORK="VM Network"
+export GOVC_RESOURCE_POOL="/cPod-APPSTX/host/Cluster/Resources"

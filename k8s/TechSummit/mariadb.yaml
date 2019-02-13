@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mariadb 
+  labels:
+    app: mariadb 
+spec:
+  containers:
+  - name: mariadb
+    image: mariadb/server:10.1.37
+    env:
+      - name: MARIADB_ROOT_PASSWORD
+        value: "VMware1"
+    volumeMounts:
+    - mountPath: /var/lib/mysql 
+      name: data 
+  volumes:
+  - name: data 
+    # This VMDK volume must already exist.
+    vsphereVolume:
+      volumePath: "[Datastore] BACKEND-MARIADB/BACKEND-MARIADB_1.vmdk"
+      fsType: ext4
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-mariadb
+spec:
+  ports:
+  - name: http
+    targetPort: 3306 
+    port: 3306
+  selector:
+    app: mariadb 
+  type: LoadBalancer

@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: php 
+  labels:
+    app: php 
+spec:
+  containers:
+  - name: php 
+    image: 7.2-fpm-alpine3.8 
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-php
+spec:
+  ports:
+  - name: http
+    targetPort: 80 
+    port: 80 
+  selector:
+    app: php
+  type: LoadBalancer
