@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
   - name: nginx 
-    image: nginx
+    image: harbor.cpod-appstx.az-lab.shwrfr.com/library/nginx:latest 
 ---
 apiVersion: v1
 kind: Service
