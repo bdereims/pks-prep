@@ -8,16 +8,3 @@ spec:
   containers:
   - name: nginx 
     image: harbor.cpod-appstx.az-lab.shwrfr.com/library/nginx:latest 
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: svc-nginx
-spec:
-  ports:
-  - name: http
-    targetPort: 80 
-    port: 80 
-  selector:
-    app: nginx 
-  type: LoadBalancer

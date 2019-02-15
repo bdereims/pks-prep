@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: harbor.cpod-appstx.az-lab.shwrfr.com/library/nginx:latest 
+        ports:
+        - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-fpm-deployment
+  labels:
+    app: php-fpm 
+spec:
+  replicas: 4 
+  selector:
+    matchLabels:
+      app: php-fpm 
+  template:
+    metadata:
+      labels:
+        app: php-fpm 
+    spec:
+      containers:
+      - name: php-fpm 
+        image: harbor.cpod-appstx.az-lab.shwrfr.com/library/php-fpm:latest
+        ports:
+        - containerPort: 9000 

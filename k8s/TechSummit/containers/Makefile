@@ -9,10 +9,10 @@ IMAGE_PHP=$(REGISTRY)/${CONTAINER_PHP}
 build-nginx: nginx/Dockerfile
 	docker build -f $(CONTAINER_NGINX)/Dockerfile -t $(IMAGE_NGINX) .
 
-build-php: php-fpm/Dockerfile
+build-php-fpm: php-fpm/Dockerfile
 	docker build -f $(CONTAINER_PHP)/Dockerfile -t $(IMAGE_PHP) .
 
 clean: 
-	docker rmi $(IMAGE_NAME) 
+	docker rmi $(IMAGE_NGINX) $(IMAGE_PHP)
 	docker images
 

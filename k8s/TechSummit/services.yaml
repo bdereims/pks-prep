@@ -1,0 +1,33 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: php-fpm-service
+spec:
+  selector:
+    app: php-fpm 
+  ports:
+  - protocol: TCP
+    port: 9000 
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mariadb-service
+spec:
+  selector:
+    app: mariadb 
+  ports:
+  - protocol: TCP
+    port: 3600 
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  ports:
+  - protocol: TCP 
+    port: 80
+  type: LoadBalancer

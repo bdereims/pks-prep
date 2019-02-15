@@ -16,7 +16,7 @@ th, td {
 
 <?php
 
-$hostname = "svc-mariadb";
+$hostname = "mariadb-service";
 $username = "root";
 $password = "VMware1!";
 $db = "nginx";
