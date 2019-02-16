@@ -5,6 +5,6 @@ RUN apk update && apk add nginx && adduser -D -g 'www' www && mkdir /www && \
 	mkdir -p /run/nginx
 
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
-COPY html/list.php /var/www/html/list.php
+COPY html/* /var/www/html/
 
 CMD ["nginx", "-g", "daemon off;"]

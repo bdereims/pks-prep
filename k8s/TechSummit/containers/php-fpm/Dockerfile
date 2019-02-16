@@ -9,6 +9,6 @@ RUN apk update && \
 COPY php-fpm/www.conf /etc/php7/php-fpm.d/www.conf
 
 RUN mkdir -p /var/www/html
-COPY html/list.php /var/www/html/list.php
+COPY html/* /var/www/html/
 
 CMD ["php-fpm7", "-F", "-R"]

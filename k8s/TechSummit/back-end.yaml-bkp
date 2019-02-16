@@ -26,6 +26,20 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: mariadb-service 
+spec:
+  type: ClusterIP
+  ports:
+  - name: mariadb 
+    port: 3306
+    protocol: TCP
+    targetPort: 3306
+  selector:
+    app: mariadb 
+---
+apiVersion: v1
+kind: Service
+metadata:
   name: mariadb-service-lb
 spec:
   type: LoadBalancer 

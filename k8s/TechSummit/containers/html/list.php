@@ -16,7 +16,9 @@ th, td {
 
 <?php
 
-$hostname = "mariadb-service";
+echo "php-fpm pod: ".gethostname()."<br><br>";
+
+$hostname = "mariadb-service-lb";
 $username = "root";
 $password = "VMware1!";
 $db = "nginx";
