@@ -17,6 +17,13 @@ spec:
       containers:
       - name: php-fpm
         image: harbor.cpod-appstx.az-lab.shwrfr.com/library/php-fpm:latest
+        resources:
+          limits:
+            cpu: 12m 
+            memory: 20Mi
+          requests:
+            cpu: 10m
+            memory: 15Mi
         ports:
         - containerPort: 9000
 ---
@@ -41,7 +48,7 @@ metadata:
   labels:
     app: nginx
 spec:
-  replicas: 3
+  replicas: 3 
   selector:
     matchLabels:
       app: nginx
@@ -53,6 +60,13 @@ spec:
       containers:
       - name: nginx
         image: harbor.cpod-appstx.az-lab.shwrfr.com/library/nginx:latest 
+        resources:
+          limits:
+            cpu: 12m 
+            memory: 15Mi
+          requests:
+            cpu: 10m 
+            memory: 10Mi
         ports:
         - containerPort: 80
 ---

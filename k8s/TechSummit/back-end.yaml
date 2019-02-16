@@ -8,6 +8,13 @@ spec:
   containers:
   - name: mariadb
     image: mariadb/server:10.1.37
+    resources:
+      limits:
+        cpu: 12m
+        memory: 120Mi
+      requests:
+        cpu: 10m
+        memory: 100Mi
     env:
       - name: MARIADB_ROOT_PASSWORD
         value: "VMware1"
