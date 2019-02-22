@@ -1,11 +1,16 @@
 REGISTRY=harbor.cpod-appstx.az-lab.shwrfr.com/library
-CONTAINERS=nginx php-fpm
 
-nginx: nginx/Dockerfile
-	docker build -f $@/Dockerfile -t $(REGISTRY)/$@ .
+CONTAINER_NGINX=nginx
+IMAGE_NGINX=$(REGISTRY)/${CONTAINER_NGINX}
+
+CONTAINER_PHP=php-fpm
+IMAGE_PHP=$(REGISTRY)/${CONTAINER_PHP}
+
+build-nginx: nginx/Dockerfile
+	docker build -f $(CONTAINER_NGINX)/Dockerfile -t $(IMAGE_NGINX) .
+	docker push $(IMAGE_NGINX):latest
 
 build-php-fpm: php-fpm/Dockerfile
-	docker rmi $(IMAGE_PHP):latest
 	docker build -f $(CONTAINER_PHP)/Dockerfile -t $(IMAGE_PHP) .
 	docker push $(IMAGE_PHP):latest
 

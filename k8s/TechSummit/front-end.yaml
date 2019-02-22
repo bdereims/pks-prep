@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: php-fpm-deployment
+  namespace: avalanche
   labels:
     app: php-fpm
 spec:
@@ -31,6 +32,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: php-fpm-service
+  namespace: avalanche
 spec:
   type: ClusterIP
   ports:
@@ -45,6 +47,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment
+  namespace: avalanche
   labels:
     app: nginx
 spec:
@@ -73,11 +76,30 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: nginx-service-lb
+  name: nginx-service
+  namespace: avalanche
 spec:
-  selector:
-    app: nginx
+  type: ClusterIP
   ports:
-  - protocol: TCP
-    port: 80
-  type: LoadBalancer
+  - name: nginx 
+    port: 80 
+    protocol: TCP
+    targetPort: 80 
+  selector:
+    app: nginx 
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nginx-ingress
+  namespace: avalanche
+  #annotations:
+  #  ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /avalanche/*
+        backend:
+          serviceName: nginx-service
+          servicePort: 80

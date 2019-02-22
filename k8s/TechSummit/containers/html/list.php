@@ -13,11 +13,14 @@ th, td {
 </style>
 </head>
 <body>
-
+php-fpm pod: <p style="font:italic small-caps bold 18px/24px Garamond, Georgia, Times, Serif;color:green;">
 <?php
 
-echo "php-fpm pod: ".gethostname()."<br><br>";
+echo gethostname();
+?>	
+</p><br>
 
+<?php
 $hostname = "mariadb-service-lb";
 $username = "root";
 $password = "VMware1!";

@@ -8,7 +8,7 @@ RUN apk update && \
 
 COPY php-fpm/www.conf /etc/php7/php-fpm.d/www.conf
 
-RUN mkdir -p /var/www/html
-COPY html/* /var/www/html/
+RUN mkdir -p /var/www/html/avalanche
+COPY html/* /var/www/html/avalanche/
 
 CMD ["php-fpm7", "-F", "-R"]

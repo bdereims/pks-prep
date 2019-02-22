@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: mariadb 
+  namespace: avalanche 
   labels:
     app: mariadb 
 spec:
@@ -34,6 +35,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mariadb-service-lb
+  namespace: avalanche
 spec:
   type: LoadBalancer 
   ports:
