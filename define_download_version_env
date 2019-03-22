@@ -8,20 +8,20 @@ export NSXFOLDER=/NSX
 export VREALIZEFOLDER=/VREALIZE
 
 # CLI Tools version
-export BOSHRELEASE=5.3.1
-export HELMRELEASE=2.11.0
-export OMRELEASE=0.41.0
+export BOSHRELEASE=5.4.0
+export HELMRELEASE=2.13.1
+export OMRELEASE=0.54.0
 
 #Pivotal network 
-export PIVNETRELEASE=0.0.54
+export PIVNETRELEASE=0.0.56
 export APIREFRESHTOKEN="<insert-refresh-token-here>"
 
 # Pivotal SW Releases
-export OPSMANRELEASE=2.2.7
-export PKSRELEASE=1.1.5
+export OPSMANRELEASE=2.4.6
+export PKSRELEASE=1.3.3
 export STEMCELLRELEASE=3586.36
-export HARBORRELEASE=1.5.2
-export STEMCELLXENIALRELEASE=97.19
+export HARBORRELEASE=1.7.3
+export STEMCELLXENIALRELEASE=170.15
 
 # VMware Download Account
 export VMWUSER='<username>'
@@ -29,6 +29,6 @@ export VMWPASS='<password>'
 
 # VMware SW Releases [ProductGroup]
 export OVFTOOLPG=OVFTOOL430
-export NSXTPG=NSX-T-220
+export NSXTPG=NSX-T-230
 export VRLIPG=VRLI-460
 export VROPSPG=VROPS-670
