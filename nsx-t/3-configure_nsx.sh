@@ -2,6 +2,9 @@
 
 source ../env
 
+OUTPUT_FILE="outcomes.lst"
+cp /dev/null ${OUTPUT_FILE}
+
 # Default values
 NETWORK_MANAGER_USERNAME=${ADMIN}
 NETWORK_MANAGER_PASSWORD=$NSX_COMMON_PASSWORD
@@ -204,7 +207,8 @@ function create_ipam_entries() {
     \"cidr\": \"$NETWORK_PKS_IP_BLOCK\"
   }"
 
-  get_rest_response "api/v1/pools/ip-blocks" "$ipam_json"
+  response=$( get_rest_response "api/v1/pools/ip-blocks" "$ipam_json" )
+  pks_ip_block_id=$(get_response_id "$response")
 
   local ipam_json="{ \
     \"display_name\": \"pks-nodes-ip-block\", \
@@ -212,7 +216,8 @@ function create_ipam_entries() {
     \"cidr\": \"$NETWORK_PKS_NODES_IP_BLOCK\"
   }"
 
-  get_rest_response "api/v1/pools/ip-blocks" "$ipam_json"
+  response=$( get_rest_response "api/v1/pools/ip-blocks" "$ipam_json" )
+  nodes_ip_block_id=$(get_response_id "$response")
 }
 
 
@@ -557,7 +562,8 @@ pks_vips=$(get_response_id "$response")
 response=$(create_ip_pool "tunnel-ip-pool")
 check_for_error "$response"
 ip_pool_id=$(get_response_id "$response")
-ipam_entry=$(create_ipam_entries "$response")
+#ipam_entry=$(create_ipam_entries "$response")
+create_ipam_entries "$response"
 #check_for_error "$response"
 
 # Step 5: Configure Edge Trasnsport node(s)
@@ -606,7 +612,7 @@ t0_static_route_id=$(get_response_id "$response")
 
 # Step 12: Register vCenter
 echo "Step 12: Register VCSA"
-response=$(register_vcsa ${VCENTER_IP} ${VCENTER_USERNAME} ${PASSWORD})
+response=$(register_vcsa ${VCENTER_IP} ${VCENTER_USERNAME} ${VCENTER_PASSWORD})
 check_for_error "$response"
 t0_static_route_id=$(get_response_id "$response")
 
@@ -659,3 +665,10 @@ echo ""
 echo "OPERATION COMPLETED: Configure NSX"
 echo ""
 
+echo "All details in '${OUTPUT_FILE}' file, copy/paste these IDs in Opsmanager:"
+echo " "
+echo "Pods IP Block ID: ${pks_ip_block_id}" >> ${OUTPUT_FILE}
+echo "Nodes IP Block ID: ${nodes_ip_block_id}" >> ${OUTPUT_FILE}
+echo "T0 Router ID: ${t0_router_id}" >> ${OUTPUT_FILE}
+echo "VIPS pool ID: ${pks_vips}" >> ${OUTPUT_FILE}
+cat ${OUTPUT_FILE}

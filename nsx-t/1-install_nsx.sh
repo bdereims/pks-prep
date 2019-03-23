@@ -9,7 +9,7 @@ if [[ ! -e ../env ]]; then
     exit 1
 fi
 
-source ../env
+. ../env
 
 function print_help()
 {
@@ -41,34 +41,6 @@ function clean_known_hosts() {
 #  ssh-keygen -f "~/.ssh/known_hosts" -R $NSX_CONTROLLER_IP
 #  ssh-keygen -f "~/.ssh/known_hosts" -R $NSX_EDGE_IP
 echo " " 
-}
-
-
-
-# To reduce memory requirements of the OVA
-# 1. Un-tar the OVA
-# 2. Replace 16GB to 4GB in extracted OVF file for memory
-# 3. Pack all files back into the OVA
-function reduce_ova_memory() {
-  echo "Reducing memory requirements for the OVA (experiemental)"
-  OVA_FILE=$1
-  rm -rf tmp
-  mkdir tmp
-  tar -xf $OVA_FILE -C tmp
-  cp ${OVA_FILE} ${OVA_FILE}.backup
-
-  # TODO: Following statment is the cause of belittlement for this scripts.  It is
-  # wild sed statment, which can cause every instance of 16384 to be replaced with
-  # 4096, and can kill some innocent installation attempts.  Hopefully there would
-  # not be many things in OVF file with that number, but if there are then we are
-  # breaking something we don't know. But we know; no risk, no gain!  Fix this as
-  # soon as you have nothing else to do. Perhaps replace with awk which you don't
-  # know, or rewrite this script in python or perl.
-  sed -i -e 's/16384/4096/g' tmp/*.ovf
-
-  rm -rf tmp/*.ovf-e
-  (cd tmp; tar -cf $OVA_FILE *.ovf *.mf *.vmdk *.cert)
-  rm -rf tmp
 }
 
 function enforce_parameter() {

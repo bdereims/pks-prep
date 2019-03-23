@@ -2,6 +2,7 @@
 
 export BINDIR=/usr/local/bin
 
+
 export BITSDIR=/data/bits
 export PKSFOLDER=/PKS
 export NSXFOLDER=/NSX
@@ -23,12 +24,15 @@ export STEMCELLRELEASE=3586.36
 export HARBORRELEASE=1.7.3
 export STEMCELLXENIALRELEASE=170.15
 
+
 # VMware Download Account
-export VMWUSER='<username>'
-export VMWPASS='<password>'
+export VMWUSER='user@acme.fr'
+export VMWPASS='Password123'
 
 # VMware SW Releases [ProductGroup]
 export OVFTOOLPG=OVFTOOL430
 export NSXTPG=NSX-T-230
+
 export VRLIPG=VRLI-460
 export VROPSPG=VROPS-670
+

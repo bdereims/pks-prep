@@ -12,21 +12,19 @@ upload_opsmanager() {
 	HOSTNAME=$( echo ${OVA_OPSMANAGER_NAME} | tr '[:upper:]' '[:lower:]' )
 
 	export MYSCRIPT=/tmp/$$
-export NETMASK="255.255.255.128"
-export GATEWAY="192.168.45.129"
 
 	cat << EOF > ${MYSCRIPT}
 ovftool --acceptAllEulas --skipManifestCheck --X:injectOvfEnv --allowExtraConfig --X:waitForIp \
 --prop:admin_password=${PASSWORD} \
 --prop:custom_hostname=${HOSTNAME} \
 --prop:ip0=${OVA_OPSMANAGER_IP} \
---prop:netmask0=${NETMASK} \
---prop:gateway=${GATEWAY} \
+--prop:netmask0=${OVA_OPSMANAGER_NETMASK} \
+--prop:gateway=${OVA_OPSMANAGER_GATEWAY} \
 --prop:DNS=${DNS} \
 --prop:ntp_servers=${NTP} \
 --powerOn \
 --noSSLVerify \
--ds=${VCENTER_DATASTORE} -n=${OVA_OPSMANAGER_NAME} --network='${VCENTER_PORTGROUP}' \
+-ds="${VCENTER_DATASTORE}" -n=${OVA_OPSMANAGER_NAME} --network='${OVA_OPSMANAGER_PORTGROUP}' \
 ${OVA_OPSMANAGER} \
 vi://${VCENTER_USERNAME}:'${VCENTER_PASSWORD}'@${VCENTER_TARGET}
 EOF
@@ -55,7 +53,7 @@ ovftool --acceptAllEulas --X:injectOvfEnv --allowExtraConfig \
 --prop:vm.rootpw=${PASSWORD} \
 --powerOn \
 --noSSLVerify \
--ds=${VCENTER_DATASTORE} -n=${OVA_VRLI_NAME} "--network=${VCENTER_PORTGROUP}" \
+-ds="${VCENTER_DATASTORE}" -dm=thin -n=${OVA_VRLI_NAME} "--network=${VCENTER_PORTGROUP}" \
 ${OVA_VRLI} \
 vi://${VCENTER_USERNAME}:'${VCENTER_PASSWORD}'@${VCENTER_TARGET}
 EOF
@@ -81,7 +79,7 @@ ovftool --acceptAllEulas --X:injectOvfEnv --allowExtraConfig \
 --prop:vami.netmask0.vRealize_Operations_Manager_Appliance=${NETMASK} \
 --powerOn \
 --noSSLVerify \
--ds=${VCENTER_DATASTORE} -n=${OVA_VROPS_NAME} "--network=${VCENTER_PORTGROUP}" \
+-ds="${VCENTER_DATASTORE}" -n=${OVA_VROPS_NAME} "--network=${VCENTER_PORTGROUP}" \
 ${OVA_VROPS} \
 vi://${VCENTER_USERNAME}:'${VCENTER_PASSWORD}'@${VCENTER_TARGET}
 EOF

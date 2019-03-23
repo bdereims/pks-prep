@@ -15,6 +15,7 @@ function upload_stemcell {
 	om -t https://${OPSMANAGER} -k -u "${ADMIN}" -p "${PASSWORD}" upload-stemcell --stemcell ${1} 
 }
 
+
 rm -fr /tmp/*
 
 #upload PKS Tile
@@ -26,3 +27,4 @@ upload_stemcell ${StemcellFileName}
 upload_product ${HarborFileName}
 #upload Xenial Stemcell
 upload_stemcell ${StemcellXenialFileName}
+

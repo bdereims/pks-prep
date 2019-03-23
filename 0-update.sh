@@ -13,13 +13,17 @@ if [[ ! -e $BITSDIR ]]; then
     mkdir $BITSDIR$VREALIZEFOLDER
 fi
 
-sudo apt-get update ; sudo apt-get upgrade
-sudo apt-get install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 sshpass jq dnsmasq iperf3 sshpass npm
+sudo add-apt-repository universe
+sudo apt-get update ; sudo apt-get -y upgrade
+sudo apt-get install -y build-essential zlibc zlib1g-dev ruby ruby-dev openssl libxslt1-dev libxml2-dev libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 sshpass jq dnsmasq iperf3 sshpass ipcalc
+sudo apt-get npm
 
 # vwm-cli - requires nodejs >=8
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
+
 npm install vmw-cli --global
+
 
 # uuac
 sudo gem install cf-uaac
@@ -31,7 +35,7 @@ sudo cp kubectl $BINDIR/kubectl
 rm kubectl
 
 # bosh
-curl -LO https://s3.amazonaws.com/bosh-cli-artifacts/bosh-cli-${BOSHRELEASE}-linux-amd64
+curl -LO https://github.com/cloudfoundry/bosh-cli/releases/download/v${BOSHRELEASE}/bosh-cli-${BOSHRELEASE}-linux-amd64 
 sudo cp bosh-cli-${BOSHRELEASE}-linux-amd64 ${BINDIR}/bosh
 sudo chmod ugo+x ${BINDIR}/bosh 
 rm bosh-cli-${BOSHRELEASE}-linux-amd64
@@ -43,7 +47,7 @@ sudo chmod ugo+x om-linux
 sudo mv om-linux ${BINDIR}/om
 
 # helm
-curl -LO https://kubernetes-helm.storage.googleapis.com/helm-v${HELMRELEASE}-linux-amd64.tar.gz
+curl -LO https://storage.googleapis.com/kubernetes-helm/helm-v${HELMRELEASE}-linux-amd64.tar.gz
 tar xvzf helm-v${HELMRELEASE}-linux-amd64.tar.gz linux-amd64/helm
 chmod +x linux-amd64/helm
 sudo cp linux-amd64/helm ${BINDIR}/helm

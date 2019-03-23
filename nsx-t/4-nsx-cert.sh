@@ -3,6 +3,8 @@
 
 . ../env
 
+rm nsx.* pks-nsx-t-superuser.* /tmp/nsx-cert.cnf 2>&1 > /dev/null
+
 NETWORK_MANAGER_USERNAME=${ADMIN}
 NETWORK_MANAGER_PASSWORD=$NSX_COMMON_PASSWORD
 
@@ -15,13 +17,13 @@ function get_response_id() {
 
 # This function imports certificat in NSX Manager
 function import_certificat() {
+  echo "import_certificat"
   CERT=$(awk '{printf "%s\\n", $0}' nsx.crt)
   KEY=$(awk '{printf "%s\\n", $0}' nsx.key)
   local certificat_json="{ \
     \"pem_encoded\":\"${CERT}\", \
     \"private_key\":\"${KEY}\" \
   }"
-
   get_rest_response "api/v1/trust-management/certificates?action=import" "$certificat_json"
 }
 
@@ -39,45 +41,25 @@ function get_rest_response() {
 
 }
 
-cat nsx-cert.cnf | sed -e "s/###NSX_CN###/${NSX_COMMON_DOMAIN}/" > /tmp/nsx-cert.cnf
-
-#openssl req -newkey rsa:2048 -x509 -nodes \
-#-keyout nsx.key -new -out nsx.crt -subj /CN=${NSX_COMMON_DOMAIN} \
-#-reqexts SAN -extensions SAN -config <(cat /tmp/nsx-cert.cnf \
-# <(printf "[SAN]\nsubjectAltName=IP:${NSX_MANAGER_IP}")) -sha256 -days 3650
-
-# Create NSX Web certificat
-openssl req -newkey rsa:2048 -x509 -nodes \
--keyout nsx.key -new -out nsx.crt -subj /CN=${NSX_COMMON_DOMAIN} \
--reqexts SAN -extensions SAN -config <(cat /tmp/nsx-cert.cnf \
-<(printf "[SAN]\nsubjectAltName=DNS:${NSX_COMMON_DOMAIN},IP:${NSX_MANAGER_IP}")) -sha256 -days 3650
-
-# curl --insecure -u admin:'VMware1!' -X GET https://172.18.13.4/api/v1/trust-management/certificates | jq '.results[] | select(.display_name=="NSX-T Certificat") | .id'
-# curl --insecure -u admin:'VMware1!' -X POST 'https://172.18.13.4/api/v1/node/services/http?action=apply_certificate&certificate_id=63123c9d-8d61-4807-b803-4667adc10425'
-
-# Apply and activate certificat in NSX
-response=$(import_certificat)
-certificat_id=$(get_response_id "$response")
-curl --insecure -u ${ADMIN}:${PASSWORD} -X POST "https://$NSX_MANAGER_IP/api/v1/node/services/http?action=apply_certificate&certificate_id=${certificat_id}"
-
+###################################################
 # Create certificat and key for NSX service account
+###################################################
+
 openssl req \
 -newkey rsa:2048 \
 -x509 \
 -nodes \
--keyout "$NSX_SUPERUSER_KEY_FILE" \
+-keyout "${NSX_SUPERUSER_KEY_FILE}" \
 -new \
--out "$NSX_SUPERUSER_CERT_FILE" \
--subj /CN=pks-nsx-t-superuser \
+-out "${NSX_SUPERUSER_CERT_FILE}" \
+-subj /CN="${PI_NAME}" \
 -extensions client_server_ssl \
--config <(
-cat /etc/ssl/openssl.cnf \
-<(printf '[client_server_ssl]\nextendedKeyUsage = clientAuth\n')
-) \
+-config <( cat /etc/ssl/openssl.cnf \
+<(printf '[client_server_ssl]\nextendedKeyUsage = clientAuth\n')) \
 -sha256 \
 -days 3650
 
-cert_request=$(cat <<END
+cert_request=$( cat <<END
   {
     "display_name": "$PI_NAME",
     "pem_encoded": "$(awk '{printf "%s\\n", $0}' $NSX_SUPERUSER_CERT_FILE)"
@@ -85,11 +67,8 @@ cert_request=$(cat <<END
 END
 )
 
-CERTIFICAT_ID=$( curl -k -X POST \
-"https://${NSX_MANAGER_IP}/api/v1/trust-management/certificates?action=import" \
--u "${ADMIN}:${PASSWORD}" \
--H 'content-type: application/json' \
--d "$cert_request" | jq '.results[] | .id' | sed -e "s/\"//g" )
+response=$( get_rest_response "api/v1/trust-management/certificates?action=import" "${cert_request}" )
+CERTIFICAT_ID=$( get_response_id "${response}" )
 
 pi_request=$(cat <<END
   {
@@ -102,18 +81,35 @@ pi_request=$(cat <<END
 END
 )
 
-curl -k -X POST \
-"https://${NSX_MANAGER_IP}/api/v1/trust-management/principal-identities" \
--u "${ADMIN}:${PASSWORD}" \
--H 'content-type: application/json' \
--d "$pi_request"
+get_rest_response "api/v1/trust-management/principal-identities" "${pi_request}"
 
-# Wait a bit before it's enabled
-sleep 5 
+echo " "
+echo "Wait a bit before it's enabled..."
+sleep 20
 
-# Test if it possible to user service account cert
+# Test if it works with service account cert
 printf "\n\nTest:\n"
 curl -k -X GET \
 "https://${NSX_MANAGER_IP}/api/v1/trust-management/principal-identities" \
 --cert "$NSX_SUPERUSER_CERT_FILE" \
 --key "$NSX_SUPERUSER_KEY_FILE"
+
+####################################################
+#Create a new sefl-signed certificat for NSX Manager 
+####################################################
+
+cat nsx-cert.cnf | sed -e "s/###NSX_CN###/${NSX_COMMON_DOMAIN}/" > /tmp/nsx-cert.cnf
+
+# Create NSX Web certificat
+echo " "
+echo "create NSX Web certificate"
+openssl req -newkey rsa:2048 -x509 -nodes \
+-keyout nsx.key -new -out nsx.crt -subj /CN=${NSX_COMMON_DOMAIN} \
+-reqexts SAN -extensions SAN -config <(cat /tmp/nsx-cert.cnf \
+<(printf "[SAN]\nsubjectAltName=DNS:${NSX_COMMON_DOMAIN},IP:${NSX_MANAGER_IP}")) -sha256 -days 3650
+
+# Apply and activate certificat in NSX
+response=$( import_certificat | sed -e "s/^import_certificat//" )
+#response=$( echo ${response} | sed -e "s/^import_certificat//" )
+certificat_id=$(get_response_id "$response")
+curl --insecure -u ${ADMIN}:${PASSWORD} -X POST "https://$NSX_MANAGER_IP/api/v1/node/services/http?action=apply_certificate&certificate_id=${certificat_id}"

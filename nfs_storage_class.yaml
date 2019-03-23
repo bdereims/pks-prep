@@ -4,5 +4,5 @@ metadata:
   name: nfs-storage
 provisioner: kubernetes.io/nfs
 parameters:
-  path: /data/PV
-  server: 172.18.13.1 
+  path: /data/k8s
+  server: 172.18.9.1 

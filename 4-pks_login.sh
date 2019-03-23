@@ -1,5 +1,5 @@
-#!/bin/sh
+#!/bin/bash
 
 . ./env
 
-pks login -a https://${UAA_FQDN}:9021 -u ${ADMIN} -p ${PASSWORD} -k
+pks login -a https://${UAA_FQDN}:9021 -u vmware -p ${PASSWORD} -k

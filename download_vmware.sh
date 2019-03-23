@@ -36,18 +36,23 @@ vmw-cli index $NSXTPG
 # get manager
 nsxMgrFileName=`vmw-cli json productGroup:$NSXTPG,fileType:ova,fileName:unified | jq -r '.fileName'`
 vmw-cli get $nsxMgrFileName
+
 mv $nsxMgrFileName $BITSDIR$NSXFOLDER
 echo "export nsxMgrFileName="$BITSDIR$NSXFOLDER"/"$nsxMgrFileName >> software_filenames.env
+
 
 #get controller
 nsxCtrlFileName=`vmw-cli json productGroup:$NSXTPG,fileType:ova,fileName:controller | jq -r '.fileName'`
 vmw-cli get $nsxCtrlFileName
+
 mv $nsxCtrlFileName $BITSDIR$NSXFOLDER
 echo "export nsxCtrlFileName="$BITSDIR$NSXFOLDER"/"$nsxCtrlFileName >> software_filenames.env
+
 
 #get edge
 nsxEdgeFileName=`vmw-cli json productGroup:$NSXTPG,fileType:ova,fileName:edge | jq -r '.fileName'`
 vmw-cli get $nsxEdgeFileName
+
 mv $nsxEdgeFileName $BITSDIR$NSXFOLDER
 echo "export nsxEdgeFileName="$BITSDIR$NSXFOLDER"/"$nsxEdgeFileName >> software_filenames.env
 

@@ -1,83 +1,85 @@
-apiVersion: apps/v1beta2
+apiVersion: apps/v1beta2 # apps/v1beta2 in Kube 1.8, extensions/v1beta1 in Kube < 1.8
 kind: DaemonSet
 metadata:
- name: vrops-cadvisor
- namespace: kube-system
- labels:
-   app: vrops-cadvisor
+  name: vrops-cadvisor
+  namespace: kube-system
+  labels:
+    app: vrops-cadvisor
 spec:
- selector:
-   matchLabels:
-     name: vrops-cadvisor
- template:
-   metadata:
-     labels:
-       name: vrops-cadvisor
-       version: v0.29.0
-   spec:
-     containers:
-     - name: vrops-cadvisor
-       image: google/cadvisor:v0.29.0
-       #imagePullPolicy: Never
-       volumeMounts:
-       - name: rootfs
-         mountPath: /rootfs
-         readOnly: true
-       - name: var-run
-         mountPath: /var/run
-         readOnly: false
-       - name: sys
-         mountPath: /sys
-         readOnly: true
-       - name: docker
-         mountPath: /var/lib/docker
-         readOnly: true
-       - name: containerd-sock
-         mountPath: /var/run/containerd/containerd.sock
-         readOnly: true
-       - name: docker-sock
-         mountPath: /var/run/docker.sock
-         readOnly: true
-       ports:
-       - name: http
-         containerPort: 8080
-         protocol: TCP
-       args:
-         - --profiling
-         - --housekeeping_interval=1s
-     terminationGracePeriodSeconds: 30
-     volumes:
-     - name: rootfs
-       hostPath:
-         path: /
-     - name: var-run
-       hostPath:
-         path: /var/run
-     - name: sys
-       hostPath:
-         path: /sys
-     - name: docker
-       hostPath:
-         path: /var/vcap/store/docker/docker
-     - name: containerd-sock
-       hostPath:
-         path: /var/run/docker/libcontainerd/docker-containerd.sock
-     - name: docker-sock
-       hostPath:
-         path: /var/vcap/sys/run/docker/docker.sock
----
-kind: Service
-apiVersion: v1
-metadata:
- name: vrops-cadvisor
- namespace: kube-system
-spec:
- type: NodePort
- selector:
-   name: vrops-cadvisor
- ports:
- - name: http
-   protocol: TCP
-   port: 4194
-   targetPort: 8080
-   nodePort: 31194
+  selector:
+    matchLabels:
+      name: vrops-cadvisor
+  template:
+    metadata:
+      labels:
+        name: vrops-cadvisor
+        version: v0.31.0
+    spec:
+      tolerations:
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
+      hostNetwork: true
+      containers:
+      - name: vrops-cadvisor
+        image: google/cadvisor:v0.31.0
+        imagePullPolicy: Always
+        volumeMounts:
+        - name: rootfs
+          mountPath: /rootfs
+          readOnly: true
+        - name: var-run
+          mountPath: /var/run
+          readOnly: false
+        - name: sys
+          mountPath: /sys
+          readOnly: true
+        - name: docker
+          mountPath: /var/lib/docker #Mouting Docker volume
+          readOnly: true
+        - name: docker-sock
+          mountPath: /var/run/docker.sock
+          readOnly: true
+        - name: containerd-sock
+          mountPath: /var/run/containerd.sock
+          readOnly: true
+        - name: disk
+          mountPath: /dev/disk
+          readOnly: true
+        ports:
+        - name: http
+          containerPort: 31194 #Port exposed
+          hostPort: 31194  #Host's port - Port to expose your cAdvisor DaemonSet on each node
+          protocol: TCP
+        securityContext:
+          capabilities:
+            drop:
+            - ALL
+            add:
+            - NET_BIND_SERVICE
+        args:
+          - --port=31194
+          - --profiling
+          - --housekeeping_interval=1s
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: rootfs
+        hostPath:
+          path: /
+      - name: var-run            
+        hostPath:
+          path: /var/run
+      - name: sys
+        hostPath:
+          path: /sys
+      - name: docker
+        hostPath:
+          path: /var/vcap/store/docker/docker #Docker path in Host System
+      - name: docker-sock
+        hostPath:
+          path: /var/vcap/sys/run/docker/docker.sock
+      - name: containerd-sock
+        hostPath:
+          path: /var/run/docker/containerd/docker-containerd.sock
+      - name: disk
+        hostPath:
+          path: /dev/disk
