@@ -2,6 +2,8 @@
 
 . ./env
 
+TZ=America/Las_Vegas
+
 DB=web.txt
 
 cp /dev/null $DB 
