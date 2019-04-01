@@ -63,7 +63,7 @@ clean_ip_pool() {
 main() {
 	echo "Cleaning Up NSX-T"
 
-	clean_ip_pool "25fc85f7-b0fa-4a50-83d7-098ea88f8e2c"
+	clean_ip_pool "e0cf8dd3-9fd5-4b57-96a8-6f74c2681be3"
 }
 
 main
