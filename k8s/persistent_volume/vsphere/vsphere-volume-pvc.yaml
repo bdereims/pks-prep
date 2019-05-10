@@ -3,7 +3,7 @@ apiVersion: v1
 metadata:
   name: pvc-001
   annotations:
-    volume.beta.kubernetes.io/storage-class: thin-disk 
+    volume.beta.kubernetes.io/storage-class: fast 
 spec:
   accessModes:
     - ReadWriteOnce

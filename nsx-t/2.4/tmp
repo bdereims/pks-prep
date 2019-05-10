@@ -1,0 +1,13 @@
+
+OPERATION COMPLETED: Configure NSX
+
+Step 1: Creating VLAN transport zone
+Step 2: Creating OVERLAY transport zone
+Step 3: Creating uplink profiles
+Step 4: Creating IP address pools
+Step 5: Configuring Edge transport node(s)
+Step 6: Creating Edge cluster
+NSX configuration setup FAILED
+error code: 15000
+error message: Found errors in the request. Please refer to the related errors for details.
+response: { "httpStatus" : "BAD_REQUEST", "error_code" : 15000, "module_name" : "FABRIC", "error_message" : "Found errors in the request. Please refer to the related errors for details.", "related_errors" : [ { "httpStatus" : "BAD_REQUEST", "error_code" : 15001, "module_name" : "FABRIC", "error_message" : "[Fabric] TransportNode Id :f9f38860-70a0-11e9-8487-0050569cdb80 Name :tn-edge-1 has been already defined in Edge Cluster Id :bad3f3f9-8c97-467b-a9eb-1d7ba685ef56 Name :edge-cluster" } ] }
