@@ -1,4 +1,4 @@
-REGISTRY=harbor.cpod-appstx.az-lab.shwrfr.com/library
+REGISTRY=harbor.cpod-fresh-bream.az-demo.shwrfr.com/library
 
 CONTAINER_NGINX=nginx
 IMAGE_NGINX=$(REGISTRY)/${CONTAINER_NGINX}

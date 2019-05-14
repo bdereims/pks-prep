@@ -6,7 +6,7 @@ metadata:
   labels:
     app: php-fpm
 spec:
-  replicas: 4
+  replicas: 1 
   selector:
     matchLabels:
       app: php-fpm
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: php-fpm
-        image: harbor.cpod-appstx.az-lab.shwrfr.com/library/php-fpm:latest
+        image: harbor.cpod-fresh-bream.az-demo.shwrfr.com/library/php-fpm:latest
         resources:
           limits:
             cpu: 12m 
@@ -51,7 +51,7 @@ metadata:
   labels:
     app: nginx
 spec:
-  replicas: 3 
+  replicas: 1 
   selector:
     matchLabels:
       app: nginx
@@ -62,7 +62,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: harbor.cpod-appstx.az-lab.shwrfr.com/library/nginx:latest 
+        image: harbor.cpod-fresh-bream.az-demo.shwrfr.com/library/nginx:latest 
         resources:
           limits:
             cpu: 12m 

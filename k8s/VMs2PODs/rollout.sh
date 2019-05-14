@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REGISTRY="harbor.cpod-appstx.az-lab.shwrfr.com/library"
+REGISTRY="harbor.cpod-fresh-bream.az-demo.shwrfr.com/library"
 
 function rollout () {
 	kubectl set image deployment ${1}-deployment nginx=${REGISTRY}/${1}:latest
