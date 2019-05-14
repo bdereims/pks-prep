@@ -1,17 +1,22 @@
-REGISTRY=harbor.cpod-fresh-bream.az-demo.shwrfr.com/library
+REGISTRY=$(shell  . ../env ; echo $${FQDN}/$${LIBRARY})
+NAMESPACE=$(shell  . ../env ; echo $${NAMESPACE})
 
 CONTAINER_NGINX=nginx
 IMAGE_NGINX=$(REGISTRY)/${CONTAINER_NGINX}
+STARTUP_SCRIPT=startup.sh
 
 CONTAINER_PHP=php-fpm
 IMAGE_PHP=$(REGISTRY)/${CONTAINER_PHP}
 
+all: build-nginx build-php-fpm
+
 build-nginx: nginx/Dockerfile
-	docker build -f $(CONTAINER_NGINX)/Dockerfile -t $(IMAGE_NGINX) .
+	sed -e "s/###NAMESPACE###/${USER}/" $(CONTAINER_NGINX)/$(STARTUP_SCRIPT)-template  > $(CONTAINER_NGINX)/$(STARTUP_SCRIPT)
+	docker build --build-arg WEBPATH=${NAMESPACE} -f $(CONTAINER_NGINX)/Dockerfile -t $(IMAGE_NGINX) .
 	docker push $(IMAGE_NGINX):latest
 
 build-php-fpm: php-fpm/Dockerfile
-	docker build -f $(CONTAINER_PHP)/Dockerfile -t $(IMAGE_PHP) .
+	docker build --build-arg WEBPATH=${NAMESPACE} -f $(CONTAINER_PHP)/Dockerfile -t $(IMAGE_PHP) .
 	docker push $(IMAGE_PHP):latest
 
 clean: 

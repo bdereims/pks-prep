@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: mariadb 
-  namespace: avalanche 
+  namespace: ${NAMESPACE} 
   labels:
     app: mariadb 
 spec:
@@ -23,19 +23,19 @@ spec:
     - mountPath: /var/lib/mysql 
       name: data 
     ports:
-        - containerPort: 3600 
+        - containerPort: 3306
   volumes:
   - name: data 
     # This VMDK volume must already exist.
     vsphereVolume:
-      volumePath: "[nfsDatastore] BACKEND-MARIADB/BACKEND-MARIADB_1.vmdk"
+      volumePath: "[${DATASTORE}] ${VMDK}"
       fsType: ext4
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: mariadb-service-lb
-  namespace: avalanche
+  namespace: ${NAMESPACE} 
 spec:
   type: LoadBalancer 
   ports:

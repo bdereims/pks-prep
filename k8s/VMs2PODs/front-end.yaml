@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: php-fpm-deployment
-  namespace: avalanche
+  namespace: ${NAMESPACE}
   labels:
     app: php-fpm
 spec:
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: php-fpm
-        image: harbor.cpod-fresh-bream.az-demo.shwrfr.com/library/php-fpm:latest
+        image: ${FQDN}/${LIBRARY}/php-fpm:latest
         resources:
           limits:
             cpu: 12m 
@@ -32,7 +32,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: php-fpm-service
-  namespace: avalanche
+  namespace: ${NAMESPACE} 
 spec:
   type: ClusterIP
   ports:
@@ -47,7 +47,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment
-  namespace: avalanche
+  namespace: ${NAMESPACE} 
   labels:
     app: nginx
 spec:
@@ -62,7 +62,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: harbor.cpod-fresh-bream.az-demo.shwrfr.com/library/nginx:latest 
+        image: ${FQDN}/${LIBRARY}/nginx:latest 
         resources:
           limits:
             cpu: 12m 
@@ -77,7 +77,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: nginx-service
-  namespace: avalanche
+  namespace: ${NAMESPACE} 
 spec:
   type: ClusterIP
   ports:
@@ -92,14 +92,14 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: nginx-ingress
-  namespace: avalanche
+  namespace: ${NAMESPACE} 
   #annotations:
   #  ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - http:
       paths:
-      - path: /avalanche/*
+      - path: /${NAMESPACE}/*
         backend:
           serviceName: nginx-service
           servicePort: 80
