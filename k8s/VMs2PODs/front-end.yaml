@@ -25,9 +25,17 @@ spec:
           requests:
             cpu: 10m
             memory: 15Mi
+        env:
+          - name: MARIADB_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysecret
+                key: password
         ports:
         - containerPort: 9000
+
 ---
+
 kind: Service
 apiVersion: v1
 metadata:
@@ -42,7 +50,9 @@ spec:
     targetPort: 9000 
   selector:
     app: php-fpm 
+
 ---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -70,9 +80,17 @@ spec:
           requests:
             cpu: 10m 
             memory: 10Mi
+        env:
+          - name: MARIADB_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysecret
+                key: password
         ports:
         - containerPort: 80
+
 ---
+
 kind: Service
 apiVersion: v1
 metadata:
@@ -87,7 +105,9 @@ spec:
     targetPort: 80 
   selector:
     app: nginx 
+    
 ---
+
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:

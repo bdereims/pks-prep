@@ -1,4 +1,15 @@
 apiVersion: v1
+kind: Secret
+metadata:
+  name: mysecret
+  namespace: ${NAMESPACE} 
+type: Opaque
+data:
+  password: ${PASSWORD} 
+
+---
+
+apiVersion: v1
 kind: Pod
 metadata:
   name: mariadb 
@@ -18,7 +29,10 @@ spec:
         memory: 100Mi
     env:
       - name: MARIADB_ROOT_PASSWORD
-        value: "VMware1!"
+        valueFrom:
+          secretKeyRef:
+            name: mysecret 
+            key: password 
     volumeMounts:
     - mountPath: /var/lib/mysql 
       name: data 
@@ -30,7 +44,9 @@ spec:
     vsphereVolume:
       volumePath: "[${DATASTORE}] ${VMDK}"
       fsType: ext4
+
 ---
+
 apiVersion: v1
 kind: Service
 metadata:

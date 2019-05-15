@@ -23,3 +23,5 @@ clean:
 	docker rmi $(IMAGE_NGINX) $(IMAGE_PHP)
 	docker images
 
+clean-all:
+	docker images -q | xargs docker rmi

@@ -1,10 +1,10 @@
 #!/bin/bash
 
-REGISTRY="harbor.cpod-fresh-bream.az-demo.shwrfr.com/library"
+. ./env
 
 function rollout () {
-	kubectl set image deployment ${1}-deployment nginx=${REGISTRY}/${1}:latest
-	kubectl rollout status deployment ${1}-deployment
+	kubectl -n ${NAMESPACE} set image deployment ${1}-deployment ${1}=${FQDN}/${LIBRARY}/${1}:latest
+	kubectl -n ${NAMESPACE} rollout status deployment ${1}-deployment
 }
 
 rollout nginx
