@@ -22,11 +22,11 @@ spec:
     image: mariadb/server:10.1.37
     resources:
       limits:
-        cpu: 12m
-        memory: 120Mi
-      requests:
         cpu: 10m
         memory: 100Mi
+      requests:
+        cpu: 8m
+        memory: 90Mi
     env:
       - name: MARIADB_ROOT_PASSWORD
         valueFrom:

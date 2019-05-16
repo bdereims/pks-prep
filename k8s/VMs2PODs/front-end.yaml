@@ -20,11 +20,11 @@ spec:
         image: ${FQDN}/${LIBRARY}/php-fpm:latest
         resources:
           limits:
-            cpu: 12m 
-            memory: 20Mi
+            cpu: 8m 
+            memory: 10Mi
           requests:
-            cpu: 10m
-            memory: 15Mi
+            cpu: 6m
+            memory: 8Mi
         env:
           - name: MARIADB_ROOT_PASSWORD
             valueFrom:
@@ -75,11 +75,11 @@ spec:
         image: ${FQDN}/${LIBRARY}/nginx:latest 
         resources:
           limits:
-            cpu: 12m 
-            memory: 15Mi
+            cpu: 6m 
+            memory: 8Mi
           requests:
-            cpu: 10m 
-            memory: 10Mi
+            cpu: 4m 
+            memory: 5Mi
         env:
           - name: MARIADB_ROOT_PASSWORD
             valueFrom:
@@ -123,3 +123,35 @@ spec:
         backend:
           serviceName: nginx-service
           servicePort: 80
+
+---
+
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: nginx-deployment
+  namespace: ${NAMESPACE} 
+spec:
+  maxReplicas: 10
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: nginx-deployment
+  targetCPUUtilizationPercentage: 50
+
+---
+
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: php-fpm-deployment
+  namespace: ${NAMESPACE} 
+spec:
+  maxReplicas: 10
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: php-fpm-deployment
+  targetCPUUtilizationPercentage: 50
