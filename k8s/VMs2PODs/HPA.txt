@@ -1,0 +1,10 @@
+kubectl -n vmware autoscale deployment nginx-deployment –cpu-percent=50 –min=1 –max=10
+kubectl -n vmware autoscale deployment php-fpm-deployment –cpu-percent=50 –min=1 –max=10
+
+kubectl -n vmware run -i –tty load-generator –image=busybox /bin/sh
+	while true; do wget -q -O- http://ingress-dev.cpod-fresh-bream.az-demo.shwrfr.com/vmware/list.php; done
+
+kubectl -n vmware get hpa
+kubectl -n vmware get deployment
+kubectl -n vmware get pods
+

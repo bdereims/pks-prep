@@ -1,0 +1,157 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-fpm-deployment
+  namespace: ${NAMESPACE}
+  labels:
+    app: php-fpm
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: php-fpm
+  template:
+    metadata:
+      labels:
+        app: php-fpm
+    spec:
+      containers:
+      - name: php-fpm
+        image: ${FQDN}/${LIBRARY}/php-fpm:latest
+        resources:
+          limits:
+            cpu: 8m 
+            memory: 10Mi
+          requests:
+            cpu: 6m
+            memory: 8Mi
+        env:
+          - name: MARIADB_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysecret
+                key: password
+        ports:
+        - containerPort: 9000
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: php-fpm-service
+  namespace: ${NAMESPACE} 
+spec:
+  type: ClusterIP
+  ports:
+  - name: php-fpm 
+    port: 9000 
+    protocol: TCP
+    targetPort: 9000 
+  selector:
+    app: php-fpm 
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  namespace: ${NAMESPACE} 
+  labels:
+    app: nginx
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: ${FQDN}/${LIBRARY}/nginx:latest 
+        resources:
+          limits:
+            cpu: 6m 
+            memory: 8Mi
+          requests:
+            cpu: 4m 
+            memory: 5Mi
+        env:
+          - name: MARIADB_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysecret
+                key: password
+        ports:
+        - containerPort: 80
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-service
+  namespace: ${NAMESPACE} 
+spec:
+  type: ClusterIP
+  ports:
+  - name: nginx 
+    port: 80 
+    protocol: TCP
+    targetPort: 80 
+  selector:
+    app: nginx 
+    
+---
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nginx-ingress
+  namespace: ${NAMESPACE} 
+  #annotations:
+  #  ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /${NAMESPACE}/*
+        backend:
+          serviceName: nginx-service
+          servicePort: 80
+
+---
+
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: nginx-deployment
+  namespace: ${NAMESPACE} 
+spec:
+  maxReplicas: 10
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: nginx-deployment
+  targetCPUUtilizationPercentage: 50
+
+---
+
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: php-fpm-deployment
+  namespace: ${NAMESPACE} 
+spec:
+  maxReplicas: 10
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: php-fpm-deployment
+  targetCPUUtilizationPercentage: 50

@@ -1,5 +1,7 @@
 FROM alpine
 
+ARG WEBPATH
+
 RUN apk update && \
 	apk add php7-fpm php7-mcrypt php7-soap php7-openssl php7-gmp php7-pdo_odbc php7-json php7-dom \
 	php7-pdo php7-zip php7-mysqli php7-sqlite3 php7-apcu php7-pdo_pgsql php7-bcmath php7-gd php7-odbc \
@@ -8,7 +10,7 @@ RUN apk update && \
 
 COPY php-fpm/www.conf /etc/php7/php-fpm.d/www.conf
 
-RUN mkdir -p /var/www/html/avalanche
-COPY html/* /var/www/html/avalanche/
+RUN mkdir -p /var/www/html/${WEBPATH}
+COPY html/* /var/www/html/${WEBPATH}/
 
 CMD ["php-fpm7", "-F", "-R"]

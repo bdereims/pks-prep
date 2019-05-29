@@ -1,0 +1,5 @@
+#!/bin/sh
+
+sed -i "s/###SERVER###/${HOSTNAME}/" /var/www/html/###NAMESPACE###/index.html
+
+nginx -g 'daemon off;'

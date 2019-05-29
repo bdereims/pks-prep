@@ -23,7 +23,7 @@ echo gethostname();
 <?php
 $hostname = "mariadb-service-lb";
 $username = "root";
-$password = "VMware1!";
+$password = getenv('MARIADB_ROOT_PASSWORD');
 $db = "nginx";
 
 $dbconnect=mysqli_connect($hostname,$username,$password,$db);
