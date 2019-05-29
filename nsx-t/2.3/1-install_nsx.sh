@@ -139,7 +139,7 @@ for CTRL_IP in ${NSX_CONTROLLER_IP[@]}; do
   enforce_parameter "$ntp" "NSX controller NTP"
   enforce_parameter "$password" "NSX controller password"
 
-  cmd="ovftool --name=\"$name\" --X:injectOvfEnv --X:logFile=ovftool.log --X:logLevel=verbose \
+  cmd="ovftool --overwrite --name=\"$name\" --X:injectOvfEnv --X:logFile=ovftool.log --X:logLevel=verbose \
 --allowExtraConfig $overwrite --datastore=\"$host_datastore\" --network=\"$host_network\" \
 --acceptAllEulas --noSSLVerify --diskMode=thin --powerOn --prop:\"nsx_ip_0=$ip\" \
 --prop:\"nsx_netmask_0=$netmask\" --prop:\"nsx_gateway_0=$gateway\" \
