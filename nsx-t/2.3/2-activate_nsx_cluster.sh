@@ -2,7 +2,7 @@
 
 #source ./install_nsx.env
 
-source ../env
+. ../../env
 
 function configure_nsx_cluster() {
 

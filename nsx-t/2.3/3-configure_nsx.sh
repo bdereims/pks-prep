@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-source ../env
+. ../../env
 
 OUTPUT_FILE="outcomes.lst"
 cp /dev/null ${OUTPUT_FILE}

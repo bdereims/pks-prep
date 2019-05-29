@@ -1,0 +1,156 @@
+#!/bin/sh
+
+# Where are the bits?
+export BITS=/data/BITS
+#ovftool Path
+#export PATH=$PATH:${BITS}/ovftool
+# Generic credentials 
+export PASSWORD="EPsXwTHv1D5ZIrr!"
+export ADMIN="admin"
+# DNS Zone
+export DOMAIN="cpod-avalanche.az-lab.shwrfr.com"
+
+# vCenter attributes
+export VCENTER_IP="vcsa.${DOMAIN}"
+export VCENTER_USERNAME="administrator%40${DOMAIN}"
+export VCENTER_PASSWORD=${PASSWORD}
+export VCENTER_DATACENTER="cPod-AVALANCHE"
+export VCENTER_CLUSTER="Cluster"
+export VCENTER_TARGET="${VCENTER_IP}/${VCENTER_DATACENTER}/host/${VCENTER_CLUSTER}"
+export VCENTER_DATASTORE="nfsDatastore"
+export VCENTER_PORTGROUP="DPortGroup"
+
+# Some network stuffs
+export BASE_SUBNET="172.20.5"
+export NETMASK="255.255.255.0"
+export GATEWAY="${BASE_SUBNET}.1"
+export DNS="${GATEWAY}"
+export NTP="${GATEWAY}"
+
+###########
+### OVA ###
+###########
+
+export OVA_OPSMANAGER_DEPLOY="YES"
+export OVA_OPSMANAGER_NAME="OPSMANAGER"
+export OVA_OPSMANAGER_PORTGROUP="pks-mgmt"
+export OVA_OPSMANAGER_IP="192.168.196.10"
+export OVA_OPSMANAGER_NETMASK="255.255.255.0"
+export OVA_OPSMANAGER_GATEWAY="192.168.196.1"
+export OVA_OPSMANAGER="${BITS}/PKS/ops-manager-vsphere-2.5.2-build.172.ova"
+
+export OVA_VRLI_DEPLOY="NO"
+export OVA_VRLI_NAME="VRLI"
+export OVA_VRLI_IP="172.20.3.14"
+export OVA_VRLI="${BITS}/VREALIZE/VMware-vRealize-Log-Insight-4.7.1-10752772_OVF10.ova"
+
+export OVA_VROPS_DEPLOY="NO"
+export OVA_VROPS_NAME="VROPS"
+export OVA_VROPS_IP="172.20.3.13"
+export OVA_VROPS="${BITS}/VREALIZE/vRealize-Operations-Manager-Appliance-7.0.0.10098133_OVF10.ova"
+
+################
+### PKS Conf ###
+################
+
+export PKS_FQDN="${DOMAIN}"
+export REG_FQDN="harbor.${DOMAIN}"
+
+alias notary="${PWD}/docker/notary -s https://${REG_FQDN}:4443 --tlscacert ~/.docker/tls/${REG_FQDN}\:4443/ca.crt -d ~/.docker/trust"
+
+export UAA_FQDN="pks-api.${PKS_FQDN}"
+
+# K8s Cluster name, add this in your hosts or dns, ex: "k8s-1"
+export CLUSTER_NAME="dev"
+
+# OpsManager VM IP = DIRECTOR VM deployed by OpsManager, fill-in after deployment
+#export DIRECTOR="director.${DOMAIN}"
+export DIRECTOR="192.168.196.11"
+export BOSH_ENVIRONMENT=pks
+# OpsManager VM IP or FQDN
+export OPSMANAGER="opsmanager.${DOMAIN}"
+
+# Sign container image in Harbor during docker push
+export DOCKER_CONTENT_TRUST=1
+export DOCKER_CONTENT_TRUST_SERVER=https://${REG_FQDN}:4443
+
+# @IP:PORT of the OpenFAAS Gateway Service
+#export OPENFAAS_URL=192.168.42.10:8080
+
+################
+### NSX Conf ###
+################
+
+# NSX OVA files
+export BITS_NSX=NSX
+export NSX_MANAGER_OVA_FILE=${BITS}/${BITS_NSX}/nsx-unified-appliance-2.4.0.0.0.12456291.ova
+export NSX_EDGE_OVA_FILE=${BITS}/${BITS_NSX}/nsx-edge-2.4.0.0.0.12454265.ova
+
+# VM names on vCenter
+export NSX_MANAGER_NAME=NSX-T_manager
+# Trailing '_' for multiple instances of ctrl & edge
+#export NSX_CONTROLLER_NAME=NSX-T_controller_
+export NSX_EDGE_NAME=NSX-T_edge
+
+# vCenter DC name
+export NSX_HOST_COMMON_DATACENTER=${VCENTER_DATACENTER}
+
+# Management Cluster (for NSX Manager and NSX Controller)
+export NSX_HOST_MGMT_CLUSTER=${VCENTER_CLUSTER}
+export NSX_HOST_MGMT_DATASTORE=${VCENTER_DATASTORE}
+
+# Compute Cluster (for NSX Edge VM)
+export NSX_HOST_COMPUTE_CLUSTER="${NSX_HOST_MGMT_CLUSTER}"
+export NSX_HOST_COMPUTE_DATASTORE="${NSX_HOST_MGMT_DATASTORE}"
+
+# Network0: MGMT port-group
+# Network1: Edge VTEP port-group
+# Network2: Edge Uplink port-group
+# Network3: Free to future use 
+export NSX_HOST_COMMON_NETWORK0="${VCENTER_PORTGROUP}"
+export NSX_HOST_COMMON_NETWORK1="${VCENTER_PORTGROUP}"
+export NSX_HOST_COMMON_NETWORK2="${VCENTER_PORTGROUP}"
+export NSX_HOST_COMMON_NETWORK3="${VCENTER_PORTGROUP}"
+
+# NSX Manager, Controller, Edge Network Attributes
+# IP BASE like 172.18.5
+export NSX_IP_BASE="${BASE_SUBNET}"
+export NSX_MANAGER_IP="${NSX_IP_BASE}.4"
+export NSX_CONTROLLER_IP=("${NSX_IP_BASE}.5")
+export NSX_EDGE_IP=("${NSX_IP_BASE}.8") 
+export NSX_COMMON_PASSWORD="${PASSWORD}"
+export NSX_COMMON_DOMAIN="nsx-1.${DOMAIN}"
+export NSX_COMMON_NETMASK="255.255.255.0"
+export NSX_COMMON_GATEWAY="${NSX_IP_BASE}.1"
+export NSX_COMMON_DNS="${DNS}"
+export NSX_COMMON_NTP="${NTP}"
+
+# Option to overwrite NSX install
+export NSX_OVERWRITE=false
+# Base IP for Tunnel like 10.255.254
+export VLAN_OVERLAY_HOST=0
+export NETWORK_TUNNEL_IP_BASE="10.255.255"
+export NETWORK_TUNNEL_IP_POOL_CIDR="${NETWORK_TUNNEL_IP_BASE}.0/24"
+export NETWORK_TUNNEL_IP_POOL_ALLOCATION_START="${NETWORK_TUNNEL_IP_BASE}.1"
+export NETWORK_TUNNEL_IP_POOL_ALLOCATION_END="${NETWORK_TUNNEL_IP_BASE}.254"
+export NETWORK_T0_SUBNET_IP_ADDRESS="${NSX_IP_BASE}.10"
+export NETWORK_T0_SUBNET_PREFIX_LENGTH=24
+export NETWORK_T0_GATEWAY="${NSX_IP_BASE}.1"
+export NETWORK_HOST_UPLINK_PNIC="vmnic1"
+export NETWORK_PKS_IP_BLOCK="172.31.0.0/16"
+export NETWORK_PKS_NODES_IP_BLOCK="10.197.0.0/16"
+export NETWORK_VIPS_CIDR="10.198.0.0/23"
+export NETWORK_VIPS_ALLOCATION_START="10.198.0.1"
+export NETWORK_VIPS_ALLOCATION_END="10.198.1.254"
+
+# NSX Cert and Creds
+export PI_NAME="pks-nsx-t-superuser"
+export NSX_SUPERUSER_CERT_FILE="pks-nsx-t-superuser.crt"
+export NSX_SUPERUSER_KEY_FILE="pks-nsx-t-superuser.key"
+export NSX_CN="nsx.${DOMAIN}"
+
+### OPSMANAGER Conf ###
+CIDR="10.0.0.0/24"
+CIDR_PRIV_START="10.0.0.1"
+CIDR_PRIV_END="10.0.0.10"
+

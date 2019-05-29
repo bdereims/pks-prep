@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 
-. ../env
+. ../../env
 
 function print_help()
 {

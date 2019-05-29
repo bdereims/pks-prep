@@ -1,7 +1,7 @@
 #!/bin/bash
 #bdereims@vmware.com
 
-. ../env
+. ../../env
 
 rm nsx.* pks-nsx-t-superuser.* /tmp/nsx-cert.cnf 2>&1 > /dev/null
 
