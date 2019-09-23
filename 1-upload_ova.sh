@@ -9,6 +9,8 @@ upload_opsmanager() {
 
 	export MYSCRIPT=/tmp/$$
 
+	SSHKEY=$( cat ~/.ssh/id_rsa.pub )
+
 	cat << EOF > ${MYSCRIPT}
 ovftool --acceptAllEulas --skipManifestCheck --X:injectOvfEnv --allowExtraConfig --X:waitForIp \
 --prop:admin_password=${PASSWORD} \
@@ -20,6 +22,7 @@ ovftool --acceptAllEulas --skipManifestCheck --X:injectOvfEnv --allowExtraConfig
 --prop:ntp_servers=${NTP} \
 --powerOn \
 --noSSLVerify \
+--prop:public_ssh_key="${SSHKEY}" \
 -ds="${VCENTER_DATASTORE}" -n=${OVA_OPSMANAGER_NAME} --network='${OVA_OPSMANAGER_PORTGROUP}' \
 ${OVA_OPSMANAGER} \
 vi://${VCENTER_USERNAME}:'${VCENTER_PASSWORD}'@${VCENTER_TARGET}
