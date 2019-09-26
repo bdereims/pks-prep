@@ -1,0 +1,17 @@
+node {
+    def remote = [:]
+    remote.name = 'forty-two'
+    remote.host = 'forty-two.cpod-fresh-bream.az-demo.shwrfr.com'
+    remote.user = 'bdereims'
+    remote.password = 'XXX'
+    remote.allowAnyHosts = true
+    stage('Build Container Images') {
+        sshCommand remote: remote, command: "cd vms2pods && ./build.sh"
+    }
+    stage('Push Containers into Harbor') {
+        sshCommand remote: remote, command: "cd vms2pods && ./push.sh"
+    }
+    stage('Deploy App in Kube') {
+        sshCommand remote: remote, command: "cd vms2pods && ./deploy.sh"
+    }
+}

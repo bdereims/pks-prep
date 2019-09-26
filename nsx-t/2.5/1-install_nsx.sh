@@ -48,14 +48,14 @@ ovftool \
 --prop:nsx_allowSSHRootLogin=True \
 --prop:nsx_passwd_0="${NSX_COMMON_PASSWORD}" \
 --prop:nsx_cli_passwd_0="${NSX_COMMON_PASSWORD}" \
---prop:nsx_hostname=nsx-edge-1 \
+--prop:nsx_hostname=edge-1 \
 --datastore="${NSX_HOST_MGMT_DATASTORE}" \
 --diskMode=thin \
 ${NSX_EDGE_OVA_FILE} \
 vi://${VCENTER_USERNAME}:${VCENTER_PASSWORD}@${VCENTER_IP}/${NSX_HOST_COMMON_DATACENTER}/host/${NSX_HOST_MGMT_CLUSTER}
 }
 
-install_nsx_manager
+#install_nsx_manager
 install_nsx_edge
 
 printf "\n\n###\n### Wait until complet startup of Manager & Edge...\n###\n"
