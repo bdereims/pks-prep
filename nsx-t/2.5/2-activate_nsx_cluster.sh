@@ -3,7 +3,7 @@
 . ../../env
 
 function configure_nsx_cluster() {
-  rm ~/.ssh/known_hosts
+  #rm ~/.ssh/known_hosts
 
   local manager_ip=$NSX_MANAGER_IP
   local manager_password=${NSX_MANAGER_PASSWORD:=$NSX_COMMON_PASSWORD}
