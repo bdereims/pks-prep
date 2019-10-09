@@ -5,16 +5,16 @@ export BITS=/mnt/ISO-Bank
 #ovftool Path
 #export PATH=$PATH:${BITS}/ovftool
 # Generic credentials 
-export PASSWORD="N0FSzzs2oESdAZV!"
+export PASSWORD="FtCOAw8vhbssvyY!"
 export ADMIN="admin"
 # DNS Zone
-export DOMAIN="cpod-cuddly-owl.az-demo.shwrfr.com"
+export DOMAIN="cpod-giving-snipe.az-demo.shwrfr.com"
 
 # vCenter attributes
 export VCENTER_IP="vcsa.${DOMAIN}"
 export VCENTER_USERNAME="administrator%40${DOMAIN}"
 export VCENTER_PASSWORD=${PASSWORD}
-export VCENTER_DATACENTER="cPod-CUDDLY-OWL"
+export VCENTER_DATACENTER="cPod-GIVING-SNIPE"
 export VCENTER_CLUSTER="Cluster"
 export VCENTER_TARGET="${VCENTER_IP}/${VCENTER_DATACENTER}/host/${VCENTER_CLUSTER}"
 export VCENTER_DATASTORE="Datastore"
@@ -31,23 +31,23 @@ export NTP="${GATEWAY}"
 ### OVA ###
 ###########
 
-export OVA_OPSMANAGER_DEPLOY="YES"
+export OVA_OPSMANAGER_DEPLOY="NO"
 export OVA_OPSMANAGER_NAME="OPSMANAGER"
 export OVA_OPSMANAGER_PORTGROUP="pks-mgmt"
-export OVA_OPSMANAGER_IP="192.168.86.10"
+export OVA_OPSMANAGER_IP="192.168.92.10"
 export OVA_OPSMANAGER_NETMASK="255.255.255.0"
-export OVA_OPSMANAGER_GATEWAY="192.168.86.1"
-export OVA_OPSMANAGER="${BITS}/PKS/pcf-vsphere-2.4-build.171.ova"
+export OVA_OPSMANAGER_GATEWAY="192.168.92.1"
+export OVA_OPSMANAGER="${BITS}/PKS/ops-manager-vsphere-2.6.9-build.201.ova"
 
 export OVA_VRLI_DEPLOY="NO"
 export OVA_VRLI_NAME="VRLI"
-export OVA_VRLI_IP="172.20.3.14"
-export OVA_VRLI="${BITS}/VREALIZE/VMware-vRealize-Log-Insight-4.7.1-10752772_OVF10.ova"
+export OVA_VRLI_IP="172.19.1.10"
+export OVA_VRLI="${BITS}/vREALIZE/VMware-vRealize-Log-Insight-4.8.0-13036238_OVF10.ova"
 
-export OVA_VROPS_DEPLOY="NO"
+export OVA_VROPS_DEPLOY="YES"
 export OVA_VROPS_NAME="VROPS"
-export OVA_VROPS_IP="172.20.3.13"
-export OVA_VROPS="${BITS}/VREALIZE/vRealize-Operations-Manager-Appliance-7.0.0.10098133_OVF10.ova"
+export OVA_VROPS_IP="172.19.1.11"
+export OVA_VROPS="${BITS}/vREALIZE/vRealize-Operations-Manager-Appliance-7.5.0.13165949_OVF10.ova"
 
 ################
 ### PKS Conf ###
@@ -61,11 +61,11 @@ alias notary="${PWD}/docker/notary -s https://${REG_FQDN}:4443 --tlscacert ~/.do
 export UAA_FQDN="pks-api.${PKS_FQDN}"
 
 # K8s Cluster name, add this in your hosts or dns, ex: "k8s-1"
-export CLUSTER_NAME="k8s-1"
+export CLUSTER_NAME="lab"
 
 # OpsManager VM IP = DIRECTOR VM deployed by OpsManager, fill-in after deployment
 #export DIRECTOR="director.${DOMAIN}"
-export DIRECTOR="192.168.56.11"
+export DIRECTOR="192.168.92.11"
 export BOSH_ENVIRONMENT=pks
 # OpsManager VM IP or FQDN
 export OPSMANAGER="opsmanager.${DOMAIN}"

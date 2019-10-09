@@ -4,6 +4,8 @@
 . ./env
 
 upload_opsmanager() {
+	ssh-keygen -t rsa -b 4096
+	PUBKEY=$( cat ~/.ssh/id_rsa.pub )
 
 	HOSTNAME=$( echo ${OVA_OPSMANAGER_NAME} | tr '[:upper:]' '[:lower:]' )
 
@@ -22,7 +24,7 @@ ovftool --acceptAllEulas --skipManifestCheck --X:injectOvfEnv --allowExtraConfig
 --prop:ntp_servers=${NTP} \
 --powerOn \
 --noSSLVerify \
---prop:public_ssh_key="${SSHKEY}" \
+--prop:public_ssh_key="${PUBKEY}" \
 -ds="${VCENTER_DATASTORE}" -n=${OVA_OPSMANAGER_NAME} --network='${OVA_OPSMANAGER_PORTGROUP}' \
 ${OVA_OPSMANAGER} \
 vi://${VCENTER_USERNAME}:'${VCENTER_PASSWORD}'@${VCENTER_TARGET}

@@ -6,5 +6,5 @@ provisioner: kubernetes.io/vsphere-volume
 parameters:
   datastore: vsanDatastore 
   diskformat: thin
-  fstype: ext3
+  fstype: ext4
 
