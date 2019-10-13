@@ -7,9 +7,9 @@ metadata:
     version: "latest"
     app: tito
     tiers: tito-fe
-    stage: dev
+    stage: prod
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     type: tito-fe
     version: v1
@@ -19,24 +19,19 @@ spec:
         app: tito
         type: tito-fe
         version: v1
+        tiers: tito-fe
     spec:
       containers:
         - name: tito
-          image: vmeoc/tito-fe:V1.9.5
+          image: harbor/tito-fe:latest 
           ports:
           - containerPort: 80
           env:
+          - name: TITO_SQL_SERVICE_SERVICE_HOST
+            value: tito-sql-service
           - name: TITO_VERSION
             value: V1.9.2
           - name: PROXY_NAME
-            value: 
+            value: 158.156.164.40 
           - name: PROXY_PORT
-            value: "2878"
-          - name: POD_NAME
-            valueFrom:
-              fieldRef:
-                fieldPath: metadata.name
-          - name: POD_NAMESPACE
-            valueFrom:
-              fieldRef:
-                fieldPath: metadata.namespace
+            value: "8080"

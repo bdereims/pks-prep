@@ -5,7 +5,7 @@ metadata:
   labels:
     app: tito
     tiers: tito-sql
-    stage: prod
+    stage: dev
 spec:
   ports:
       - port: 3306               # port expose par docker  (pas le port dans le container)

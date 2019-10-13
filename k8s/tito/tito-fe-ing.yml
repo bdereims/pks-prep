@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: tito-dev
+#  annotations:
+#    ncp/rewrite_target: "/"
+  labels:
+    app: tito
+    stage: dev
+spec:
+  rules:
+   - http:
+       paths:
+       - path: /tito/*
+         backend:
+           serviceName: titofe-service
+           servicePort: 80
