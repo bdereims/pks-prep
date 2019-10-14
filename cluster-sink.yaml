@@ -7,3 +7,27 @@ spec:
    host: vrli.cpod-giving-snipe.az-demo.shwrfr.com 
    port: 514 
    enable_tls: true 
+
+---
+apiVersion: pksapi.io/v1beta1
+kind: LogSink
+metadata:
+  name: lab-pks-system-sink 
+  namespace: pks-system 
+spec:
+  type: syslog
+  host: vrli.cpod-giving-snipe.az-demo.shwrfr.com 
+  port: 514 
+  enable_tls: true
+
+---
+apiVersion: pksapi.io/v1beta1
+kind: LogSink
+metadata:
+  name: lab-kube-system-sink 
+  namespace: kube-system
+spec:
+  type: syslog
+  host: vrli.cpod-giving-snipe.az-demo.shwrfr.com 
+  port: 514 
+  enable_tls: true

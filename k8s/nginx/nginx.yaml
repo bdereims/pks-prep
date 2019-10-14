@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: nginx 
-        image: nginxdemos/hello
+        image: harbor.cpod-giving-snipe.az-demo.shwrfr.com/library/nginxdemos-hello:latest
         ports:
         - containerPort: 80
