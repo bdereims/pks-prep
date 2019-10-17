@@ -6,7 +6,9 @@ metadata:
   labels:
     app: php-fpm
 spec:
-  replicas: 1 
+  strategy:
+    type: Recreate
+  replicas: 1
   selector:
     matchLabels:
       app: php-fpm
@@ -61,6 +63,8 @@ metadata:
   labels:
     app: nginx
 spec:
+  strategy:
+    type: Recreate
   replicas: 1 
   selector:
     matchLabels:
@@ -133,7 +137,7 @@ metadata:
   namespace: ${NAMESPACE} 
 spec:
   maxReplicas: 10
-  minReplicas: 1
+  minReplicas: 1 
   scaleTargetRef:
     apiVersion: extensions/v1beta1
     kind: Deployment

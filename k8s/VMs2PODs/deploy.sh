@@ -1,11 +1,15 @@
-#!/bin/bash
-#bdereims@gmail.com
+#!/bin/bash -e
+#bdereims@vmware.com
 
 . ./env
 
-git pull
-kubectl create namespace ${NAMESPACE} 
-./kubectl_create.sh back-end.yaml
-./kubectl_create.sh front-end.yaml
+EXIST=$(kubectl get namespaces -o json | jq -r ".items[] | select(.metadata.name==\"${NAMESPACE}\") | .metadata.name")
+if [ "X${EXIST}" != "X" ]; then
+	kubectl delete namespace ${NAMESPACE}
+fi
 
-#watch kubectl get pods,svc,ingress -n ${NAMESPACE} 
+kubectl create namespace ${NAMESPACE}
+./kubectl_apply.sh back-end.yaml
+./kubectl_apply.sh front-end.yaml
+
+exit 0

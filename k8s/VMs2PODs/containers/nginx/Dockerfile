@@ -11,5 +11,4 @@ RUN chmod ugo+rwx /startup.sh && mkdir -p /var/www/html/${WEBPATH}
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 COPY html/* /var/www/html/${WEBPATH}/
 
-#CMD ["nginx", "-g", "daemon off;"]
 CMD ["/startup.sh"]
