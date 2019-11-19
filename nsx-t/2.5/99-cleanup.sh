@@ -1,7 +1,7 @@
 #!/bin/bash
 #bdereims@vmware.com
 
-source ../env
+. ../../env
 
 NSX_MANAGER=${NSX_COMMON_DOMAIN}
 NSX_USER=${ADMIN}
@@ -19,7 +19,8 @@ nsx_call_payload() {
         # $2 : REST Call
         # $3 : JSON Payload 
 
-        curl -sS -k -H "content-type: application/json" -d @${3} -X ${1} -u ${NSX_USER}:${NSX_USER_PASSWD} https://${NSX_MANAGER}${2}
+        #curl -sS -k -H "content-type: application/json" -d @${3} -X ${1} -u ${NSX_USER}:${NSX_USER_PASSWD} https://${NSX_MANAGER}${2}
+	curl -k -X ${1} "-H "content-type: application/json" -d @${3} "https://${NSX_MANAGER}${2}" --cert "$NSX_SUPERUSER_CERT_FILE" --key "$NSX_SUPERUSER_KEY_FLE"
 }
 
 create_nsx_session() {
@@ -40,21 +41,11 @@ clean_ip_pool() {
 	for AIP in $( cat aip.lst | jq '.["results"] | .[] | .allocation_id' )
 	do
 		echo "Clean: ${AIP}"
-		echo "{ \"allocation_id\": ${AIP} }"
 		echo "{ \"allocation_id\": ${AIP} }" > aip.$$
-		#curl -k -b cookies.$$ -H "`grep X-XSRF-TOKEN headers.$$`" \
-		#-X POST -d @aip.$$ \
-		#-H 'Content-Type: application/json;charset=UTF-8' \
-		#-i https://${NSX_MANAGER}/api/v1/pools/ip-pools/${1}?action=RELEASE
-		nsx_call_payload POST "/api/v1/pools/ip-pools/${1}?action=RELEASE" aip.$$
+		nsx_call_payload POST "/api/v1/pools/ip-pools/${1}?action=RELEASE" "aip.$$"
 	done
 
-	#curl -k -b cookies.$$ -H "`grep X-XSRF-TOKEN headers.$$`" \
-	#-X DELETE \
-	#-H 'Content-Type: application/json;charset=UTF-8' \
-	#-i https://${NSX_MANAGER}/api/v1/pools/ip-pools/${1}
-
-	nsx_call DELETE "/api/v1/pools/ip-pools/${1}?force=true"
+	#nsx_call DELETE "/api/v1/pools/ip-pools/${1}?force=true"
 
 	rm aip.$$
 	rm aip.lst
@@ -63,7 +54,8 @@ clean_ip_pool() {
 main() {
 	echo "Cleaning Up NSX-T"
 
-	clean_ip_pool "6ef2b698-7206-4cf2-9d89-b43bad0e8cc0"
+	clean_ip_pool "5ba0103a-a766-4abe-8deb-56c0d7c3e2ba"
+
 }
 
 main

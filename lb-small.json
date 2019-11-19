@@ -1,0 +1,8 @@
+{
+ "name": "lb-profile-small",
+ "description": "Network profile for SMALL size NSX-T load balancer",
+ "parameters": { 
+    "lb_size": "small",
+    "single_tier_topology": true
+    }
+}

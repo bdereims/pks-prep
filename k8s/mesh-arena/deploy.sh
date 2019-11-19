@@ -24,8 +24,9 @@ kubectl create -f ./services/ball/Service.yml
 
 ## Deploy 2x2 players
 kubectl apply -f <(istioctl kube-inject -f ./services/ai/Deployment-2-locals.yml)
-kubectl create -f ./services/ai/Service-locals.yml
+#kubectl create -f ./services/ai/Service-locals.yml
 kubectl apply -f <(istioctl kube-inject -f ./services/ai/Deployment-2-visitors.yml)
-kubectl create -f ./services/ai/Service-visitors.yml
+#kubectl create -f ./services/ai/Service-visitors.yml
+kubectl create -f ./services/ai/Service.yml
 
 kubectl config set-context --current --namespace=default
