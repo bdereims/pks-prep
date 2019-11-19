@@ -1,11 +1,11 @@
 #!/bin/sh
 
 # Where are the bits?
-export BITS=/mnt/ISO-Bank
+export BITS=/data/BITS
 #ovftool Path
 #export PATH=$PATH:${BITS}/ovftool
 # Generic credentials 
-export PASSWORD="FtCOAw8vhbssvyY!"
+export PASSWORD="xxx"
 export ADMIN="admin"
 # DNS Zone
 export DOMAIN="cpod-giving-snipe.az-demo.shwrfr.com"
@@ -71,7 +71,7 @@ export BOSH_ENVIRONMENT=pks
 export OPSMANAGER="opsmanager.${DOMAIN}"
 
 # Sign container image in Harbor during docker push
-export DOCKER_CONTENT_TRUST=1
+export DOCKER_CONTENT_TRUST=0
 export DOCKER_CONTENT_TRUST_SERVER=https://${REG_FQDN}:4443
 
 # @IP:PORT of the OpenFAAS Gateway Service
@@ -137,11 +137,11 @@ export NETWORK_T0_SUBNET_IP_ADDRESS="${NSX_IP_BASE}.10"
 export NETWORK_T0_SUBNET_PREFIX_LENGTH=24
 export NETWORK_T0_GATEWAY="${NSX_IP_BASE}.1"
 export NETWORK_HOST_UPLINK_PNIC="vmnic2"
-export NETWORK_PKS_IP_BLOCK="172.16.0.0/16"
+export NETWORK_PKS_IP_BLOCK="10.200.0.0/16"
 export NETWORK_PKS_NODES_IP_BLOCK="10.0.0.0/16"
-export NETWORK_VIPS_CIDR="192.168.91.0/24"
-export NETWORK_VIPS_ALLOCATION_START="192.168.91.1"
-export NETWORK_VIPS_ALLOCATION_END="192.168.91.254"
+export NETWORK_VIPS_CIDR="192.168.94.0/23"
+export NETWORK_VIPS_ALLOCATION_START="192.168.94.1"
+export NETWORK_VIPS_ALLOCATION_END="192.168.95.254"
 
 # NSX Cert and Creds
 export PI_NAME="pks-nsx-t-superuser"
@@ -153,6 +153,12 @@ export NSX_CN="nsx.${DOMAIN}"
 CIDR="10.0.0.0/24"
 CIDR_PRIV_START="10.0.0.1"
 CIDR_PRIV_END="10.0.0.10"
+
+### Training setup ###
+export STUDENTS=8
+export STUDENTS_PLAN="small"
+export STUDENTS_NUM_WORKERS="2"
+export STUDENTS_NETPROFILE="lb-profile-small"
 
 mypass() {
 	echo ${PASSWORD}
