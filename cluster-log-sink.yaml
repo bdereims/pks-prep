@@ -1,0 +1,9 @@
+apiVersion: pksapi.io/v1beta1
+kind: ClusterLogSink 
+metadata:
+  name: cluster-log-sink 
+spec:
+  type: syslog
+  host: vrli.cpod-giving-snipe.az-demo.shwrfr.com 
+  port: 514 
+  enable_tls: true 
