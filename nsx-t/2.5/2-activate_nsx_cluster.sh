@@ -18,8 +18,8 @@ function configure_nsx_cluster() {
   echo "Set Service Upgrade On"
   sshpass -p $manager_password ssh -o StrictHostKeyChecking=no root@$manager_ip "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"set service install-upgrade enable\""
 
-  echo "Set sending log to vrli"
-  sshpass -p $manager_password ssh -o StrictHostKeyChecking=no root@$manager_ip "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"set logging-server ${OVA_VRLI_IP} proto udp level info\""
+  #echo "Set sending log to vrli"
+  #sshpass -p $manager_password ssh -o StrictHostKeyChecking=no root@$manager_ip "/opt/vmware/nsx-cli/bin/scripts/nsxcli -c \"set logging-server ${OVA_VRLI_IP} proto udp level info\""
 
   for EDGE_IP in ${NSX_EDGE_IP[@]}; do
     echo "---"
