@@ -1,0 +1,17 @@
+*.terraform
+*.tfstate.*
+*.tfstate
+*.tfvars
+*.tfplan
+.idea
+.idea/*
+*.pem
+*.pivotal
+*stemcell*.tgz
+*.generated.yml
+OpsManager*onAWS.yml
+om.key
+credentials.yml
+*control-plane-*.yml
+*.tgz
+*secrets.yml
