@@ -16,6 +16,6 @@
 It's not an official PKS installer. It's my own work for installation automation.
 Don't use it to deploy a pruction environment.
 
-The excellent [Jérôme training](https://vmware-2019-11.container.training/#1)
+The excellent [Jérôme's training](https://vmware-2019-11.container.training/#1)
 
 Check out the [LICENSE](https://github.com/bdereims/pks-prep/blob/master/LICENSE).
