@@ -1,0 +1,13 @@
+env_name           = "ent-pks"
+access_key         = ""
+secret_key         = ""
+region             = "eu-central-1"
+availability_zones = ["eu-central-1a","eu-central-1b","eu-central-1c"]
+ops_manager_ami    = "ami-034bc88da76fa609d"
+dns_suffix         = "cloud-garage.net"
+
+ssl_cert = <<SSL_CERT
+SSL_CERT
+
+ssl_private_key = <<SSL_KEY
+SSL_KEY
