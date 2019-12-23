@@ -7,10 +7,11 @@
 
 ( [PKS Documentation](https://docs.vmware.com/en/VMware-Pivotal-Container-Service/) )
 
-- Tested for PKS 1.4 + NSX-T 2.3 and NSX-T 2.4 but not fully automated way
+- Tested for PKS 1.6 + NSX-T 2.5 but not fully automated way
 - New feature for deployiong multiple NSX Controllers and NSX Edges
 - Add overlay_host with VLAN_ID and overlay_edgevm in the case of VLAN for TEP
-- Add VCSA automaticaly within MSX Manager as compute manager
+- Add VCSA automaticaly within MSX Manager as compute manager for NSX-T 2.3
+- Add AWS deployment 
 
 It's not an official PKS installer. It's my own work for installation automation.
 Don't use it to deploy a pruction environment.
