@@ -1,0 +1,14 @@
+#!/bin/sh
+
+export IAAS=aws
+
+export CLUSTER_NAME=lab
+export DOMAIN=entpks.cpod-aws.az-aws.shwrfr.com
+export BITS=/data/BITS
+export OPSMANAGER=pcf.${DOMAIN}
+export ADMIN=admin
+export PASSWORD="xxx"
+export OPSMANAGER=pcf.${DOMAIN}
+export DIRECTOR=10.0.16.5
+export HARBOR=harbor.${DOMAIN}
+export UAA_FQDN=api.pks.${DOMAIN}
