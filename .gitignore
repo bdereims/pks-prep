@@ -10,4 +10,5 @@ nsx-t/nsx.key
 nsx-t/outcomes.lst
 opsm-config/installsettings.json
 *terraforming-aws*
+terraforming-aws-*
 terraform.tfvars
